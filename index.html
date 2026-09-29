@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SR Handicraft & Furniture | Solid Wood Furniture & Handicrafts Online</title>
+<meta name="description" content="Solid sheesham, mango and teak wood furniture in Pune — storage beds, sofa sets, dining sets, wardrobes, study tables and hand carved pooja mandirs. Custom sizes. Showroom at Patil Nagar, Bengaluru–Mumbai Highway.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --tint:#F7F7F7; --card:#ffffff; --ink:#222222; --muted:#666666; --line:#EAEAEA; --hero:#F6F1EA;
+  --rose:#6B2D1C; --rose-ink:#ffffff; --brass:#B7832F; --indigo:#1F2E55; --ok:#2F7D4F; --warn:#B3261E;
+  --display:"Rozha One", Georgia, "Times New Roman", serif;
+  --body:"Mukta", "Segoe UI", Roboto, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --hero:#2A211B; --bg:#17120F; --tint:#221B16; --card:#1D1713; --ink:#F2E9DF; --muted:#B9A99B; --line:#3A2F27;
+    --rose:#D9926F; --rose-ink:#17120F; --brass:#D9A94F; --indigo:#26345C; --ok:#6CC08F; --warn:#F2877E;
+  }
+}
+:root[data-theme="dark"]{
+  --hero:#2A211B; --bg:#17120F; --tint:#221B16; --card:#1D1713; --ink:#F2E9DF; --muted:#B9A99B; --line:#3A2F27;
+  --rose:#D9926F; --rose-ink:#17120F; --brass:#D9A94F; --indigo:#26345C; --ok:#6CC08F; --warn:#F2877E;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+img,svg{max-width:100%}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+.print{background-color:var(--indigo);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23D9A94F' stroke-width='1.1' opacity='.45'%3E%3Ccircle cx='22' cy='22' r='3'/%3E%3Cpath d='M22 9c3 4 3 9 0 13c-3-4-3-9 0-13zM22 35c3-4 3-9 0-13c-3 4-3 9 0 13zM9 22c4-3 9-3 13 0c-4 3-9 3-13 0zM35 22c-4-3-9-3-13 0c4 3 9 3 13 0z'/%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='44' cy='44' r='2'/%3E%3Ccircle cx='44' cy='0' r='2'/%3E%3Ccircle cx='0' cy='44' r='2'/%3E%3C/g%3E%3C/svg%3E")}
+
+/* top strip */
+.strip{color:#F4E7CF;font-size:14px}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:36px}
+.strip nav{display:flex;gap:20px}
+.strip nav a:hover{color:#fff;text-decoration:underline}
+
+/* header */
+header.top{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+.hrow{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo .mark{width:42px;height:42px;border-radius:50%;background:var(--rose);color:var(--rose-ink);display:grid;place-items:center;font-family:var(--display);font-size:20px;box-shadow:inset 0 0 0 3px var(--bg),0 0 0 2px var(--brass)}
+.logo .name{font-family:var(--display);font-size:22px;line-height:1}
+.logo .name small{display:block;font-family:var(--body);font-size:12px;color:var(--muted);letter-spacing:.02em;margin-top:3px}
+.search{flex:1;position:relative;max-width:560px;margin:0 auto}
+.search input{width:100%;height:44px;border:1px solid var(--line);border-radius:22px;padding:0 48px 0 18px;background:var(--tint)}
+.search button{position:absolute;right:4px;top:4px;width:36px;height:36px;border:0;border-radius:50%;background:var(--rose);color:var(--rose-ink);cursor:pointer;display:grid;place-items:center}
+.sugg{position:absolute;left:0;right:0;top:50px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.12);display:none;overflow:hidden}
+.sugg a{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line)}
+.sugg a:hover{background:var(--tint)}
+.sugg a span{color:var(--muted);font-size:14px}
+.icons{display:flex;gap:6px;flex-shrink:0}
+.ib{position:relative;display:flex;flex-direction:column;align-items:center;font-size:12px;color:var(--muted);padding:4px 8px;border:0;background:none;cursor:pointer}
+.ib svg{width:24px;height:24px;color:var(--ink)}
+.ib b{position:absolute;top:0;right:4px;min-width:18px;height:18px;border-radius:9px;background:var(--brass);color:#fff;font-size:11px;display:grid;place-items:center;padding:0 4px}
+.burger{display:none}
+
+/* category nav + mega menu */
+.catnav{border-top:1px solid var(--line);position:relative}
+.catnav ul{list-style:none;margin:0;padding:0;display:flex;justify-content:space-between}
+.catnav li>a{display:block;padding:12px 6px;font-weight:500;border-bottom:3px solid transparent}
+.catnav li:hover>a,.catnav li:focus-within>a{border-color:var(--brass);color:var(--rose)}
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--card);border-top:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.14);display:none;padding:24px 16px}
+.catnav li:hover .mega,.catnav li:focus-within .mega{display:block}
+.mega .in{max-width:1248px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr) 260px;gap:24px}
+.mega h4{margin:0 0 6px;font-size:15px;color:var(--rose)}
+.mega h4 a:hover{text-decoration:underline}
+.mega .col a.sub{display:block;padding:3px 0;color:var(--muted);font-size:15px}
+.mega .col a.sub:hover{color:var(--ink)}
+.mega .col>div{margin-bottom:16px}
+.mega .promo{background:var(--tint);border-radius:10px;padding:16px;display:flex;flex-direction:column;justify-content:space-between}
+.mega .promo p{margin:0;font-family:var(--display);font-size:20px;line-height:1.2}
+
+/* drawer */
+.drawer{position:fixed;inset:0;z-index:60;display:none}
+.drawer.open{display:block}
+.drawer .scrim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.drawer .panel{position:absolute;left:0;top:0;bottom:0;width:min(86vw,360px);background:var(--bg);overflow-y:auto}
+.drawer .ph{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;color:#F4E7CF}
+.drawer details{border-bottom:1px solid var(--line)}
+.drawer summary{padding:14px 16px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.drawer summary::after{content:"+";color:var(--brass);font-size:20px;line-height:1}
+.drawer details[open] summary::after{content:"–"}
+.drawer .grp{padding:0 16px 12px 28px}
+.drawer .grp a{display:block;padding:5px 0;color:var(--muted)}
+.drawer .grp a.g{color:var(--ink);font-weight:500;margin-top:6px}
+.drawer .extra a{display:block;padding:12px 16px;border-bottom:1px solid var(--line)}
+
+/* common */
+main{min-height:60vh}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 22px;border-radius:6px;border:1px solid var(--rose);background:var(--rose);color:var(--rose-ink);font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--rose)}
+.btn.brass{background:var(--brass);border-color:var(--brass);color:#fff}
+.btn:hover{filter:brightness(1.07)}
+section.blk{padding:36px 0}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:18px}
+.sh h2{font-family:var(--display);font-weight:400;font-size:clamp(24px,3vw,32px);margin:0;line-height:1.1}
+.sh a{color:var(--rose);font-weight:600;white-space:nowrap}
+.crumbs{font-size:14px;color:var(--muted);padding:16px 0 4px}
+.crumbs a:hover{color:var(--rose)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:2fr 1fr;gap:16px;padding-top:20px}
+.hmain{border-radius:14px;color:#F7ECD9;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:20px;min-height:380px;position:relative;overflow:hidden}
+.hmain h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5.2vw,62px);line-height:1.02;margin:0 0 14px}
+.hmain p{margin:0 0 22px;max-width:40ch;color:#E6D7BF;font-size:18px}
+.hmain .btn{background:var(--brass);border-color:var(--brass);color:#fff}
+.hmain .btn.ghost{background:transparent;border-color:#E6D7BF;color:#F7ECD9}
+.hmain .art{background:rgba(255,255,255,.08);border-radius:50% 50% 12px 12px;padding:18px;border:2px solid rgba(217,169,79,.5)}
+.hside{display:grid;gap:16px}
+.hcard{border-radius:14px;padding:22px;background:var(--tint);display:grid;grid-template-columns:1fr 110px;align-items:center;gap:8px;border:1px solid var(--line)}
+.hcard h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1;margin:0 0 6px}
+.hcard p{margin:0 0 10px;color:var(--muted);font-size:15px}
+.hcard a.l{color:var(--rose);font-weight:600}
+
+/* category tiles */
+.tiles{display:grid;grid-template-columns:repeat(8,1fr);gap:14px}
+.tile{text-align:center;font-weight:500;font-size:15px}
+.tile .c{aspect-ratio:1;border-radius:50%;background:var(--tint);display:grid;place-items:center;padding:14%;margin-bottom:8px;border:1px solid var(--line);transition:border-color .2s}
+.tile:hover .c{border-color:var(--brass)}
+
+/* product cards */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 54px)/4);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+.rail>*{scroll-snap-align:start}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.pc .im{aspect-ratio:4/3;display:grid;place-items:center;padding:10px}
+.pc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:2px;flex:1}
+.pc .nm{font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc .br{font-size:13px;color:var(--muted)}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:4px}
+.price .p{font-weight:700;font-size:18px}
+.price s{color:var(--muted);font-size:14px}
+.price .off{color:var(--ok);font-weight:600;font-size:14px}
+.emi{font-size:13px;color:var(--muted)}
+.rt{font-size:13px;color:var(--muted)}
+.rt b{background:var(--ok);color:#fff;border-radius:4px;padding:0 6px;font-weight:600;margin-right:4px}
+.badge{position:absolute;top:10px;left:10px;background:var(--brass);color:#fff;font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px}
+.wish{position:absolute;top:8px;right:8px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center}
+.wish svg{width:18px;height:18px}
+.wish.on{color:var(--warn)}
+.wish.on svg path{fill:currentColor}
+.pc .add{margin-top:10px;height:40px;border-radius:6px;border:1px solid var(--rose);background:transparent;color:var(--rose);font-weight:600;cursor:pointer}
+.pc .add:hover{background:var(--rose);color:var(--rose-ink)}
+
+/* promos */
+.promos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.promo{border-radius:14px;padding:22px;min-height:200px;display:grid;grid-template-columns:1fr 120px;gap:8px;align-items:end;border:1px solid var(--line)}
+.promo h3{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.05;margin:0 0 6px}
+.promo p{margin:0 0 10px;font-size:15px}
+.promo.a{background:#EFE3D1;color:#3A2418}
+.promo.b{background:#DCE3EE;color:#1F2E55}
+.promo.c{background:#E9DCCF;color:#5A2418}
+.promo a{font-weight:700;text-decoration:underline}
+
+.usp{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.usp div{padding:18px;border-right:1px solid var(--line)}
+.usp div:last-child{border-right:0}
+.usp b{display:block;font-size:16px}
+.usp span{color:var(--muted);font-size:14px}
+
+.store{border-radius:14px;color:#F7ECD9;display:grid;grid-template-columns:1.2fr 1fr;overflow:hidden}
+.store .t{padding:clamp(22px,4vw,44px)}
+.store h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,3.5vw,40px);margin:0 0 10px;line-height:1.05}
+.store p{color:#E6D7BF;margin:0 0 6px}
+.store .map{background:rgba(255,255,255,.07);display:grid;place-items:center;padding:20px}
+
+.seo{color:var(--muted);font-size:15px}
+.seo h2{font-family:var(--display);font-weight:400;color:var(--ink);font-size:26px;margin:0 0 10px}
+.seo h3{color:var(--ink);font-size:17px;margin:18px 0 4px}
+.seo .more{max-height:230px;overflow:hidden;position:relative}
+.seo .more.open{max-height:none}
+.seo .more:not(.open)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,var(--bg))}
+.seo table{border-collapse:collapse;margin-top:10px;min-width:420px}
+.seo td,.seo th{border:1px solid var(--line);padding:8px 12px;text-align:left}
+.tscroll{overflow-x:auto}
+
+/* listing */
+.listing{display:grid;grid-template-columns:250px 1fr;gap:26px;padding-bottom:40px}
+.filters{border:1px solid var(--line);border-radius:10px;padding:16px;align-self:start;position:sticky;top:130px}
+.filters h4{margin:14px 0 6px;font-size:15px}
+.filters h4:first-child{margin-top:0}
+.filters label{display:flex;gap:8px;align-items:center;padding:3px 0;font-size:15px;color:var(--muted);cursor:pointer}
+.filters a.subl{display:block;padding:3px 0;color:var(--muted);font-size:15px}
+.filters a.subl.on{color:var(--rose);font-weight:600}
+.lhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 16px}
+.lhead h1{font-family:var(--display);font-weight:400;font-size:clamp(26px,3vw,34px);margin:0;line-height:1.1}
+.lhead h1 small{font-family:var(--body);font-size:15px;color:var(--muted);margin-left:8px}
+.lhead select{height:40px;border:1px solid var(--line);border-radius:6px;padding:0 10px;background:var(--card)}
+.ftoggle{display:none}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:40px;text-align:center;color:var(--muted)}
+
+/* product page */
+.pdp{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;padding:10px 0 30px}
+.gal .main{border-radius:12px;aspect-ratio:4/3;display:grid;place-items:center;padding:30px;border:1px solid var(--line)}
+.gal .th{display:flex;gap:10px;margin-top:10px}
+.gal .th button{width:84px;aspect-ratio:4/3;border-radius:8px;border:2px solid var(--line);padding:6px;cursor:pointer}
+.gal .th button.on{border-color:var(--brass)}
+.pinfo h1{font-family:var(--display);font-weight:400;font-size:clamp(26px,3vw,36px);line-height:1.1;margin:0 0 6px}
+.pinfo .price .p{font-size:28px}
+.box{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:14px}
+.pin{display:flex;gap:8px}
+.pin input{flex:1;height:42px;border:1px solid var(--line);border-radius:6px;padding:0 12px;background:var(--card)}
+.pinres{font-size:14px;margin-top:6px}
+.qty{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.qty button{width:40px;height:42px;border:0;background:var(--tint);cursor:pointer;font-size:18px}
+.qty span{min-width:44px;display:grid;place-items:center;font-weight:600}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.acts .btn{flex:1;min-width:150px}
+.specs{width:100%;border-collapse:collapse;font-size:15px}
+.specs td{padding:8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.specs td:first-child{color:var(--muted);width:40%}
+
+/* cart */
+.cart{display:grid;grid-template-columns:1fr 340px;gap:26px;padding-bottom:40px}
+.ci{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:12px}
+.ci .im{border-radius:8px;aspect-ratio:4/3;display:grid;place-items:center;padding:6px}
+.ci .rm{border:0;background:none;color:var(--warn);cursor:pointer;font-size:14px;padding:0}
+.sum{border:1px solid var(--line);border-radius:10px;padding:18px;align-self:start;position:sticky;top:130px}
+.sum .r{display:flex;justify-content:space-between;padding:6px 0}
+.sum .tot{border-top:1px solid var(--line);margin-top:8px;padding-top:12px;font-weight:700;font-size:18px}
+
+/* footer */
+footer{margin-top:40px;background:var(--tint);border-top:1px solid var(--line)}
+.fcols{display:grid;grid-template-columns:repeat(4,1fr) 1.2fr;gap:24px;padding:40px 16px 24px}
+.fcols h4{margin:0 0 10px;font-size:16px}
+.fcols a{display:block;color:var(--muted);padding:3px 0;font-size:15px}
+.fcols a:hover{color:var(--rose)}
+.flinks{border-top:1px solid var(--line);padding:18px 16px;font-size:14px;color:var(--muted)}
+.flinks b{color:var(--ink)}
+.flinks p{margin:0 0 10px}
+.flinks a:hover{color:var(--rose)}
+.pay{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.pay span{border:1px solid var(--line);background:var(--card);border-radius:4px;padding:2px 8px;font-size:13px;color:var(--ink)}
+.fbottom{color:#E6D7BF;font-size:14px}
+.fbottom .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:14px 16px}
+.fbottom a{margin-left:14px}
+
+.wa{position:fixed;right:18px;bottom:18px;z-index:50;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:.25s;z-index:70;font-weight:500}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:1024px){
+  .catnav{display:none}
+  .burger{display:flex}
+  .strip nav{display:none}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .rail{grid-auto-columns:calc((100% - 36px)/3)}
+  .tiles{grid-template-columns:repeat(4,1fr)}
+  .fcols{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr}
+  .hside{grid-template-columns:1fr 1fr}
+  .icons .lbl{display:none}
+}
+@media (max-width:760px){
+  .hrow{flex-wrap:wrap;height:auto;padding:10px 0;gap:10px}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .logo .name{font-size:18px}
+  .icons{margin-left:auto}
+  .hmain{grid-template-columns:1fr;min-height:0}
+  .hmain .art{max-width:260px}
+  .hside{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .rail{grid-auto-columns:70%}
+  .promos{grid-template-columns:1fr}
+  .usp{grid-template-columns:1fr 1fr}
+  .usp div:nth-child(2){border-right:0}
+  .usp div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .store{grid-template-columns:1fr}
+  .listing{grid-template-columns:1fr}
+  .filters{display:none;position:static}
+  .filters.open{display:block}
+  .ftoggle{display:inline-flex}
+  .pdp{grid-template-columns:1fr}
+  .cart{grid-template-columns:1fr}
+  .ci{grid-template-columns:90px 1fr}
+  .ci .ctrl{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center}
+  .fcols{grid-template-columns:1fr 1fr}
+  .pc .bd{padding:10px}
+  .price .p{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== Clean white theme ===== */
+.print{background:var(--tint);background-image:none}
+.strip{color:var(--ink);border-bottom:1px solid var(--line)}
+.strip nav a:hover{color:var(--rose);text-decoration:none}
+.drawer .ph{color:var(--ink);border-bottom:1px solid var(--line)}
+.hmain,.sh h2,.lhead h1,.pinfo h1,.store h2,.seo h2,.hcard h3,.promo h3{font-family:var(--body);font-weight:600;letter-spacing:-.01em}
+.hmain{background:var(--hero);color:var(--ink);border-radius:6px}
+.hmain h1{font-family:var(--body);font-weight:700;letter-spacing:-.02em}
+.hmain p{color:var(--muted)}
+.hmain .btn{background:var(--rose);border-color:var(--rose);color:var(--rose-ink)}
+.hmain .btn.ghost{background:transparent;border-color:var(--rose);color:var(--rose)}
+.hmain .art{background:var(--card);border:1px solid var(--line);border-radius:6px}
+.hcard{border-radius:6px;background:var(--card)}
+.band{background:var(--tint);box-shadow:0 0 0 100vmax var(--tint);clip-path:inset(0 -100vmax)}
+.pc{border-radius:4px;border-color:var(--line)}
+.pc .im{background:var(--card)!important;border-bottom:1px solid var(--line)}
+.badge{border-radius:2px}
+.btn{border-radius:4px}
+.tile .c{background:var(--tint);border-color:transparent}
+.promo{border-radius:6px}
+.usp{border-radius:6px}
+.store{background:var(--hero);color:var(--ink);border-radius:6px}
+.store p{color:var(--muted)}
+.store .btn.ghost{border-color:var(--rose);color:var(--rose)}
+.store .map{background:var(--card)}
+.gal .main,.ci .im{background:var(--card)!important}
+.fbottom{color:var(--muted);border-top:1px solid var(--line)}
+.fbottom a:hover{color:var(--rose)}
+.filters,.sum,.box,.ci{border-radius:4px}
+
+
+/* ===== Share ===== */
+button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
+.shr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 4px;font-size:14px;color:var(--muted)}
+.sc{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer;color:var(--ink);transition:transform .15s}
+.sc:hover{transform:translateY(-2px)}
+.sc svg{width:18px;height:18px}
+.sc.swa{color:#1FA855}.sc.sfb{color:#1877F2}.sc.stg{color:#229ED9}
+.shbg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:90;display:none;align-items:flex-end;justify-content:center}
+.shbg.on{display:flex}
+.shbox{background:var(--card);color:var(--ink);width:100%;max-width:460px;border-radius:14px 14px 0 0;padding:18px 18px 22px;animation:shup .22s ease}
+@media(min-width:700px){.shbg{align-items:center}.shbox{border-radius:12px}}
+@keyframes shup{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.shbox h3{margin:0 0 4px;font-size:17px;font-weight:600}
+.shbox .sub{color:var(--muted);font-size:13px;margin:0 0 14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.shgrid button{background:none;border:0;cursor:pointer;color:var(--ink);font:inherit;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.shgrid .sc{width:48px;height:48px}
+.shgrid .sc svg{width:22px;height:22px}
+.shlink{display:flex;gap:8px}
+.shlink input{flex:1;min-width:0;height:42px;border:1px solid var(--line);border-radius:4px;padding:0 10px;background:var(--tint);color:var(--ink);font:inherit;font-size:13px}
+.shlink .btn{height:42px}
+
+/* ===== WhatsApp share buttons ===== */
+.cact{display:flex;gap:8px;margin-top:10px}
+.cact .add{margin-top:0;flex:1;min-width:0}
+.wabtn{flex:0 0 40px;height:40px;border-radius:6px;background:#25D366;color:#fff;display:grid;place-items:center}
+.wabtn svg{width:22px;height:22px}
+.wabtn:hover{background:#1FA855;text-decoration:none}
+.wabig{display:flex;align-items:center;justify-content:center;gap:10px;height:48px;margin-top:12px;border-radius:4px;background:#25D366;color:#fff;font-weight:600;font-size:15px}
+.wabig svg{width:22px;height:22px}
+.wabig:hover{background:#1FA855;text-decoration:none;color:#fff}
+
+/* ===== Floating photos ===== */
+.fl{position:relative;overflow:hidden;isolation:isolate}
+.fl > .ly{position:absolute;inset:0;opacity:0;background-size:cover;background-position:center;background-repeat:no-repeat;transition:opacity 1s ease;will-change:opacity,transform}
+.fl > .ly.on{opacity:1;animation:kenb 10s ease-in-out infinite alternate}
+@keyframes kenb{from{transform:scale(1.02)}to{transform:scale(1.11) translate(-1.5%,-1.5%)}}
+@media (prefers-reduced-motion: reduce){.fl > .ly.on{animation:none}.fl > .ly{transition:none}}
+.ph{display:block;width:100%;aspect-ratio:4/3;border-radius:6px;overflow:hidden;position:relative}
+.hmain .art:has(.ph),.store .map:has(.ph){padding:0;overflow:hidden;border:0;background:none}
+.hmain .art .ph{aspect-ratio:16/11}
+.tile .c:has(.ph){padding:0;overflow:hidden}
+.tile .c .ph{aspect-ratio:1/1;border-radius:0}
+.hcard .ph,.promo .ph{aspect-ratio:1/1}
+.pc .im.fl,.ci .im.fl{padding:0}
+.gal .main.fl{padding:0;border:1px solid var(--line)}
+.gal .th button.pht{padding:0;overflow:hidden;background-size:cover;background-position:center}
+.fdot{position:absolute;left:0;right:0;bottom:8px;display:flex;gap:5px;justify-content:center;z-index:2;pointer-events:none}
+.fdot i{width:5px;height:5px;border-radius:50%;background:#fff;opacity:.5;box-shadow:0 0 3px rgba(0,0,0,.4)}
+.fdot i.on{opacity:1;width:14px;border-radius:3px}
+/* marquee strip */
+.mq{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mqin{display:flex;gap:14px;width:max-content;animation:mqs 42s linear infinite}
+.mq:hover .mqin{animation-play-state:paused}
+.mqin img{height:190px;width:auto;border-radius:6px;object-fit:cover;display:block}
+@keyframes mqs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:700px){.mqin img{height:130px}.mqin{animation-duration:30s}}
+@media (prefers-reduced-motion: reduce){.mqin{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="strip print" id="strip" hidden>
+  <div class="wrap">
+    <span id="stripmsg"></span>
+    <nav>
+      <a href="#/page/bulk">Hotel &amp; Bulk Orders</a>
+      <a href="#/page/custom">Custom Furniture</a>
+      <a href="#/page/dealer">Become a Dealer</a>
+      <a href="#/page/track">Track Order</a>
+      <a href="#/page/contact">Contact Us</a>
+    </nav>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap hrow">
+    <button class="ib burger" id="burger" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <a href="#/" class="logo" aria-label="SR Handicraft & Furniture home">
+      <span class="mark">SR</span>
+      <span class="name">SR Handicraft<small>&amp; Furniture</small></span>
+    </a>
+    <form class="search" id="searchForm" role="search">
+      <input id="q" type="search" placeholder="Search bed, dining set, mandir..." autocomplete="off" aria-label="Search products">
+      <button aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+      <div class="sugg" id="sugg"></div>
+    </form>
+    <div class="icons">
+      <button class="ib" type="button" data-share="page" aria-label="Share">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span class="lbl">Share</span>
+      </button>
+      <a class="ib" href="#/page/store" aria-label="Find a store">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span class="lbl">Store</span>
+      </a>
+      <a class="ib" href="#/wishlist" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7.5-4.6-9.3-9.2C1.4 7.4 3.7 4 7.2 4c2 0 3.6 1.1 4.8 2.8C13.2 5.1 14.8 4 16.8 4c3.5 0 5.8 3.4 4.5 6.8C19.5 15.4 12 20 12 20z"/></svg><span class="lbl">Wishlist</span><b id="wc" hidden>0</b>
+      </a>
+      <a class="ib" href="#/cart" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg><span class="lbl">Cart</span><b id="cc" hidden>0</b>
+      </a>
+    </div>
+  </div>
+  <nav class="catnav wrap" aria-label="Categories"><ul id="catnav"></ul></nav>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <div class="ph print"><b>Shop by category</b><button class="ib" data-close aria-label="Close menu" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div id="dcats"></div>
+    <div class="extra">
+      <a href="#/page/custom">Custom Furniture</a>
+      <a href="#/page/bulk">Hotel &amp; Bulk Orders</a>
+      <a href="#/page/store">Visit Showroom</a>
+      <a href="#/page/track">Track Order</a>
+      <a href="#/page/contact">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap fcols">
+    <div><h4>Company</h4><a href="#/page/about">About SR</a><a href="#/page/artisans">Humare kaarigar</a><a href="#/page/store">Showroom</a><a href="#/page/contact">Contact Us</a></div>
+    <div><h4>Useful Links</h4><a href="#/page/custom">Custom Furniture</a><a href="#/page/bulk">Hotel &amp; Bulk Orders</a><a href="#/page/store">Find Showroom</a><a href="#/page/track">Track Order</a></div>
+    <div><h4>Partner With Us</h4><a href="#/page/dealer">Become a Dealer</a><a href="#/page/artisans">Artisan Program</a><a href="#/page/bulk">Interior Designers</a><a href="#/page/export">Export Enquiry</a></div>
+    <div><h4>Need Help?</h4><a href="#/page/faq">FAQs</a><a href="#/page/policies">Delivery &amp; Returns</a><a href="#/page/track">Order ka status</a><a href="#/page/custom">Custom furniture</a></div>
+    <div><h4>Showroom</h4><a href="#/page/store" id="fadr">Patil Nagar, Pune</a><a href="#" id="ftel">+91 96365 10574</a><a id="fmail" hidden></a><a href="#/page/store" id="fhrs">Open daily 10am – 10pm</a></div>
+  </div>
+  <div class="wrap flinks">
+    <p><b>Popular categories: </b><span id="popcats"></span></p>
+    <p><b>Showroom par payment:</b></p>
+    <div class="pay" id="pay"></div>
+    <p style="margin-top:10px">Order WhatsApp par confirm hota hai. Online payment website par abhi nahi hai.</p>
+  </div>
+  <div class="fbottom print">
+    <div class="wrap"><span>© <span id="yr"></span> SR Handicraft &amp; Furniture</span><span><a href="#/page/policies">Delivery &amp; Returns</a><a href="#/page/contact">Contact</a></span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/919636510574" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3z"/></svg>
+</a>
+<div class="shbg" id="shbg" role="dialog" aria-modal="true" aria-label="Share">
+  <div class="shbox">
+    <h3 id="shtitle">Share</h3>
+    <p class="sub" id="shsub"></p>
+    <div class="shgrid">
+      <button type="button" data-sh="wa"><span class="sc swa" id="i-wa"></span>WhatsApp</button>
+      <button type="button" data-sh="fb"><span class="sc sfb" id="i-fb"></span>Facebook</button>
+      <button type="button" data-sh="tg"><span class="sc stg" id="i-tg"></span>Telegram</button>
+      <button type="button" data-sh="mail"><span class="sc" id="i-mail"></span>Email</button>
+      <button type="button" data-sh="x"><span class="sc" id="i-x"></span>X</button>
+      <button type="button" data-sh="sms"><span class="sc" id="i-sms"></span>SMS</button>
+      <button type="button" data-sh="copy"><span class="sc" id="i-copy"></span>Copy</button>
+      <button type="button" data-sh="native" id="shnative"><span class="sc" id="i-more"></span>More</button>
+    </div>
+    <div class="shlink"><input id="shurl" readonly aria-label="Link"><button type="button" class="btn" data-sh="copy">Copy link</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============ CONFIG: yahan apni details badlo ============ */
+const STORE = {
+  name: "SR Handicraft & Furniture",
+  whatsapp: "919636510574",
+  site: "",            // apni website ka link yahan daalein, jaise "https://srhandicraft.in" (khaali chhodne par current link share hoga)
+  phone: "+91 96365 10574",
+  email: "",          // email ID ho to yahan daalein, warna khali chhod dein
+  address: "Bengaluru–Mumbai Highway, next to Ramada Plaza Hotel, opp. Avon Vista, Patil Nagar, Pune",
+  maps: "https://maps.app.goo.gl/",   // Google Maps ka short link yahan daalein
+  hours: "Open daily, 10am – 10pm"
+};
+
+/* ============ SHOP RULES: jo aap sach mein dete ho wahi rakhein ============
+   Jo nahi dete, use "" ya false kar dein — wo site se apne aap hat jayega.
+   Jhoothi baat site par rakhna business ke liye nuksaandeh hai.        */
+const SHOP = {
+  payments:     ["UPI", "Cash", "Bank transfer", "Card"],   // jo aap showroom par lete ho
+  localPins:    ["411","412"],   // jin pincode se shuru hote hain wahan aap khud delivery karte ho (411/412 = Pune)
+  offer:        "",      // top strip ka offer, jaise "Pehli order par ₹2,000 off — code SRFIRST". Khali = strip band
+  emi:          false,   // kya aap sach mein EMI dete ho?
+  freeDelivery: 0,       // is amount se upar free delivery (0 = free delivery nahi)
+  shipping:     0,       // delivery charge (0 = "delivery par baat karein")
+  warranty:     "",      // jaise "12 months on manufacturing defects" — khali = nahi dikhega
+  returns:      "",      // jaise "7 din mein damaged/galat product wapas"
+  assembly:     "Free, humari team karti hai",
+  /* Aapki ASLI Google rating — Business Profile se copy karein */
+  googleRating: "4.6",
+  googleCount:  "38",
+  googleLink:   ""       // Google listing ka link (reviews page)
+};
+
+/* ============ CATEGORIES (mega menu) ============ */
+const CATS = [
+  {key:"furniture", name:"Furniture", art:"sofa", groups:[
+    {name:"Sofas", subs:["3 Seater Sofas","2 Seater Sofas","Sofa Sets","Sofa Cum Beds"]},
+    {name:"Beds", subs:["King Size Beds","Queen Size Beds","Single Beds","Storage Beds"]},
+    {name:"Dining", subs:["Dining Sets","Dining Tables","Dining Chairs"]},
+    {name:"Storage", subs:["Wardrobes","TV Units","Bookshelves","Chest of Drawers"]},
+    {name:"Tables", subs:["Coffee Tables","Side Tables","Study Tables","Console Tables"]},
+    {name:"Chairs", subs:["Arm Chairs","Rocking Chairs","Office Chairs"]}
+  ]},
+  {key:"handicraft", name:"Handicraft", art:"elephant", groups:[
+    {name:"Brass Decor", subs:["Brass Figurines","Brass Urli","Brass Diyas"]},
+    {name:"Wooden Carvings", subs:["Carved Panels","Wooden Figurines","Jharokhas"]},
+    {name:"Marble & Stone", subs:["Marble Inlay","Stone Idols"]},
+    {name:"Wall Art", subs:["Metal Wall Art","Wooden Wall Art","Paintings"]}
+  ]},
+  {key:"pooja", name:"Pooja Mandir", art:"mandir", groups:[
+    {name:"Mandirs", subs:["Floor Mandirs","Wall Mandirs"]},
+    {name:"Pooja Essentials", subs:["Pooja Chowki","Pooja Thali","Idols"]}
+  ]},
+  {key:"decor", name:"Home Decor", art:"vase", groups:[
+    {name:"Decor", subs:["Vases","Showpieces","Candle Stands"]},
+    {name:"Mirrors", subs:["Wall Mirrors","Floor Mirrors"]},
+    {name:"Clocks", subs:["Wall Clocks","Table Clocks"]}
+  ]},
+  {key:"lighting", name:"Lamps & Lighting", art:"lamp", groups:[
+    {name:"Lamps", subs:["Floor Lamps","Table Lamps"]},
+    {name:"Ceiling", subs:["Hanging Lights","Chandeliers"]}
+  ]},
+  {key:"furnishings", name:"Furnishings", art:"carpet", groups:[
+    {name:"Soft Furnishing", subs:["Cushion Covers","Curtains","Bed Covers"]},
+    {name:"Floor", subs:["Carpets","Dhurries","Runners"]}
+  ]},
+  {key:"outdoor", name:"Outdoor", art:"swing", groups:[
+    {name:"Outdoor Furniture", subs:["Swings","Garden Chairs","Outdoor Tables"]}
+  ]},
+  {key:"office", name:"Office", art:"chair", groups:[
+    {name:"Office Furniture", subs:["Office Chairs","Office Tables","Office Storage"]}
+  ]}
+];
+
+
+/* ============================================================
+   PHOTOS: yahan apni asli photos ke link daalo
+   ------------------------------------------------------------
+   - Har jagah EK se zyada photo daal sakte ho. Site par wo
+     apne aap ghoomti rahengi (float karti rahengi).
+   - Photo ka link kuch bhi ho sakta hai:
+       "sofa-1.jpg"  (same folder mein  banao)
+       "https://..."        (Google Drive/Cloudinary/koi bhi link)
+   - Jahan photo nahi daaloge, wahan purani drawing hi dikhegi.
+   - Product ki photo: uski id ka number likho (neeche dekho).
+   ============================================================ */
+const PHOTOS = {
+  /* --- Sections --- */
+  hero:      ["bed-room-1-w.jpg","poster-bed-2-w.jpg","bed-room-3-w.jpg"],
+  brass:     ["mandir-1.jpg","mandir-2.jpg"],
+  custom:    ["dressing-1.jpg","bed-storage-2.jpg"],
+  promo_dining:  ["dining-set-2.jpg","dining-top-1.jpg","dining-set-1.jpg"],
+  promo_pooja:   ["mandir-2.jpg","mandir-1.jpg"],
+  promo_lighting:[],
+  showroom:  ["showroom-1-w.jpg","bed-tile-1-w.jpg","bed-storage-3-w.jpg"],
+  strip:     ["showroom-1.jpg","bed-storage-1.jpg","bed-tile-1.jpg","mandir-2.jpg","dining-top-1.jpg","bed-storage-2.jpg","poster-bed-3.jpg","dressing-1.jpg"],
+
+  /* --- Category tiles --- */
+  cat_furniture:["bed-room-2.jpg","bed-storage-2.jpg"],
+  cat_handicraft:["dining-top-1.jpg","dressing-1.jpg"],
+  cat_pooja:["mandir-1.jpg","mandir-2.jpg"],
+  cat_decor:["dressing-1.jpg"],
+  cat_lighting:[],
+  cat_furnishings:[],
+  cat_outdoor:[],
+  cat_office:["study-2.jpg","study-1.jpg"],
+
+  /* --- Products (id ke saamne uski photos) --- */
+  4:  ["bed-room-1.jpg","bed-storage-2.jpg","bed-storage-1.jpg"],
+  5:  ["bed-room-2.jpg","bed-room-3.jpg","bed-storage-3.jpg"],
+  6:  ["dining-top-1.jpg","dining-set-2.jpg","dining-set-1.jpg"],
+  16: ["mandir-1.jpg","mandir-2.jpg"],
+  17: ["mandir-2.jpg","mandir-1.jpg"],
+  20: ["dressing-1.jpg"],
+  26: ["poster-bed-3.jpg","poster-bed-1.jpg","poster-bed-2.jpg"],
+  29: ["study-1.jpg","study-2.jpg"],
+  30: ["bed-tile-1.jpg"],
+};
+
+/* photo helpers */
+function pics(p){ return (p && p.img && p.img.length) ? p.img : (PHOTOS[p.id]||[]); }
+function lys(list){ return list.map((u,i)=>`<span class="ly${i?"":" on"}" style="background-image:url('${u}')"></span>`).join("")
+  + (list.length>1?`<span class="fdot">${list.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</span>`:""); }
+function ph(key, fallback){
+  const L = PHOTOS[key]||[];
+  return L.length ? `<span class="ph fl">${lys(L)}</span>` : fallback;
+}
+
+/* ============ PRODUCTS: yahan apne products daalo ============ */
+const P = [
+ {id:1,name:"Rajwada Sheesham 3 Seater Sofa",cat:"furniture",sub:"3 Seater Sofas",type:"sofa",color:"#8C4A2F",material:"Sheesham Wood",price:38999,mrp:62000,badge:"Bestseller"},
+ {id:2,name:"Nila Fabric 2 Seater Sofa",cat:"furniture",sub:"2 Seater Sofas",type:"sofa",color:"#3F5A8A",material:"Mango Wood",price:24499,mrp:36000},
+ {id:3,name:"Mehrangarh 3+1+1 Sofa Set",cat:"furniture",sub:"Sofa Sets",type:"sofa",color:"#6F7B4A",material:"Sheesham Wood",price:72999,mrp:115000,badge:"Bestseller"},
+ {id:4,name:"Jaipur Carved King Size Bed with Storage",cat:"furniture",sub:"King Size Beds",type:"bed",color:"#A34A3A",material:"Sheesham Wood",price:54999,mrp:89000,badge:"Bestseller"},
+ {id:5,name:"Aangan Queen Size Bed",cat:"furniture",sub:"Queen Size Beds",type:"bed",color:"#C7A36A",material:"Mango Wood",price:31999,mrp:48000},
+ {id:6,name:"Haveli 6 Seater Dining Set",cat:"furniture",sub:"Dining Sets",type:"table",color:"#7A4A2C",material:"Sheesham Wood",price:46999,mrp:78000,badge:"Bestseller"},
+ {id:7,name:"Kesar 2 Door Wardrobe",cat:"furniture",sub:"Wardrobes",type:"wardrobe",color:"#8E5B3A",material:"Sheesham Wood",price:39999,mrp:59000},
+ {id:8,name:"Pichwai Painted TV Unit",cat:"furniture",sub:"TV Units",type:"shelf",color:"#2F6B6A",material:"Mango Wood",price:21999,mrp:34000},
+ {id:9,name:"Chowk Carved Coffee Table",cat:"furniture",sub:"Coffee Tables",type:"table",color:"#9A6B43",material:"Sheesham Wood",price:12999,mrp:19999,badge:"Bestseller"},
+ {id:10,name:"Maharaja Rocking Chair",cat:"furniture",sub:"Rocking Chairs",type:"chair",color:"#6B2D1C",material:"Teak Wood",price:17499,mrp:26000},
+ {id:11,name:"Brass Gajraj Elephant – Large",cat:"handicraft",sub:"Brass Figurines",type:"elephant",color:"#C9962F",material:"Brass",price:6499,mrp:9999,badge:"Bestseller"},
+ {id:12,name:"Brass Lotus Urli Bowl",cat:"handicraft",sub:"Brass Urli",type:"vase",color:"#B8862B",material:"Brass",price:3299,mrp:4999},
+ {id:13,name:"Carved Wooden Jharokha Frame",cat:"handicraft",sub:"Jharokhas",type:"mirror",color:"#7B4B2A",material:"Mango Wood",price:8999,mrp:14500,badge:"Handmade"},
+ {id:14,name:"Marble Inlay Elephant Pair",cat:"handicraft",sub:"Marble Inlay",type:"elephant",color:"#E8E3DA",material:"Marble",price:4799,mrp:7200,badge:"Handmade"},
+ {id:15,name:"Tree of Life Metal Wall Art",cat:"handicraft",sub:"Metal Wall Art",type:"clock",color:"#3C3C3C",material:"Iron",price:5499,mrp:8500},
+ {id:16,name:"Shiv Kripa Sheesham Floor Mandir",cat:"pooja",sub:"Floor Mandirs",type:"mandir",color:"#8A4B2A",material:"Sheesham Wood",price:18999,mrp:28000,badge:"Bestseller"},
+ {id:17,name:"Om Wall Mounted Mandir",cat:"pooja",sub:"Wall Mandirs",type:"mandir",color:"#B97A45",material:"Mango Wood",price:7499,mrp:11000},
+ {id:18,name:"Carved Pooja Chowki",cat:"pooja",sub:"Pooja Chowki",type:"table",color:"#A0673F",material:"Sheesham Wood",price:2499,mrp:3999},
+ {id:19,name:"Blue Pottery Floor Vase",cat:"decor",sub:"Vases",type:"vase",color:"#2D5C9A",material:"Ceramic",price:2899,mrp:4200,badge:"Handmade"},
+ {id:20,name:"Sunburst Wall Mirror",cat:"decor",sub:"Wall Mirrors",type:"mirror",color:"#B7832F",material:"Iron",price:6999,mrp:10999},
+ {id:21,name:"Antique Wooden Wall Clock",cat:"decor",sub:"Wall Clocks",type:"clock",color:"#6E4A2E",material:"Mango Wood",price:3499,mrp:5200},
+ {id:22,name:"Jute Shade Floor Lamp",cat:"lighting",sub:"Floor Lamps",type:"lamp",color:"#C9A46A",material:"Mango Wood",price:5999,mrp:8999},
+ {id:23,name:"Moroccan Brass Hanging Light",cat:"lighting",sub:"Hanging Lights",type:"lamp",color:"#B8862B",material:"Brass",price:4499,mrp:6999,badge:"Handmade"},
+ {id:24,name:"Hand Knotted Jaipur Carpet 5x7 ft",cat:"furnishings",sub:"Carpets",type:"carpet",color:"#8E2F2A",material:"Wool",price:14999,mrp:24000,badge:"Handmade"},
+ {id:25,name:"Block Print Cushion Covers (Set of 5)",cat:"furnishings",sub:"Cushion Covers",type:"cushion",color:"#1F2E55",material:"Cotton",price:1499,mrp:2499},
+ {id:26,name:"Citadel Tile Work Poster Bed – Queen",cat:"furniture",sub:"Queen Size Beds",type:"bed",color:"#7A4A2C",material:"Sheesham Wood",price:44999,mrp:69000,badge:"Bestseller"},
+ {id:27,name:"Cane Garden Chair",cat:"outdoor",sub:"Garden Chairs",type:"chair",color:"#B88A4F",material:"Cane",price:5499,mrp:7999},
+ {id:28,name:"Executive Wooden Office Chair",cat:"office",sub:"Office Chairs",type:"chair",color:"#3B2A22",material:"Teak Wood",price:15999,mrp:23000},
+ {id:29,name:"Craftsman Study Table",cat:"furniture",sub:"Study Tables",type:"table",color:"#8B5E3C",material:"Mango Wood",price:11499,mrp:17000},
+ {id:30,name:"Heritage Bookshelf",cat:"furniture",sub:"Bookshelves",type:"shelf",color:"#6B4A33",material:"Sheesham Wood",price:15999,mrp:24500}
+];
+
+/* ============ HELPERS ============ */
+/* khali category/sub menu mein na dikhein — product add karte hi apne aap aa jayenge */
+function subHas(cat, name){
+  const g = cat.groups.find(x=>x.name===name);
+  return g ? P.some(p=>p.cat===cat.key && g.subs.includes(p.sub))
+           : P.some(p=>p.cat===cat.key && p.sub===name);
+}
+function liveGroups(cat){
+  return cat.groups.map(g=>({name:g.name, subs:g.subs.filter(s=>subHas(cat,s))}))
+                   .filter(g=>g.subs.length || subHas(cat,g.name));
+}
+function liveCats(){ return CATS.filter(c=>P.some(p=>p.cat===c.key)); }
+
+const $ = s => document.querySelector(s);
+const slug = s => s.toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+const inr = n => "₹" + Math.round(n).toLocaleString("en-IN");
+const off = p => Math.round((1 - p.price / p.mrp) * 100);
+const catOf = k => CATS.find(c => c.key === k);
+const subName = (cat, s) => { for (const g of cat.groups) for (const x of g.subs) if (slug(x) === s) return x; for (const g of cat.groups) if (slug(g.name) === s) return g.name; return null; };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const tints = ["#F3E9DA","#E6ECF3","#EDE6DA","#F1E3DE","#E8EDE3","#F2ECE0"];
+
+function load(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
+function save(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+let cart = load("sr_cart", {});
+let wish = load("sr_wish", []);
+
+
+/* ===== Floating photo engine ===== */
+function flShow(el, idx){
+  const ly=el.querySelectorAll(":scope > .ly"); if(!ly.length) return;
+  ly.forEach((x,i)=>x.classList.toggle("on", i===idx));
+  const dots=el.querySelectorAll(":scope > .fdot i");
+  dots.forEach((d,i)=>d.classList.toggle("on", i===idx));
+  const th=el.dataset.gal?document.querySelectorAll(".gal .th button"):[];
+  th.forEach((b,i)=>b.classList.toggle("on", i===idx));
+}
+let FLTICK=0;
+function flStep(){
+  if(document.hidden) return;
+  FLTICK++;
+  const now=Date.now(), vh=innerHeight;
+  document.querySelectorAll(".fl").forEach((el,i)=>{
+    const ly=el.querySelectorAll(":scope > .ly");
+    if(ly.length<2) return;
+    if(el.dataset.hold && now < +el.dataset.hold) return;
+    const r=el.getBoundingClientRect();
+    if(r.bottom<0 || r.top>vh) return;                 // sirf screen par dikhne wali
+    if(el.dataset.st===undefined) el.dataset.st=String(i%3);
+    if((FLTICK + +el.dataset.st) % 3) return;          // alag-alag time par badle
+    let cur=0; ly.forEach((x,j)=>{ if(x.classList.contains("on")) cur=j; });
+    flShow(el, (cur+1)%ly.length);
+  });
+}
+setInterval(flStep, 1500);
+
+/* ===== Share ===== */
+const SHI={
+ wa:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>',
+ fb:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.3A22 22 0 0 0 14.6 2C12.2 2 10.6 3.5 10.6 6.2v2.3H8V12h2.6v10H14V12h2.7l.4-3.5z"/></svg>',
+ tg:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 3.6 2.9 10.7c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.8.8s.6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.3zM9.7 13.2l8.6-5.4c.4-.3.8-.1.5.2l-7.1 6.4-.3 3.2z"/></svg>',
+ mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+ x:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.7 8 10.3h-6.2l-4.9-6.3L5.4 21H2.3l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg>',
+ sms:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H9l-5 4z"/></svg>',
+ copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 14a4 4 0 0 0 5.7 0l3.2-3.2a4 4 0 0 0-5.7-5.7L12 6.3"/><path d="M14 10a4 4 0 0 0-5.7 0l-3.2 3.2a4 4 0 0 0 5.7 5.7L12 17.7"/></svg>',
+ more:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>'
+};
+["wa","fb","tg","mail","x","sms","copy","more"].forEach(k=>{const el=document.getElementById("i-"+k); if(el) el.innerHTML=SHI[k];});
+if(!navigator.share){ const n=document.getElementById("shnative"); if(n) n.style.display="none"; }
+
+function shareData(pid){
+  const base = (STORE.site||location.href.split("#")[0]).replace(/\/$/,"");
+  const p = pid ? P.find(x=>x.id===+pid) : null;
+  const hash = p ? "#/p/"+p.id : (location.hash||"#/");
+  const url = STORE.site ? base+"/"+hash : base+hash;
+  const title = p ? p.name+" | SR Handicraft & Furniture" : "SR Handicraft & Furniture";
+  const text = p ? `${p.name} sirf ${inr(p.price)} mein (MRP ${inr(p.mrp)}, ${off(p)}% off) – SR Handicraft & Furniture par dekhiye:` : "SR Handicraft & Furniture – handmade furniture, pooja mandir aur home decor. Dekhiye:";
+  return {url,title,text};
+}
+function waHref(pid){ const d=shareData(pid); return "https://api.whatsapp.com/send?text="+encodeURIComponent(d.text+" "+d.url); }
+let SHCUR=null;
+function copyText(t){
+  if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(t).then(()=>toast("Link copied"),()=>fallbackCopy(t)); }
+  else fallbackCopy(t);
+}
+function fallbackCopy(t){ const i=document.createElement("textarea"); i.value=t; i.style.position="fixed"; i.style.opacity="0"; document.body.appendChild(i); i.select(); try{document.execCommand("copy");toast("Link copied");}catch(e){toast("Link select karke copy karein");} i.remove(); }
+function doShare(kind,d){
+  const u=encodeURIComponent(d.url), t=encodeURIComponent(d.text), full=encodeURIComponent(d.text+" "+d.url);
+  const links={
+    wa:"https://wa.me/?text="+full,
+    fb:"https://www.facebook.com/sharer/sharer.php?u="+u,
+    tg:"https://t.me/share/url?url="+u+"&text="+t,
+    x:"https://twitter.com/intent/tweet?url="+u+"&text="+t,
+    mail:"mailto:?subject="+encodeURIComponent(d.title)+"&body="+full,
+    sms:"sms:?&body="+full
+  };
+  if(kind==="copy") return copyText(d.url);
+  if(kind==="native"){ if(navigator.share) navigator.share({title:d.title,text:d.text,url:d.url}).catch(()=>{}); return; }
+  if(kind==="wa") links.wa="https://api.whatsapp.com/send?text="+full;
+  if(links[kind]){ const a=document.createElement("a"); a.href=links[kind]; if(kind!=="mail"&&kind!=="sms"){a.target="_blank";a.rel="noopener";} document.body.appendChild(a); a.click(); a.remove(); }
+}
+function openShare(pid){
+  SHCUR=shareData(pid);
+  $("#shtitle").textContent = pid ? "Share this product" : "Share this page";
+  $("#shsub").textContent = SHCUR.title;
+  $("#shurl").value = SHCUR.url;
+  $("#shbg").classList.add("on");
+}
+function closeShare(){ $("#shbg").classList.remove("on"); }
+document.addEventListener("click",e=>{
+  const bg=$("#shbg");
+  if(e.target===bg){ closeShare(); return; }
+  const op=e.target.closest("[data-share]");
+  if(op){ e.preventDefault(); const pid=op.dataset.pid||(location.hash.match(/^#\/p\/(\d+)/)||[])[1]; 
+    const d=shareData(pid);
+    if(op.dataset.share==="product"&&navigator.share){ navigator.share({title:d.title,text:d.text,url:d.url}).catch(()=>{}); return; }
+    openShare(pid); return; }
+  const sh=e.target.closest("[data-sh]");
+  if(sh){ e.preventDefault(); const d = sh.dataset.pid ? shareData(sh.dataset.pid) : (SHCUR||shareData()); doShare(sh.dataset.sh,d); if(sh.closest("#shbg")&&sh.dataset.sh!=="copy") closeShare(); }
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeShare(); });
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),1800); }
+function counts(){
+  const c = Object.values(cart).reduce((a,b)=>a+b,0);
+  $("#cc").textContent=c; $("#cc").hidden=!c;
+  $("#wc").textContent=wish.length; $("#wc").hidden=!wish.length;
+}
+
+/* ============ ILLUSTRATIONS (replace with real photos later) ============ */
+function art(t, c){
+  const W="#5A3B28", sh='<ellipse cx="100" cy="134" rx="80" ry="6" fill="#000" opacity=".08"/>';
+  const g = {
+    sofa:`${sh}<rect x="30" y="42" width="140" height="50" rx="10" fill="${c}"/><rect x="22" y="76" width="156" height="36" rx="8" fill="${c}"/><rect x="22" y="96" width="156" height="16" rx="6" fill="#000" opacity=".14"/><rect x="12" y="62" width="24" height="50" rx="9" fill="${c}"/><rect x="164" y="62" width="24" height="50" rx="9" fill="${c}"/><path d="M100 48v28" stroke="#000" opacity=".15" stroke-width="2"/><rect x="26" y="112" width="6" height="16" fill="${W}"/><rect x="168" y="112" width="6" height="16" fill="${W}"/>`,
+    bed:`${sh}<path d="M36 80V40q64-22 128 0v40z" fill="${c}"/><path d="M46 70V46q54-16 108 0v24" fill="none" stroke="#000" opacity=".15" stroke-width="2"/><rect x="26" y="74" width="148" height="30" rx="6" fill="#F1ECE4"/><ellipse cx="66" cy="74" rx="22" ry="8" fill="#fff"/><ellipse cx="134" cy="74" rx="22" ry="8" fill="#fff"/><rect x="26" y="88" width="148" height="24" rx="5" fill="${c}" opacity=".85"/><rect x="30" y="112" width="7" height="16" fill="${W}"/><rect x="163" y="112" width="7" height="16" fill="${W}"/>`,
+    chair:`${sh}<rect x="68" y="20" width="64" height="62" rx="12" fill="${c}"/><rect x="76" y="28" width="48" height="46" rx="8" fill="#000" opacity=".1"/><rect x="58" y="78" width="84" height="20" rx="6" fill="${c}"/><path d="M64 98l-6 32M136 98l6 32M84 98l-2 32M116 98l2 32" stroke="${W}" stroke-width="5" stroke-linecap="round"/>`,
+    table:`${sh}<rect x="20" y="56" width="160" height="14" rx="3" fill="${c}"/><rect x="28" y="70" width="144" height="10" fill="#000" opacity=".12"/><path d="M36 80v46M164 80v46M58 80v40M142 80v40" stroke="${c}" stroke-width="9"/><path d="M100 62h0" stroke="#000"/><circle cx="100" cy="75" r="3" fill="#E8C77A"/>`,
+    wardrobe:`${sh}<rect x="50" y="10" width="100" height="120" rx="3" fill="${c}"/><rect x="46" y="8" width="108" height="8" rx="2" fill="#000" opacity=".2"/><path d="M100 18v106" stroke="#000" opacity=".25" stroke-width="2"/><rect x="58" y="24" width="36" height="92" rx="2" fill="none" stroke="#000" opacity=".15" stroke-width="2"/><rect x="106" y="24" width="36" height="92" rx="2" fill="none" stroke="#000" opacity=".15" stroke-width="2"/><circle cx="94" cy="70" r="3" fill="#E8C77A"/><circle cx="106" cy="70" r="3" fill="#E8C77A"/>`,
+    shelf:`${sh}<rect x="18" y="56" width="164" height="70" rx="3" fill="${c}"/><rect x="26" y="64" width="46" height="54" fill="#000" opacity=".15"/><rect x="128" y="64" width="46" height="54" fill="#000" opacity=".15"/><rect x="78" y="64" width="44" height="24" fill="#000" opacity=".1"/><rect x="78" y="94" width="44" height="24" fill="#000" opacity=".1"/><circle cx="100" cy="76" r="2.5" fill="#E8C77A"/><circle cx="100" cy="106" r="2.5" fill="#E8C77A"/><path d="M34 88l6-20 6 20zM140 90c0-10 20-10 20 0z" fill="#E8C77A" opacity=".8"/>`,
+    lamp:`${sh}<path d="M68 22h64l18 44H50z" fill="${c}"/><path d="M68 22h64l4 10H64z" fill="#000" opacity=".12"/><rect x="97" y="66" width="6" height="60" fill="#4A3A30"/><ellipse cx="100" cy="128" rx="26" ry="6" fill="#4A3A30"/><ellipse cx="100" cy="70" rx="30" ry="4" fill="#FFE7A8" opacity=".7"/>`,
+    vase:`${sh}<path d="M84 20h32v10c0 10 26 22 26 56s-18 44-42 44-42-10-42-44 26-46 26-56z" fill="${c}"/><path d="M62 78h76M66 98h68" stroke="#fff" opacity=".55" stroke-width="3"/><circle cx="100" cy="88" r="5" fill="#fff" opacity=".6"/><circle cx="80" cy="88" r="3" fill="#fff" opacity=".5"/><circle cx="120" cy="88" r="3" fill="#fff" opacity=".5"/>`,
+    mirror:`<circle cx="100" cy="72" r="52" fill="none" stroke="${c}" stroke-width="14"/><circle cx="100" cy="72" r="45" fill="#DCE6EA"/><path d="M76 50l40 40M86 44l34 34" stroke="#fff" stroke-width="5" opacity=".8"/>${Array.from({length:16},(_,i)=>{const a=i*Math.PI/8;return `<path d="M${100+60*Math.cos(a)} ${72+60*Math.sin(a)}L${100+68*Math.cos(a)} ${72+68*Math.sin(a)}" stroke="${c}" stroke-width="4"/>`}).join("")}`,
+    elephant:`${sh}<ellipse cx="96" cy="78" rx="52" ry="34" fill="${c}"/><circle cx="148" cy="62" r="24" fill="${c}"/><path d="M164 70q14 22 0 46" stroke="${c}" stroke-width="12" fill="none" stroke-linecap="round"/><ellipse cx="136" cy="62" rx="12" ry="16" fill="#000" opacity=".12"/><rect x="56" y="98" width="16" height="30" rx="4" fill="${c}"/><rect x="82" y="100" width="16" height="28" rx="4" fill="${c}"/><rect x="112" y="98" width="16" height="30" rx="4" fill="${c}"/><path d="M60 58q36-20 72 0" stroke="#8E2F2A" stroke-width="8" fill="none"/><circle cx="154" cy="56" r="3" fill="#2A1A12"/>`,
+    mandir:`${sh}<rect x="38" y="104" width="124" height="24" rx="2" fill="${c}"/><rect x="48" y="58" width="104" height="48" fill="${c}"/><rect x="62" y="64" width="76" height="42" rx="36" ry="0" fill="#000" opacity=".22"/><path d="M58 60q42-60 84 0z" fill="${c}"/><path d="M100 10v12" stroke="#E8C77A" stroke-width="4"/><circle cx="100" cy="24" r="5" fill="#E8C77A"/><rect x="50" y="58" width="8" height="48" fill="#000" opacity=".15"/><rect x="142" y="58" width="8" height="48" fill="#000" opacity=".15"/><circle cx="100" cy="88" r="7" fill="#E8C77A"/>`,
+    carpet:`<rect x="22" y="18" width="156" height="112" rx="3" fill="${c}"/><rect x="32" y="28" width="136" height="92" fill="none" stroke="#E8C77A" stroke-width="4"/><rect x="44" y="40" width="112" height="68" fill="none" stroke="#fff" opacity=".5" stroke-width="2"/><path d="M100 50l24 24-24 24-24-24z" fill="#E8C77A" opacity=".85"/><circle cx="100" cy="74" r="6" fill="${c}"/>`,
+    swing:`${sh}<path d="M24 128L44 16h112l20 112" stroke="${c}" stroke-width="8" fill="none"/><rect x="40" y="12" width="120" height="10" rx="3" fill="${c}"/><path d="M66 22v58M134 22v58" stroke="#6B6B6B" stroke-width="2" stroke-dasharray="4 3"/><rect x="56" y="78" width="88" height="14" rx="3" fill="${c}"/><rect x="60" y="92" width="80" height="6" fill="#000" opacity=".15"/>`,
+    clock:`<circle cx="100" cy="72" r="56" fill="${c}"/><circle cx="100" cy="72" r="46" fill="#F6EFE4"/>${Array.from({length:12},(_,i)=>{const a=i*Math.PI/6;return `<circle cx="${100+38*Math.cos(a)}" cy="${72+38*Math.sin(a)}" r="2.6" fill="${c}"/>`}).join("")}<path d="M100 72V44M100 72l20 10" stroke="#2A1A12" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="72" r="4" fill="#2A1A12"/>`,
+    cushion:`${sh}<path d="M40 30q60-12 120 0q10 44 0 88q-60 12-120 0q-10-44 0-88z" fill="${c}"/>${[60,100,140].map(x=>[52,74,96].map(y=>`<circle cx="${x}" cy="${y}" r="7" fill="none" stroke="#E8C77A" stroke-width="2.5"/>`).join("")).join("")}`
+  };
+  return `<svg viewBox="0 0 200 145" role="img" aria-hidden="true" style="width:100%;height:auto">${g[t]||g.vase}</svg>`;
+}
+
+/* ============ CARD ============ */
+function card(p){
+  const on = wish.includes(p.id);
+  const G = pics(p);
+  return `<article class="pc">
+    <a href="#/p/${p.id}" class="im${G.length?" fl":""}" style="background:${tints[p.id%tints.length]}">${G.length?lys(G):art(p.type,p.color)}</a>
+    ${p.badge?`<span class="badge">${p.badge}</span>`:""}
+    <button class="wish ${on?"on":""}" data-wish="${p.id}" aria-label="${on?"Remove from":"Add to"} wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7.5-4.6-9.3-9.2C1.4 7.4 3.7 4 7.2 4c2 0 3.6 1.1 4.8 2.8C13.2 5.1 14.8 4 16.8 4c3.5 0 5.8 3.4 4.5 6.8C19.5 15.4 12 20 12 20z"/></svg></button>
+    <div class="bd">
+      <a href="#/p/${p.id}" class="nm">${esc(p.name)}</a>
+      <div class="price"><span class="p">${inr(p.price)}</span><s>${inr(p.mrp)}</s><span class="off">${off(p)}% off</span></div>
+      ${SHOP.emi?`<span class="emi">EMI from ${inr(p.price/12)}/month</span>`:`<span class="emi">${p.material}</span>`}
+      <div class="cact">
+        <button class="add" data-add="${p.id}">Add to cart</button>
+        <a class="wabtn" href="${waHref(p.id)}" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="WhatsApp par share karein">${SHI.wa}</a>
+      </div>
+    </div>
+  </article>`;
+}
+
+/* ============ NAV BUILD ============ */
+function buildNav(){
+  $("#catnav").innerHTML = liveCats().map(c=>{
+    const cols=[[],[],[],[]]; liveGroups(c).forEach((g,i)=>cols[i%4].push(g));
+    return `<li><a href="#/c/${c.key}">${c.name}</a>
+      <div class="mega"><div class="in">
+        ${cols.map(col=>`<div class="col">${col.map(g=>`<div><h4><a href="#/c/${c.key}/${slug(g.name)}">${g.name}</a></h4>${g.subs.map(s=>`<a class="sub" href="#/c/${c.key}/${slug(s)}">${s}</a>`).join("")}</div>`).join("")}</div>`).join("")}
+        <a class="promo" href="#/c/${c.key}"><div style="max-width:150px;margin:0 auto">${art(c.art, "#8C4A2F")}</div><p>Shop all ${c.name}</p></a>
+      </div></div></li>`;
+  }).join("");
+  $("#dcats").innerHTML = liveCats().map(c=>`<details><summary>${c.name}</summary><div class="grp"><a href="#/c/${c.key}" class="g">View all ${c.name}</a>${liveGroups(c).map(g=>`<a class="g" href="#/c/${c.key}/${slug(g.name)}">${g.name}</a>${g.subs.map(s=>`<a href="#/c/${c.key}/${slug(s)}">${s}</a>`).join("")}`).join("")}</div></details>`).join("");
+  $("#popcats").innerHTML = liveCats().flatMap(c=>liveGroups(c).flatMap(g=>g.subs.slice(0,1).map(s=>`<a href="#/c/${c.key}/${slug(s)}">${s}</a>`))).join(", ");
+}
+
+/* ============ VIEWS ============ */
+function home(){
+  const hc = P.filter(p=>p.cat==="handicraft"||p.badge==="Handmade").slice(0,8);
+  const best = P.filter(p=>p.badge==="Bestseller");
+  return `
+  <div class="wrap">
+    <section class="hero">
+      <div class="hmain print">
+        <div>
+          <h1>Haath ki kaarigari, ghar bhar ki shaan</h1>
+          <p>Sheesham, mango aur teak wood ka furniture — bed, sofa, dining, wardrobe aur haath se carved pooja mandir. Apne size ka banwaiye.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="#/c/furniture">Shop furniture</a>
+            <a class="btn ghost" href="#/c/handicraft">Explore handicraft</a>
+          </div>
+        </div>
+        <div class="art">${ph("hero", art("sofa","#8C4A2F"))}</div>
+      </div>
+      <div class="hside">
+        <a class="hcard" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Haath se carved, sheesham wood</p><span class="l">Shop now</span></div>${ph("brass", art("elephant","#C9962F"))}</a>
+        <a class="hcard" href="#/page/custom"><div><h3>Apne size ka furniture</h3><p>Custom design, wood aur finish chuniye</p><span class="l">Get a quote</span></div>${ph("custom", art("wardrobe","#8E5B3A"))}</a>
+      </div>
+    </section>
+
+    <section class="blk">
+      <div class="sh"><h2>Shop by category</h2></div>
+      <div class="tiles">${liveCats().map(c=>`<a class="tile" href="#/c/${c.key}"><div class="c">${ph("cat_"+c.key, art(c.art,"#8C4A2F"))}</div>${c.name}</a>`).join("")}</div>
+    </section>
+
+    <section class="blk" style="padding-top:0">
+      <div class="usp">
+        <div><b>Solid wood</b><span>Sheesham, mango &amp; teak</span></div>
+        <div><b>Apne size ka</b><span>Custom size, wood &amp; finish</span></div>
+        <div><b>Showroom</b><span>Dekh kar, chhu kar khareediye</span></div>
+        <div><b>Handmade</b><span>Crafted by Indian artisans</span></div>
+      </div>
+    </section>
+
+    <section class="blk band">
+      <div class="sh"><h2>Bestsellers</h2><a href="#/s/bestseller">View all</a></div>
+      <div class="rail">${best.map(card).join("")}</div>
+    </section>
+
+    ${(PHOTOS.strip||[]).length?`<section class="blk">
+      <div class="sh"><h2>Hamara kaam</h2><a href="#/c/handicraft">View all</a></div>
+      <div class="mq"><div class="mqin">${[...PHOTOS.strip,...PHOTOS.strip].map(u=>`<img src="${u}" alt="SR Handicraft work" loading="lazy">`).join("")}</div></div>
+    </section>`:""}
+
+    <section class="blk">
+      <div class="promos">
+        <a class="promo a" href="#/c/furniture/dining"><div><h3>Dining sets</h3><p>Pure sheesham, 6 &amp; 8 seater</p><span>Shop dining</span></div>${ph("promo_dining", art("table","#7A4A2C"))}</a>
+        <a class="promo b" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Hand carved, ghar ki pooja ke liye</p><span>Shop mandirs</span></div>${ph("promo_pooja", art("mandir","#8A4B2A"))}</a>
+        <a class="promo c" href="#/c/lighting"><div><h3>Lamps &amp; lighting</h3><p>Brass &amp; jute lamps</p><span>Shop lighting</span></div>${ph("promo_lighting", art("lamp","#B8862B"))}</a>
+      </div>
+    </section>
+
+    <section class="blk band">
+      <div class="sh"><h2>Handicraft collection</h2><a href="#/c/handicraft">View all</a></div>
+      <div class="rail">${hc.map(card).join("")}</div>
+    </section>
+
+    <section class="blk">
+      <div class="store print">
+        <div class="t">
+          <h2>Showroom par aaiye, furniture chhu kar dekhiye</h2>
+          <p>${STORE.address}</p><p>${STORE.hours}</p><p>${STORE.phone}</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+            <a class="btn brass" href="${STORE.maps&&STORE.maps.length>28?STORE.maps:"#/page/store"}" ${STORE.maps&&STORE.maps.length>28?'target="_blank" rel="noopener"':""}>Get directions</a>
+            <a class="btn ghost" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, mujhe showroom visit book karni hai")}" target="_blank" rel="noopener">Book a visit</a>
+          </div>
+        </div>
+        <div class="map">${ph("showroom", art("mandir","#8A4B2A"))}</div>
+      </div>
+    </section>
+
+    <section class="blk seo">
+      <h2>Buy solid wood furniture &amp; handicrafts online</h2>
+      <div class="more" id="seomore">
+        <p>SR Handicraft &amp; Furniture is a solid wood furniture showroom in Patil Nagar, Pune, on the Bengaluru–Mumbai Highway. Every piece is made by our own craftsmen using sheesham, mango and teak wood, and the size, wood and finish can be changed to fit your home.</p>
+        <h3>Living room furniture</h3>
+        <p>Choose from carved sofas, sofa sets, coffee tables, TV units and bookshelves that suit both modern and traditional homes.</p>
+        <h3>Bedroom furniture</h3>
+        <p>King and queen size beds with storage, wardrobes and chest of drawers built to last for years.</p>
+        <h3>Pooja mandir &amp; carved work</h3>
+        <p>Hand carved sheesham pooja mandirs, jharokha frames and jaali work panels — made by our own craftsmen and customisable in size and finish.</p>
+        <h3>Which wood should you choose?</h3>
+        <p><b>Sheesham</b> is strong with a rich grain and suits beds, sofas and dining sets. <b>Mango wood</b> is lighter, sustainable and great for decor and side furniture. <b>Teak</b> resists moisture and works indoors as well as outdoors.</p>
+        <h3>Price guide</h3>
+        <div class="tscroll"><table><tr><th>Product</th><th>Starting price</th></tr>
+          ${[["Sofas","3 Seater Sofas"],["Beds with storage","King Size Beds"],["Queen size beds","Queen Size Beds"],["Dining sets","Dining Sets"],["Pooja mandirs","Floor Mandirs"],["Wardrobes","Wardrobes"],["Study tables","Study Tables"]].map(([n,s])=>{const v=P.filter(p=>p.sub===s).map(p=>p.price);if(!v.length)return "";return `<tr><td>${n}</td><td>${inr(Math.min(...v))}</td></tr>`}).join("")}
+        </table></div>
+      </div>
+      <button class="btn ghost" style="margin-top:12px" id="seobtn">Read more</button>
+    </section>
+  </div>`;
+}
+
+function filterSort(list, st){
+  let l = list.filter(p=>{
+    if (st.price.length && !st.price.some(r=>{const [a,b]=r.split("-").map(Number);return p.price>=a&&p.price<=b})) return false;
+    if (st.mat.length && !st.mat.includes(p.material)) return false;
+    return true;
+  });
+  const s = st.sort;
+  if (s==="low") l.sort((a,b)=>a.price-b.price);
+  if (s==="high") l.sort((a,b)=>b.price-a.price);
+  if (s==="disc") l.sort((a,b)=>off(b)-off(a));
+  if (s==="new") l.sort((a,b)=>b.id-a.id);
+  return l;
+}
+const LST = {price:[],mat:[],sort:"rel"};
+
+function listing(title, crumbs, base, cat, subSlug){
+  const mats = [...new Set(base.map(p=>p.material))];
+  const ranges = [["0-4999","Under ₹5,000"],["5000-14999","₹5,000 – ₹15,000"],["15000-39999","₹15,000 – ₹40,000"],["40000-999999","₹40,000 & above"]];
+  const items = filterSort(base, LST);
+  return `<div class="wrap">
+    <div class="crumbs">${crumbs}</div>
+    <div class="lhead">
+      <h1>${esc(title)}<small>${items.length} products</small></h1>
+      <div style="display:flex;gap:8px">
+        <button class="btn ghost ftoggle" id="ftog" style="height:40px">Filters</button>
+        <select id="sort" aria-label="Sort">
+          <option value="rel">Sort: Relevance</option><option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option><option value="disc">Discount</option><option value="new">Newest first</option>
+        </select>
+      </div>
+    </div>
+    <div class="listing">
+      <aside class="filters" id="filters">
+        ${cat?`<h4>Categories</h4><a class="subl ${!subSlug?"on":""}" href="#/c/${cat.key}">All ${cat.name}</a>${liveGroups(cat).flatMap(g=>g.subs).map(s=>`<a class="subl ${slug(s)===subSlug?"on":""}" href="#/c/${cat.key}/${slug(s)}">${s}</a>`).join("")}`:""}
+        <h4>Price</h4>${ranges.map(([v,l])=>`<label><input type="checkbox" data-f="price" value="${v}" ${LST.price.includes(v)?"checked":""}>${l}</label>`).join("")}
+        <h4>Material</h4>${mats.map(m=>`<label><input type="checkbox" data-f="mat" value="${m}" ${LST.mat.includes(m)?"checked":""}>${m}</label>`).join("")}
+        ${(LST.price.length||LST.mat.length)?`<button class="btn ghost" id="clearf" style="margin-top:12px;height:38px;width:100%">Clear filters</button>`:""}
+      </aside>
+      <div>${items.length?`<div class="grid">${items.map(card).join("")}</div>`:`<div class="empty"><p>Is filter mein koi product nahi mila. Filters hata kar dobara dekhiye.</p><button class="btn" id="clearf2">Clear filters</button></div>`}</div>
+    </div>
+  </div>`;
+}
+
+function pdp(p){
+  const cat = catOf(p.cat);
+  const sim = P.filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,8);
+  const variants = [tints[p.id%tints.length],"#EDE7DE","#E3E8EC"];
+  const G = pics(p);
+  return `<div class="wrap">
+    <div class="crumbs"><a href="#/">Home</a> / <a href="#/c/${cat.key}">${cat.name}</a> / <a href="#/c/${cat.key}/${slug(p.sub)}">${p.sub}</a></div>
+    <div class="pdp">
+      <div class="gal">
+        ${G.length?`<div class="main fl" id="gmain" data-gal="1">${lys(G)}</div>
+        <div class="th">${G.map((u,i)=>`<button class="pht ${i?"":"on"}" data-gi="${i}" style="background-image:url('${u}')" aria-label="Photo ${i+1}"></button>`).join("")}</div>`
+        :`<div class="main" id="gmain" style="background:${variants[0]}">${art(p.type,p.color)}</div>
+        <div class="th">${variants.map((v,i)=>`<button class="${i?"":"on"}" data-bg="${v}" style="background:${v}" aria-label="View ${i+1}">${art(p.type,p.color)}</button>`).join("")}</div>`}
+      </div>
+      <div class="pinfo">
+        <h1>${esc(p.name)}</h1>
+        <div class="rt">${SHOP.googleRating?`<b>${SHOP.googleRating} ★</b>${SHOP.googleCount} Google reviews · `:""}${SHOP.googleLink?`<a href="${SHOP.googleLink}" target="_blank" rel="noopener" style="color:var(--rose)">SR Handicraft &amp; Furniture, Pune</a>`:"SR Handicraft &amp; Furniture, Pune"}</div>
+        <div class="price" style="margin-top:10px"><span class="p">${inr(p.price)}</span><s>MRP ${inr(p.mrp)}</s><span class="off">${off(p)}% off</span></div>
+        <div class="emi">Inclusive of all taxes.${SHOP.emi?` No-cost EMI from ${inr(p.price/12)}/month.`:""} Size, wood aur finish customise ho sakta hai.</div>
+        <div class="box">
+          <b>Check delivery</b>
+          <div class="pin" style="margin-top:8px"><input id="pin" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit pincode" aria-label="Pincode"><button class="btn ghost" id="pinbtn" style="height:42px">Check</button></div>
+          <div class="pinres" id="pinres"></div>
+        </div>
+        <div class="acts">
+          <div class="qty"><button id="qm" aria-label="Decrease">−</button><span id="qv">1</span><button id="qp" aria-label="Increase">+</button></div>
+        </div>
+        <div class="acts">
+          <button class="btn" data-addq="${p.id}">Add to cart</button>
+          <button class="btn brass" data-buy="${p.id}">Buy now</button>
+          <button class="btn ghost" data-wish="${p.id}" style="flex:0 0 auto">${wish.includes(p.id)?"♥ Wishlisted":"♡ Wishlist"}</button>
+        </div>
+        <a class="wabig" href="${waHref(p.id)}" target="_blank" rel="noopener">${SHI.wa}<span>WhatsApp par share karein</span></a>
+        <div class="shr">
+          <span>Share:</span>
+          <button type="button" class="sc swa" data-sh="wa" data-pid="${p.id}" aria-label="Share on WhatsApp">${SHI.wa}</button>
+          <button type="button" class="sc sfb" data-sh="fb" data-pid="${p.id}" aria-label="Share on Facebook">${SHI.fb}</button>
+          <button type="button" class="sc stg" data-sh="tg" data-pid="${p.id}" aria-label="Share on Telegram">${SHI.tg}</button>
+          <button type="button" class="sc cp" data-sh="copy" data-pid="${p.id}" aria-label="Copy link">${SHI.copy}</button>
+          <button type="button" class="sc mo" data-share="product" data-pid="${p.id}" aria-label="More share options">${SHI.more}</button>
+        </div>
+        <div class="box">
+          <b>Specifications</b>
+          <table class="specs" style="margin-top:6px">
+            <tr><td>Material</td><td>${p.material}</td></tr>
+            <tr><td>Category</td><td>${p.sub}</td></tr>
+            <tr><td>Finish</td><td>Natural / Honey (customisable)</td></tr>
+            ${SHOP.warranty?`<tr><td>Warranty</td><td>${SHOP.warranty}</td></tr>`:""}
+            ${SHOP.assembly?`<tr><td>Assembly</td><td>${SHOP.assembly}</td></tr>`:""}
+            <tr><td>Product ID</td><td>SR-${String(p.id).padStart(4,"0")}</td></tr>
+          </table>
+        </div>
+        <div class="box"><b>Description</b><p style="margin:6px 0 0;color:var(--muted)">Hand finished by skilled artisans using ${p.material.toLowerCase()}. Small variations in grain and colour are natural and make every piece unique. Size or finish change karwana ho to WhatsApp par message kijiye.</p></div>
+      </div>
+    </div>
+    ${sim.length?`<section class="blk"><div class="sh"><h2>Similar products</h2><a href="#/c/${cat.key}">View all</a></div><div class="rail">${sim.map(card).join("")}</div></section>`:""}
+  </div>`;
+}
+
+function cartView(){
+  const ids = Object.keys(cart).map(Number).filter(id=>P.find(p=>p.id===id));
+  if (!ids.length) return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / Cart</div><div class="empty" style="margin:20px 0 40px"><h2 style="font-family:var(--display);font-weight:400;color:var(--ink)">Cart khali hai</h2><p>Bestsellers dekhiye aur pasand ka product add kijiye.</p><a class="btn" href="#/s/bestseller">Shop bestsellers</a></div></div>`;
+  const rows = ids.map(id=>({p:P.find(x=>x.id===id),q:cart[id]}));
+  const mrp = rows.reduce((a,r)=>a+r.p.mrp*r.q,0), sub = rows.reduce((a,r)=>a+r.p.price*r.q,0);
+  const ship = (SHOP.freeDelivery && sub>=SHOP.freeDelivery) ? 0 : (SHOP.shipping||0), total = sub+ship;
+  const msg = "Hi SR Handicraft, mujhe ye order karna hai:\n" + rows.map(r=>`• ${r.p.name} x${r.q} = ${inr(r.p.price*r.q)}`).join("\n") + `\nTotal: ${inr(total)}`;
+  return `<div class="wrap">
+    <div class="crumbs"><a href="#/">Home</a> / Cart</div>
+    <div class="lhead"><h1>My cart<small>${rows.reduce((a,r)=>a+r.q,0)} items</small></h1></div>
+    <div class="cart">
+      <div>${rows.map(({p,q})=>`<div class="ci">
+        <a href="#/p/${p.id}" class="im${pics(p).length?" fl":""}" style="background:${tints[p.id%tints.length]}">${pics(p).length?lys(pics(p)):art(p.type,p.color)}</a>
+        <div><a href="#/p/${p.id}" style="font-weight:600">${esc(p.name)}</a><div class="br" style="color:var(--muted);font-size:14px">${p.material}</div><div class="price"><span class="p">${inr(p.price)}</span><s>${inr(p.mrp)}</s></div></div>
+        <div class="ctrl" style="display:flex;flex-direction:column;align-items:end;gap:8px">
+          <div class="qty"><button data-dec="${p.id}" aria-label="Decrease">−</button><span>${q}</span><button data-inc="${p.id}" aria-label="Increase">+</button></div>
+          <button class="rm" data-rm="${p.id}">Remove</button>
+        </div></div>`).join("")}</div>
+      <aside class="sum">
+        <b style="font-size:17px">Order summary</b>
+        <div class="r"><span>Total MRP</span><span>${inr(mrp)}</span></div>
+        <div class="r" style="color:var(--ok)"><span>Discount</span><span>− ${inr(mrp-sub)}</span></div>
+        <div class="r"><span>Delivery</span><span>${ship?inr(ship):(SHOP.freeDelivery&&sub>=SHOP.freeDelivery?"Free":"Baat kar lenge")}</span></div>
+        <div class="r tot"><span>Total</span><span>${inr(total)}</span></div>
+        <a class="btn" style="width:100%;margin-top:14px" target="_blank" rel="noopener" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent(msg)}">Place order on WhatsApp</a>
+        <p style="font-size:13px;color:var(--muted);margin:10px 0 0">${SHOP.freeDelivery? (sub>=SHOP.freeDelivery?"Aapko free delivery mil rahi hai.":`${inr(SHOP.freeDelivery-sub)} aur add karein aur free delivery paayein.`) : "Delivery charge aapke area ke hisaab se — WhatsApp par bata denge."}</p>
+      </aside>
+    </div>
+  </div>`;
+}
+
+function wishView(){
+  const l = P.filter(p=>wish.includes(p.id));
+  return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / Wishlist</div>
+    <div class="lhead"><h1>My wishlist<small>${l.length} items</small></h1></div>
+    ${l.length?`<div class="grid" style="margin-bottom:40px">${l.map(card).join("")}</div>`:`<div class="empty" style="margin-bottom:40px"><p>Wishlist khali hai. Product par ♡ dabaiye, wo yahan save ho jayega.</p><a class="btn" href="#/">Start shopping</a></div>`}</div>`;
+}
+
+const PAGES = {
+  store:["Visit our showroom",`<p>${STORE.address}</p><p>${STORE.hours}</p><p>Phone: ${STORE.phone}</p>${STORE.maps&&STORE.maps.length>28?`<p><a href="${STORE.maps}" target="_blank" rel="noopener" style="color:var(--rose);font-weight:600">Open in Google Maps</a></p>`:""}`],
+  custom:["Apne size ka furniture",`<p>Ghar ki jagah ke hisaab se furniture banwana ho to hum bana dete hain — bed, wardrobe, dining table, mandir, kuch bhi.</p><p><b>Kaise kaam hota hai:</b></p><p>1. WhatsApp par jagah ki photo aur naap bhejiye<br>2. Wood (sheesham / mango / teak) aur finish chuniye<br>3. Hum design aur rate bata denge<br>4. Pasand aaye to banana shuru</p><p>Showroom par aakar samples dekh sakte hain: ${STORE.address}</p>`],
+  bulk:["Hotel, office & bulk orders",`<p>Hotel, restaurant, office aur interior designers ke liye hum bulk mein banate hain — ek jaisa design, ek jaisi finish, poore order mein.</p><p>Kitne piece chahiye, kis design ke, aur kab tak — ye WhatsApp par bhej dijiye. Rate aur time bata denge.</p>`],
+  dealer:["Dealer baniye",`<p>Apne sheher mein SR Handicraft ka furniture bechna chahte hain to humse baat kijiye. Hum sheesham, mango aur teak wood ka furniture seedha banate hain, isliye dealer ko sahi rate milta hai.</p><p>Apna sheher aur dukaan ki jaankari WhatsApp par bhejiye.</p>`],
+  track:["Order ka status",`<p>Apna naam ya order number WhatsApp par bhej dijiye — hum turant bata denge ki aapka furniture kis stage par hai.</p><p>Phone: ${STORE.phone}</p>`],
+  contact:["Contact us",`<p>Phone: ${STORE.phone}</p><p>WhatsApp: ${STORE.phone}</p><p>${STORE.address}</p>${STORE.email?`<p>Email: ${STORE.email}</p>`:""}`],
+  about:["SR Handicraft & Furniture ke baare mein",`<p>Hum Pune mein solid wood furniture banate aur bechte hain — sheesham, mango aur teak. Bed, sofa, dining set, wardrobe, study table, dressing table aur haath se carved pooja mandir.</p><p>Har piece humare apne kaarigar banate hain, isliye size, wood aur finish aapke ghar ke hisaab se badla ja sakta hai.</p><p>Showroom: ${STORE.address}<br>${STORE.hours}</p>`],
+  artisans:["Humare kaarigar",`<p>Humara furniture machine se nahi, haath se banta hai. Carving, jaali ka kaam, tile work — sab kaarigar apne haath se karte hain.</p><p>Isiliye har piece mein lakdi ka grain aur rang thoda alag hota hai. Yahi solid wood ki pehchan hai.</p>`],
+  export:["Export enquiry",`<p>Bahar ke buyers ke liye bulk order — sheesham aur mango wood furniture aur handicraft.</p><p>Item, quantity aur destination WhatsApp par bhej dijiye: ${STORE.phone}</p>`],
+  faq:["FAQs",`<p><b>Apne size ka bana sakte hain?</b> Haan. Size, wood aur finish aap chun sakte hain — WhatsApp par photo aur naap bhej dijiye.</p><p><b>Showroom kahan hai?</b> ${STORE.address}. ${STORE.hours}.</p><p><b>Delivery kitne din mein?</b> Stock ka saaman jaldi, custom order mein zyada time lagta hai — order ke waqt exact bata dete hain.</p>${SHOP.assembly?`<p><b>Assembly?</b> ${SHOP.assembly}.</p>`:""}`],
+  policies:["Shipping, returns & warranty",`${SHOP.returns?`<p><b>Returns:</b> ${SHOP.returns}</p>`:""}${SHOP.warranty?`<p><b>Warranty:</b> ${SHOP.warranty}</p>`:""}${SHOP.assembly?`<p><b>Assembly:</b> ${SHOP.assembly}</p>`:""}<p><b>Delivery:</b> ${SHOP.freeDelivery?`${inr(SHOP.freeDelivery)} se upar ke order par free delivery.`:"Delivery charge area ke hisaab se lagta hai — order se pehle bata diya jayega."}</p>`]
+};
+function page(k){
+  const [t,b] = PAGES[k] || ["Page not found","<p>Ye page nahi mila.</p>"];
+  return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / ${t}</div><div style="max-width:720px;padding:10px 0 40px"><h1 style="font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);margin:0 0 12px">${t}</h1>${b}<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, "+t+" ke baare mein jaankari chahiye")}" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn ghost" href="tel:${STORE.phone.replace(/\s/g,"")}">Call us</a></div></div></div>`;
+}
+
+/* ============ ROUTER ============ */
+let lastRoute = "";
+function route(){
+  const h = location.hash.slice(2) || "";
+  const parts = h.split("/").map(decodeURIComponent);
+  const listKey = parts.slice(0,3).join("/");
+  if (listKey !== lastRoute) { LST.price=[]; LST.mat=[]; LST.sort="rel"; }
+  lastRoute = listKey;
+  let html;
+  if (!parts[0]) html = home();
+  else if (parts[0]==="c" && catOf(parts[1])) {
+    const cat = catOf(parts[1]); const s = parts[2]; const sn = s ? subName(cat, s) : null;
+    let base = P.filter(p=>p.cat===cat.key);
+    if (sn) { const grp = cat.groups.find(g=>g.name===sn); base = grp ? base.filter(p=>grp.subs.includes(p.sub)) : base.filter(p=>p.sub===sn); }
+    html = listing(sn||cat.name, `<a href="#/">Home</a> / <a href="#/c/${cat.key}">${cat.name}</a>${sn?" / "+sn:""}`, base, cat, s);
+  }
+  else if (parts[0]==="s") {
+    const q = (parts[1]||"").toLowerCase();
+    const base = q==="bestseller" ? P.filter(p=>p.badge==="Bestseller") : P.filter(p=>(p.name+" "+p.sub+" "+p.material+" "+catOf(p.cat).name).toLowerCase().includes(q));
+    html = listing(q==="bestseller"?"Bestsellers":`Results for "${parts[1]}"`, `<a href="#/">Home</a> / Search`, base, null, null);
+  }
+  else if (parts[0]==="p" && P.find(p=>p.id==parts[1])) html = pdp(P.find(p=>p.id==parts[1]));
+  else if (parts[0]==="cart") html = cartView();
+  else if (parts[0]==="wishlist") html = wishView();
+  else if (parts[0]==="page") html = page(parts[1]);
+  else html = page("404");
+  $("#app").innerHTML = html;
+  const t = PAGES[parts[1]]?.[0];
+  document.title = (parts[0]==="p" ? P.find(p=>p.id==parts[1])?.name+" | " : "") + STORE.name;
+  bindView();
+  closeDrawer();
+  $("#sugg").style.display="none";
+}
+function rerender(keepScroll){ const y=scrollY; route(); if(keepScroll) scrollTo(0,y); }
+
+function bindView(){
+  const sb=$("#seobtn"); if(sb) sb.onclick=()=>{const m=$("#seomore");m.classList.toggle("open");sb.textContent=m.classList.contains("open")?"Read less":"Read more";};
+  const so=$("#sort"); if(so){ so.value=LST.sort; so.onchange=()=>{LST.sort=so.value;rerender(true);}; }
+  document.querySelectorAll("[data-f]").forEach(i=>i.onchange=()=>{const a=LST[i.dataset.f];i.checked?a.push(i.value):a.splice(a.indexOf(i.value),1);rerender(true);});
+  ["#clearf","#clearf2"].forEach(s=>{const b=$(s); if(b) b.onclick=()=>{LST.price=[];LST.mat=[];rerender(true);};});
+  const ft=$("#ftog"); if(ft) ft.onclick=()=>$("#filters").classList.toggle("open");
+  document.querySelectorAll(".gal .th button").forEach(b=>b.onclick=()=>{
+    const g=$("#gmain");
+    document.querySelectorAll(".gal .th button").forEach(x=>x.classList.toggle("on",x===b));
+    if(b.dataset.gi!==undefined && g){ flShow(g, +b.dataset.gi); g.dataset.hold=String(Date.now()+9000); }
+    else if(b.dataset.bg && g){ g.style.background=b.dataset.bg; }
+  });
+  let q=1; const qv=$("#qv");
+  if(qv){ $("#qm").onclick=()=>{q=Math.max(1,q-1);qv.textContent=q;}; $("#qp").onclick=()=>{q=Math.min(10,q+1);qv.textContent=q;}; }
+  const pb=$("#pinbtn"); if(pb) pb.onclick=()=>{
+    const v=$("#pin").value.trim(), r=$("#pinres");
+    if(!/^[1-9]\d{5}$/.test(v)){ r.style.color="var(--warn)"; r.textContent="Sahi 6-digit pincode daaliye."; return; }
+    const local=(SHOP.localPins||[]).some(x=>v.startsWith(x));
+    if(local){ r.style.color="var(--ok)"; r.textContent=`Haan, ${v} mein hum delivery karte hain.${SHOP.assembly?" Assembly: "+SHOP.assembly.toLowerCase()+".":""} Date order confirm karte waqt bata denge.`; }
+    else { r.style.color="var(--ink)"; r.textContent=`${v} humare regular delivery area se bahar hai. Transport se bhej sakte hain — charge aur time WhatsApp par bata denge.`; }
+  };
+  document.querySelectorAll("[data-addq]").forEach(b=>b.onclick=()=>{const id=+b.dataset.addq;cart[id]=(cart[id]||0)+q;save("sr_cart",cart);counts();toast("Added to cart");});
+  document.querySelectorAll("[data-buy]").forEach(b=>b.onclick=()=>{const id=+b.dataset.buy;cart[id]=(cart[id]||0)+q;save("sr_cart",cart);counts();location.hash="#/cart";});
+}
+
+/* global clicks */
+document.addEventListener("click", e=>{
+  const a = e.target.closest("[data-add]");
+  if (a){ const id=+a.dataset.add; cart[id]=(cart[id]||0)+1; save("sr_cart",cart); counts(); toast("Added to cart"); return; }
+  const w = e.target.closest("[data-wish]");
+  if (w){ const id=+w.dataset.wish; const i=wish.indexOf(id); i>-1?wish.splice(i,1):wish.push(id); save("sr_wish",wish); counts(); toast(i>-1?"Removed from wishlist":"Saved to wishlist"); rerender(true); return; }
+  const inc=e.target.closest("[data-inc]"), dec=e.target.closest("[data-dec]"), rm=e.target.closest("[data-rm]");
+  if (inc){ const id=+inc.dataset.inc; cart[id]=Math.min(10,cart[id]+1); }
+  if (dec){ const id=+dec.dataset.dec; cart[id]>1?cart[id]--:delete cart[id]; }
+  if (rm){ delete cart[+rm.dataset.rm]; toast("Removed from cart"); }
+  if (inc||dec||rm){ save("sr_cart",cart); counts(); rerender(true); }
+  if (e.target.closest("[data-close]")) closeDrawer();
+  if (!e.target.closest(".search")) $("#sugg").style.display="none";
+});
+
+/* search */
+const qi=$("#q"), sg=$("#sugg");
+qi.addEventListener("input",()=>{
+  const v=qi.value.trim().toLowerCase();
+  if(v.length<2){sg.style.display="none";return;}
+  const r=P.filter(p=>(p.name+" "+p.sub+" "+p.material).toLowerCase().includes(v)).slice(0,6);
+  sg.innerHTML = r.length ? r.map(p=>`<a href="#/p/${p.id}">${esc(p.name)}<span>${inr(p.price)}</span></a>`).join("") : `<a href="#/s/${encodeURIComponent(v)}">"${esc(v)}" ke liye sab results dekhein<span></span></a>`;
+  sg.style.display="block";
+});
+$("#searchForm").addEventListener("submit",e=>{e.preventDefault();const v=qi.value.trim();if(v){location.hash="#/s/"+encodeURIComponent(v);qi.blur();}});
+
+/* drawer */
+function closeDrawer(){ $("#drawer").classList.remove("open"); $("#drawer").setAttribute("aria-hidden","true"); document.body.style.overflow=""; }
+$("#burger").onclick=()=>{ $("#drawer").classList.add("open"); $("#drawer").setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeDrawer(); sg.style.display="none"; }});
+
+window.addEventListener("hashchange",()=>{ route(); scrollTo(0,0); });
+$("#pay").innerHTML = (SHOP.payments||[]).map(x=>`<span>${x}</span>`).join("");
+if(SHOP.offer){ $("#strip").hidden=false; $("#stripmsg").textContent=SHOP.offer; }
+$("#yr").textContent=new Date().getFullYear();
+$("#fadr").textContent = STORE.address;
+$("#ftel").textContent = STORE.phone; $("#ftel").href = "tel:"+STORE.phone.replace(/\s/g,"");
+$("#fhrs").textContent = STORE.hours;
+if(STORE.email){ const m=$("#fmail"); m.hidden=false; m.textContent=STORE.email; m.href="mailto:"+STORE.email; }
+document.querySelector('meta[name="description"]').setAttribute("content",
+  "SR Handicraft & Furniture, Patil Nagar Pune — sheesham, mango aur teak wood furniture: storage beds, sofa sets, dining sets, wardrobes, pooja mandir aur home decor. Custom size, free delivery & assembly.");
+buildNav(); counts(); route();
+</script>
+</body>
+</html>
