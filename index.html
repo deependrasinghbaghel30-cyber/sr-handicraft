@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#ffffff; --tint:#F7F7F7; --card:#ffffff; --ink:#222222; --muted:#666666; --line:#EAEAEA; --hero:#F6F1EA;
@@ -71,7 +71,7 @@ header.top{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1
 
 /* category nav + mega menu */
 .catnav{border-top:1px solid var(--line);position:relative}
-.catnav ul{list-style:none;margin:0;padding:0;display:flex;justify-content:space-between}
+.catnav ul{list-style:none;margin:0;padding:0;display:flex;justify-content:flex-start;gap:36px}
 .catnav li>a{display:block;padding:12px 6px;font-weight:500;border-bottom:3px solid transparent}
 .catnav li:hover>a,.catnav li:focus-within>a{border-color:var(--brass);color:var(--rose)}
 .mega{position:absolute;left:0;right:0;top:100%;background:var(--card);border-top:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.14);display:none;padding:24px 16px}
@@ -385,6 +385,65 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 @media(max-width:700px){.mqin img{height:130px}.mqin{animation-duration:30s}}
 @media (prefers-reduced-motion: reduce){.mqin{animation:none}}
 
+
+/* ===== Refresh: hero, trust, tiles, reviews, mobile bar ===== */
+:root{--serif:"Playfair Display", Georgia, "Times New Roman", serif}
+.sh h2,.store h2,.seo h2,.lhead h1,.pinfo h1,.promo h3,.hero2 h1{font-family:var(--serif);font-weight:600;letter-spacing:-.005em}
+.hero2{position:relative;min-height:560px;display:flex;align-items:flex-end;color:#fff;background:#2a1a12}
+.hero2 > .ly{animation:none}
+.hero2 > .ly.on{animation:kenb 14s ease-in-out infinite alternate}
+.hero2::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(20,12,8,.78) 0%,rgba(20,12,8,.45) 45%,rgba(20,12,8,0) 75%),linear-gradient(0deg,rgba(20,12,8,.55),rgba(20,12,8,0) 45%)}
+.hero2 > .fdot{z-index:3;bottom:16px}
+.h2in{position:relative;z-index:2;padding-top:48px;padding-bottom:64px;max-width:1280px;width:100%}
+.hero2 h1{font-size:clamp(36px,5.4vw,64px);line-height:1.05;margin:10px 0 14px;max-width:14ch}
+.hero2 p{font-size:clamp(16px,1.6vw,19px);max-width:44ch;margin:0 0 24px;color:rgba(255,255,255,.88)}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#E8C77A;font-weight:600}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn.light{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7);color:#fff;backdrop-filter:blur(4px)}
+.btn.light:hover{background:rgba(255,255,255,.22)}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:6px;background:var(--card);margin-top:-34px;position:relative;z-index:4;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.trust div{padding:16px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.trust div:last-child{border-right:0}
+.trust b{font-size:16px;color:var(--rose)}
+.trust span{font-size:13px;color:var(--muted)}
+.tiles2{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.tile2{position:relative;border-radius:8px;overflow:hidden;display:block}
+.tile2 .ph{aspect-ratio:4/5;border-radius:8px}
+.tile2::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,12,8,.7),rgba(20,12,8,0) 55%);pointer-events:none}
+.tile2 .tl{position:absolute;left:14px;bottom:12px;z-index:2;color:#fff;font-weight:600;font-size:17px}
+.tile2:hover .ph{transform:scale(1.02);transition:transform .4s}
+.promo.c{background:#EDE5DA;color:#3A2418}
+.store .lead{font-size:18px;color:var(--ink)!important;margin-bottom:12px!important}
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{margin:0;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px}
+.rev .st{color:#E0A526;letter-spacing:2px}
+.rev blockquote{margin:10px 0 12px;font-size:15px;line-height:1.55}
+.rev figcaption{font-size:13px;color:var(--muted)}
+.mbar{display:none}
+@media (max-width:1024px){ .tiles2{grid-template-columns:repeat(3,1fr)} .revs{grid-template-columns:1fr 1fr} }
+@media (max-width:760px){
+  .hero2{min-height:78vh}
+  .h2in{padding-bottom:56px}
+  .hero2::after{background:linear-gradient(0deg,rgba(20,12,8,.85) 0%,rgba(20,12,8,.5) 45%,rgba(20,12,8,.1) 80%)}
+  .trust{grid-template-columns:1fr 1fr;margin-top:-26px}
+  .trust div:nth-child(2){border-right:0}
+  .trust div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .trust div{padding:12px 14px}
+  .tiles2{grid-template-columns:repeat(5,42%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+  .tile2{scroll-snap-align:start}
+  .revs{grid-template-columns:1fr}
+  .wa{display:none}
+  body{padding-bottom:62px}
+  .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:58;background:var(--card);border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(0,0,0,.08)}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:7px;height:58px;font-weight:600;font-size:15px;color:var(--ink)}
+  .mbar a + a{border-left:1px solid var(--line)}
+  .mbar a.wa2{background:#25D366;color:#fff;border-left:0}
+  .mbar svg{width:20px;height:20px}
+  .appbar{right:12px;bottom:72px}
+  .toast{bottom:78px}
+}
+@media (display-mode: standalone){ .mbar{padding-bottom:env(safe-area-inset-bottom)} }
+
 /* ===== Install app ===== */
 .appbar{position:fixed;left:12px;right:84px;bottom:14px;z-index:55;display:flex;align-items:center;gap:10px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 10px 10px 12px;box-shadow:0 10px 30px rgba(0,0,0,.18);animation:abup .3s ease}
 .appbar[hidden]{display:none}
@@ -471,7 +530,7 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
   <div class="wrap fcols">
     <div><h4>Company</h4><a href="#/page/about">About SR</a><a href="#/page/artisans">Our Craftsmen</a><a href="#/page/store">Showroom</a><a href="#/page/contact">Contact Us</a></div>
     <div><h4>Useful Links</h4><a href="#/page/custom">Custom Furniture</a><a href="#/page/bulk">Hotel &amp; Bulk Orders</a><a href="#/page/store">Find Showroom</a><a href="#/page/track">Track Order</a></div>
-    <div><h4>Partner With Us</h4><a href="#/page/dealer">Become a Dealer</a><a href="#/page/artisans">Artisan Program</a><a href="#/page/bulk">Interior Designers</a><a href="#/page/export">Export Enquiry</a></div>
+    <div><h4>Partner With Us</h4><a href="#/page/dealer">Become a Dealer</a><a href="#/page/bulk">Interior Designers</a><a href="#/page/export">Export Enquiry</a></div>
     <div><h4>Need Help?</h4><a href="#/page/faq">FAQs</a><a href="#/page/policies">Delivery &amp; Returns</a><a href="#/page/track">Order Status</a><a href="#/page/custom">Custom Furniture</a></div>
     <div><h4>Showroom</h4><a href="#/page/store" id="fadr">Patil Nagar, Pune</a><a href="#" id="ftel">+91 96365 10574</a><a id="fmail" hidden></a><a href="#/page/store" id="fhrs">Open daily 10am – 10pm</a></div>
   </div>
@@ -506,6 +565,11 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
     <div class="shlink"><input id="shurl" readonly aria-label="Link"><button type="button" class="btn" data-sh="copy">Copy link</button></div>
   </div>
 </div>
+<nav class="mbar" aria-label="Quick contact">
+  <a href="tel:+919636510574" id="mbCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a href="https://wa.me/919636510574" class="wa2" id="mbWa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a>
+  <a href="#/page/store" id="mbDir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Directions</a>
+</nav>
 <div class="appbar" id="appbar" role="dialog" aria-label="Install app" hidden>
   <img src="icon-192.png" alt="" width="44" height="44">
   <div class="ab-t"><b>Install our app</b><span id="abmsg">One tap from your home screen. Free.</span></div>
@@ -548,42 +612,14 @@ const SHOP = {
 
 /* ============ CATEGORIES (mega menu) ============ */
 const CATS = [
-  {key:"furniture", name:"Furniture", art:"sofa", groups:[
-    {name:"Sofas", subs:["3 Seater Sofas","2 Seater Sofas","Sofa Sets","Sofa Cum Beds"]},
-    {name:"Beds", subs:["King Size Beds","Queen Size Beds","Single Beds","Storage Beds"]},
-    {name:"Dining", subs:["Dining Sets","Dining Tables","Dining Chairs"]},
-    {name:"Storage", subs:["Wardrobes","TV Units","Bookshelves","Chest of Drawers"]},
-    {name:"Tables", subs:["Coffee Tables","Side Tables","Study Tables","Console Tables"]},
-    {name:"Chairs", subs:["Arm Chairs","Rocking Chairs","Office Chairs"]}
-  ]},
-  {key:"handicraft", name:"Handicraft", art:"elephant", groups:[
-    {name:"Brass Decor", subs:["Brass Figurines","Brass Urli","Brass Diyas"]},
-    {name:"Wooden Carvings", subs:["Carved Panels","Wooden Figurines","Jharokhas"]},
-    {name:"Marble & Stone", subs:["Marble Inlay","Stone Idols"]},
-    {name:"Wall Art", subs:["Metal Wall Art","Wooden Wall Art","Paintings"]}
+  {key:"furniture", name:"Furniture", art:"bed", groups:[
+    {name:"Beds", subs:["King Size Beds","Queen Size Beds"]},
+    {name:"Dining", subs:["Dining Sets"]},
+    {name:"Bedroom", subs:["Dressing Tables"]},
+    {name:"Study", subs:["Study Tables"]}
   ]},
   {key:"pooja", name:"Pooja Mandir", art:"mandir", groups:[
-    {name:"Mandirs", subs:["Floor Mandirs","Wall Mandirs"]},
-    {name:"Pooja Essentials", subs:["Pooja Chowki","Pooja Thali","Idols"]}
-  ]},
-  {key:"decor", name:"Home Decor", art:"vase", groups:[
-    {name:"Decor", subs:["Vases","Showpieces","Candle Stands"]},
-    {name:"Mirrors", subs:["Wall Mirrors","Floor Mirrors"]},
-    {name:"Clocks", subs:["Wall Clocks","Table Clocks"]}
-  ]},
-  {key:"lighting", name:"Lamps & Lighting", art:"lamp", groups:[
-    {name:"Lamps", subs:["Floor Lamps","Table Lamps"]},
-    {name:"Ceiling", subs:["Hanging Lights","Chandeliers"]}
-  ]},
-  {key:"furnishings", name:"Furnishings", art:"carpet", groups:[
-    {name:"Soft Furnishing", subs:["Cushion Covers","Curtains","Bed Covers"]},
-    {name:"Floor", subs:["Carpets","Dhurries","Runners"]}
-  ]},
-  {key:"outdoor", name:"Outdoor", art:"swing", groups:[
-    {name:"Outdoor Furniture", subs:["Swings","Garden Chairs","Outdoor Tables"]}
-  ]},
-  {key:"office", name:"Office", art:"chair", groups:[
-    {name:"Office Furniture", subs:["Office Chairs","Office Tables","Office Storage"]}
+    {name:"Mandirs", subs:["Floor Mandirs"]}
   ]}
 ];
 
@@ -602,35 +638,38 @@ const CATS = [
 const PHOTOS = {
   /* --- Sections --- */
   hero:      ["bed-room-1-w.jpg","poster-bed-2-w.jpg","bed-room-3-w.jpg"],
-  brass:     ["mandir-1.jpg","mandir-2.jpg"],
-  custom:    ["dressing-1.jpg","bed-storage-2.jpg"],
-  promo_dining:  ["dining-set-2.jpg","dining-top-1.jpg","dining-set-1.jpg"],
+  promo_dining:  ["dining-set-2.jpg","dining-set-1.jpg"],
   promo_pooja:   ["mandir-2.jpg","mandir-1.jpg"],
-  promo_lighting:[],
-  showroom:  ["bed-storage-3-w.jpg","bed-tile-1-w.jpg","bed-storage-1-w.jpg"],
-  strip:     ["bed-storage-3.jpg","bed-storage-1.jpg","bed-tile-1.jpg","mandir-2.jpg","dining-top-1.jpg","bed-storage-2.jpg","poster-bed-3.jpg","dressing-1.jpg"],
+  promo_custom:  ["dressing-1.jpg"],
+  showroom:  ["mandir-2.jpg","dressing-1.jpg","mandir-1.jpg"],
+  strip:     ["bed-storage-3.jpg","mandir-2.jpg","bed-tile-1.jpg","dressing-1.jpg","dining-top-1.jpg","poster-bed-3.jpg","mandir-1.jpg","bed-storage-1.jpg"],
 
-  /* --- Category tiles --- */
-  cat_furniture:["bed-room-2.jpg","bed-storage-2.jpg"],
-  cat_handicraft:["dining-top-1.jpg","dressing-1.jpg"],
-  cat_pooja:["mandir-1.jpg","mandir-2.jpg"],
-  cat_decor:["dressing-1.jpg"],
-  cat_lighting:[],
-  cat_furnishings:[],
-  cat_outdoor:[],
-  cat_office:["study-2.jpg","study-1.jpg"],
+  /* --- Category tiles (sub-category ke naam se) --- */
+  tile_beds:["bed-room-2.jpg","poster-bed-1.jpg"],
+  tile_dining:["dining-set-2.jpg","dining-set-1.jpg"],
+  tile_pooja:["mandir-1.jpg","mandir-2.jpg"],
+  tile_dressing:["dressing-1.jpg"],
+  tile_study:["study-2.jpg","study-1.jpg"],
+  cat_furniture:["bed-room-1.jpg"],
+  cat_pooja:["mandir-1.jpg"],
 
   /* --- Products (id ke saamne uski photos) --- */
   4:  ["bed-room-1.jpg","bed-storage-2.jpg","bed-storage-1.jpg"],
   5:  ["bed-room-2.jpg","bed-room-3.jpg","bed-storage-3.jpg"],
-  6:  ["dining-top-1.jpg","dining-set-2.jpg","dining-set-1.jpg"],
-  16: ["mandir-1.jpg","mandir-2.jpg"],
-  17: ["mandir-2.jpg","mandir-1.jpg"],
+  6:  ["dining-set-2.jpg","dining-set-1.jpg","dining-top-1.jpg"],
+  16: ["mandir-1.jpg"],
+  17: ["mandir-2.jpg"],
   20: ["dressing-1.jpg"],
   26: ["poster-bed-3.jpg","poster-bed-1.jpg","poster-bed-2.jpg"],
   29: ["study-1.jpg","study-2.jpg"],
   30: ["bed-tile-1.jpg"],
 };
+
+/* ============ REVIEWS: sirf ASLI Google reviews yahan daalein ============
+   Google listing se copy karein. Khali rahega to section dikhega hi nahi.
+   { name:"Rahul S.", text:"Bahut achha kaam...", stars:5 }            */
+const REVIEWS = [
+];
 
 /* photo helpers */
 function pics(p){ return (p && p.img && p.img.length) ? p.img : (PHOTOS[p.id]||[]); }
@@ -643,36 +682,15 @@ function ph(key, fallback){
 
 /* ============ PRODUCTS: yahan apne products daalo ============ */
 const P = [
- {id:1,name:"Rajwada Sheesham 3 Seater Sofa",cat:"furniture",sub:"3 Seater Sofas",type:"sofa",color:"#8C4A2F",material:"Sheesham Wood",price:38999,mrp:62000,badge:"Bestseller"},
- {id:2,name:"Nila Fabric 2 Seater Sofa",cat:"furniture",sub:"2 Seater Sofas",type:"sofa",color:"#3F5A8A",material:"Sheesham Wood",price:24499,mrp:36000},
- {id:3,name:"Mehrangarh 3+1+1 Sofa Set",cat:"furniture",sub:"Sofa Sets",type:"sofa",color:"#6F7B4A",material:"Sheesham Wood",price:72999,mrp:115000,badge:"Bestseller"},
- {id:4,name:"Jaipur Carved King Size Bed with Storage",cat:"furniture",sub:"King Size Beds",type:"bed",color:"#A34A3A",material:"Sheesham Wood",price:54999,mrp:89000,badge:"Bestseller"},
- {id:5,name:"Aangan Queen Size Bed",cat:"furniture",sub:"Queen Size Beds",type:"bed",color:"#C7A36A",material:"Sheesham Wood",price:31999,mrp:48000},
- {id:6,name:"Haveli 6 Seater Dining Set",cat:"furniture",sub:"Dining Sets",type:"table",color:"#7A4A2C",material:"Sheesham Wood",price:46999,mrp:78000,badge:"Bestseller"},
- {id:7,name:"Kesar 2 Door Wardrobe",cat:"furniture",sub:"Wardrobes",type:"wardrobe",color:"#8E5B3A",material:"Sheesham Wood",price:39999,mrp:59000},
- {id:8,name:"Pichwai Painted TV Unit",cat:"furniture",sub:"TV Units",type:"shelf",color:"#2F6B6A",material:"Sheesham Wood",price:21999,mrp:34000},
- {id:9,name:"Chowk Carved Coffee Table",cat:"furniture",sub:"Coffee Tables",type:"table",color:"#9A6B43",material:"Sheesham Wood",price:12999,mrp:19999,badge:"Bestseller"},
- {id:10,name:"Maharaja Rocking Chair",cat:"furniture",sub:"Rocking Chairs",type:"chair",color:"#6B2D1C",material:"Sheesham Wood",price:17499,mrp:26000},
- {id:11,name:"Brass Gajraj Elephant – Large",cat:"handicraft",sub:"Brass Figurines",type:"elephant",color:"#C9962F",material:"Brass",price:6499,mrp:9999,badge:"Bestseller"},
- {id:12,name:"Brass Lotus Urli Bowl",cat:"handicraft",sub:"Brass Urli",type:"vase",color:"#B8862B",material:"Brass",price:3299,mrp:4999},
- {id:13,name:"Carved Wooden Jharokha Frame",cat:"handicraft",sub:"Jharokhas",type:"mirror",color:"#7B4B2A",material:"Sheesham Wood",price:8999,mrp:14500,badge:"Handmade"},
- {id:14,name:"Marble Inlay Elephant Pair",cat:"handicraft",sub:"Marble Inlay",type:"elephant",color:"#E8E3DA",material:"Marble",price:4799,mrp:7200,badge:"Handmade"},
- {id:15,name:"Tree of Life Metal Wall Art",cat:"handicraft",sub:"Metal Wall Art",type:"clock",color:"#3C3C3C",material:"Iron",price:5499,mrp:8500},
- {id:16,name:"Shiv Kripa Sheesham Floor Mandir",cat:"pooja",sub:"Floor Mandirs",type:"mandir",color:"#8A4B2A",material:"Sheesham Wood",price:18999,mrp:28000,badge:"Bestseller"},
- {id:17,name:"Om Wall Mounted Mandir",cat:"pooja",sub:"Wall Mandirs",type:"mandir",color:"#B97A45",material:"Sheesham Wood",price:7499,mrp:11000},
- {id:18,name:"Carved Pooja Chowki",cat:"pooja",sub:"Pooja Chowki",type:"table",color:"#A0673F",material:"Sheesham Wood",price:2499,mrp:3999},
- {id:19,name:"Blue Pottery Floor Vase",cat:"decor",sub:"Vases",type:"vase",color:"#2D5C9A",material:"Ceramic",price:2899,mrp:4200,badge:"Handmade"},
- {id:20,name:"Sunburst Wall Mirror",cat:"decor",sub:"Wall Mirrors",type:"mirror",color:"#B7832F",material:"Iron",price:6999,mrp:10999},
- {id:21,name:"Antique Wooden Wall Clock",cat:"decor",sub:"Wall Clocks",type:"clock",color:"#6E4A2E",material:"Sheesham Wood",price:3499,mrp:5200},
- {id:22,name:"Jute Shade Floor Lamp",cat:"lighting",sub:"Floor Lamps",type:"lamp",color:"#C9A46A",material:"Sheesham Wood",price:5999,mrp:8999},
- {id:23,name:"Moroccan Brass Hanging Light",cat:"lighting",sub:"Hanging Lights",type:"lamp",color:"#B8862B",material:"Brass",price:4499,mrp:6999,badge:"Handmade"},
- {id:24,name:"Hand Knotted Jaipur Carpet 5x7 ft",cat:"furnishings",sub:"Carpets",type:"carpet",color:"#8E2F2A",material:"Wool",price:14999,mrp:24000,badge:"Handmade"},
- {id:25,name:"Block Print Cushion Covers (Set of 5)",cat:"furnishings",sub:"Cushion Covers",type:"cushion",color:"#1F2E55",material:"Cotton",price:1499,mrp:2499},
- {id:26,name:"Citadel Tile Work Poster Bed – Queen",cat:"furniture",sub:"Queen Size Beds",type:"bed",color:"#7A4A2C",material:"Sheesham Wood",price:44999,mrp:69000,badge:"Bestseller"},
- {id:27,name:"Cane Garden Chair",cat:"outdoor",sub:"Garden Chairs",type:"chair",color:"#B88A4F",material:"Cane",price:5499,mrp:7999},
- {id:28,name:"Executive Wooden Office Chair",cat:"office",sub:"Office Chairs",type:"chair",color:"#3B2A22",material:"Sheesham Wood",price:15999,mrp:23000},
- {id:29,name:"Craftsman Study Table",cat:"furniture",sub:"Study Tables",type:"table",color:"#8B5E3C",material:"Sheesham Wood",price:11499,mrp:17000},
- {id:30,name:"Heritage Bookshelf",cat:"furniture",sub:"Bookshelves",type:"shelf",color:"#6B4A33",material:"Sheesham Wood",price:15999,mrp:24500}
+ {id:4, name:"Sheesham King Size Bed with Storage",  cat:"furniture",sub:"King Size Beds", type:"bed",   color:"#A34A3A",material:"Sheesham Wood",price:54999},
+ {id:30,name:"Hand Painted Tile Headboard Bed",      cat:"furniture",sub:"King Size Beds", type:"bed",   color:"#6B4A33",material:"Sheesham Wood",price:49999},
+ {id:26,name:"Tile Work Poster Bed",                 cat:"furniture",sub:"Queen Size Beds",type:"bed",   color:"#7A4A2C",material:"Sheesham Wood",price:44999},
+ {id:5, name:"Sheesham Queen Size Bed",              cat:"furniture",sub:"Queen Size Beds",type:"bed",   color:"#C7A36A",material:"Sheesham Wood",price:31999},
+ {id:6, name:"Carved Sheesham 6 Seater Dining Set",  cat:"furniture",sub:"Dining Sets",    type:"table", color:"#7A4A2C",material:"Sheesham Wood",price:46999},
+ {id:20,name:"Arched Mirror Dressing Table",         cat:"furniture",sub:"Dressing Tables",type:"mirror",color:"#8E5B3A",material:"Sheesham Wood",price:24999},
+ {id:29,name:"Sheesham Study Table",                 cat:"furniture",sub:"Study Tables",   type:"table", color:"#8B5E3C",material:"Sheesham Wood",price:11499},
+ {id:16,name:"Carved Sheesham Pooja Mandir",         cat:"pooja",    sub:"Floor Mandirs",  type:"mandir",color:"#8A4B2A",material:"Sheesham Wood",price:18999},
+ {id:17,name:"Jaali Door Sheesham Pooja Mandir",     cat:"pooja",    sub:"Floor Mandirs",  type:"mandir",color:"#B97A45",material:"Sheesham Wood",price:16999}
 ];
 
 /* ============ HELPERS ============ */
@@ -691,7 +709,7 @@ function liveCats(){ return CATS.filter(c=>P.some(p=>p.cat===c.key)); }
 const $ = s => document.querySelector(s);
 const slug = s => s.toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
 const inr = n => "₹" + Math.round(n).toLocaleString("en-IN");
-const off = p => Math.round((1 - p.price / p.mrp) * 100);
+
 const catOf = k => CATS.find(c => c.key === k);
 const subName = (cat, s) => { for (const g of cat.groups) for (const x of g.subs) if (slug(x) === s) return x; for (const g of cat.groups) if (slug(g.name) === s) return g.name; return null; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -751,7 +769,7 @@ function shareData(pid){
   const hash = p ? "#/p/"+p.id : (location.hash||"#/");
   const url = STORE.site ? base+"/"+hash : base+hash;
   const title = p ? p.name+" | SR Handicraft & Furniture" : "SR Handicraft & Furniture";
-  const text = p ? `${p.name} for just ${inr(p.price)} (MRP ${inr(p.mrp)}, ${off(p)}% off) – see it at SR Handicraft & Furniture:` : "SR Handicraft & Furniture – solid wood furniture and hand carved pooja mandirs. Take a look:";
+  const text = p ? `${p.name} — ${inr(p.price)}, solid sheesham wood. See it at SR Handicraft & Furniture:` : "SR Handicraft & Furniture – solid wood furniture and hand carved pooja mandirs. Take a look:";
   return {url,title,text};
 }
 function waHref(pid){ const d=shareData(pid); return "https://api.whatsapp.com/send?text="+encodeURIComponent(d.text+" "+d.url); }
@@ -833,11 +851,10 @@ function card(p){
   const G = pics(p);
   return `<article class="pc">
     <a href="#/p/${p.id}" class="im${G.length?" fl":""}" style="background:${tints[p.id%tints.length]}">${G.length?lys(G):art(p.type,p.color)}</a>
-    ${p.badge?`<span class="badge">${p.badge}</span>`:""}
     <button class="wish ${on?"on":""}" data-wish="${p.id}" aria-label="${on?"Remove from":"Add to"} wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7.5-4.6-9.3-9.2C1.4 7.4 3.7 4 7.2 4c2 0 3.6 1.1 4.8 2.8C13.2 5.1 14.8 4 16.8 4c3.5 0 5.8 3.4 4.5 6.8C19.5 15.4 12 20 12 20z"/></svg></button>
     <div class="bd">
       <a href="#/p/${p.id}" class="nm">${esc(p.name)}</a>
-      <div class="price"><span class="p">${inr(p.price)}</span><s>${inr(p.mrp)}</s><span class="off">${off(p)}% off</span></div>
+      <div class="price"><span class="p">${inr(p.price)}</span></div>
       ${SHOP.emi?`<span class="emi">EMI from ${inr(p.price/12)}/month</span>`:`<span class="emi">${p.material}</span>`}
       <div class="cact">
         <button class="add" data-add="${p.id}">Add to cart</button>
@@ -854,7 +871,7 @@ function buildNav(){
     return `<li><a href="#/c/${c.key}">${c.name}</a>
       <div class="mega"><div class="in">
         ${cols.map(col=>`<div class="col">${col.map(g=>`<div><h4><a href="#/c/${c.key}/${slug(g.name)}">${g.name}</a></h4>${g.subs.map(s=>`<a class="sub" href="#/c/${c.key}/${slug(s)}">${s}</a>`).join("")}</div>`).join("")}</div>`).join("")}
-        <a class="promo" href="#/c/${c.key}"><div style="max-width:150px;margin:0 auto">${art(c.art, "#8C4A2F")}</div><p>Shop all ${c.name}</p></a>
+        <a class="promo" href="#/c/${c.key}">${(PHOTOS["cat_"+c.key]||[]).length?`<img src="${PHOTOS["cat_"+c.key][0]}" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px">`:""}<p>Shop all ${c.name}</p></a>
       </div></div></li>`;
   }).join("");
   $("#dcats").innerHTML = liveCats().map(c=>`<details><summary>${c.name}</summary><div class="grp"><a href="#/c/${c.key}" class="g">View all ${c.name}</a>${liveGroups(c).map(g=>`<a class="g" href="#/c/${c.key}/${slug(g.name)}">${g.name}</a>${g.subs.map(s=>`<a href="#/c/${c.key}/${slug(s)}">${s}</a>`).join("")}`).join("")}</div></details>`).join("");
@@ -863,94 +880,94 @@ function buildNav(){
 
 /* ============ VIEWS ============ */
 function home(){
-  const hc = P.filter(p=>p.cat==="handicraft"||p.badge==="Handmade").slice(0,8);
-  const best = P.filter(p=>p.badge==="Bestseller");
+  const tiles=[
+    ["Beds","#/c/furniture/beds","tile_beds"],
+    ["Dining Sets","#/c/furniture/dining-sets","tile_dining"],
+    ["Pooja Mandir","#/c/pooja","tile_pooja"],
+    ["Dressing Tables","#/c/furniture/dressing-tables","tile_dressing"],
+    ["Study Tables","#/c/furniture/study-tables","tile_study"]
+  ].filter(t=>(PHOTOS[t[2]]||[]).length);
+  const stars=n=>"★★★★★".slice(0,n)+"☆☆☆☆☆".slice(0,5-n);
+  const G=SHOP.googleLink;
   return `
+  <section class="hero2 fl">${lys(PHOTOS.hero||[])}
+    <div class="wrap h2in">
+      <span class="eyebrow">Solid sheesham · Made in Pune</span>
+      <h1>Handcrafted furniture,<br>made to last</h1>
+      <p>Beds, dining sets and hand carved pooja mandirs in solid sheesham wood — made to your size by our own craftsmen.</p>
+      <div class="ctas">
+        <a class="btn" href="#/c/furniture">Shop furniture</a>
+        <a class="btn light" href="#/c/pooja">Pooja mandirs</a>
+      </div>
+    </div>
+  </section>
+
   <div class="wrap">
-    <section class="hero">
-      <div class="hmain print">
-        <div>
-          <h1>Handcrafted furniture, made to last</h1>
-          <p>Solid sheesham wood furniture — beds, sofas, dining sets, wardrobes and hand carved pooja mandirs. Made to your size.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="#/c/furniture">Shop furniture</a>
-            <a class="btn ghost" href="#/c/handicraft">Explore handicraft</a>
-          </div>
-        </div>
-        <div class="art">${ph("hero", art("sofa","#8C4A2F"))}</div>
-      </div>
-      <div class="hside">
-        <a class="hcard" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Hand carved in sheesham wood</p><span class="l">Shop now</span></div>${ph("brass", art("elephant","#C9962F"))}</a>
-        <a class="hcard" href="#/page/custom"><div><h3>Made to your size</h3><p>Choose your size, design and finish</p><span class="l">Get a quote</span></div>${ph("custom", art("wardrobe","#8E5B3A"))}</a>
-      </div>
+    <section class="trust">
+      <div><b>${SHOP.googleRating?SHOP.googleRating+" ★":"★★★★★"}</b><span>${SHOP.googleCount?SHOP.googleCount+" Google reviews":"Google reviews"}</span></div>
+      <div><b>Solid sheesham</b><span>Hand finished by craftsmen</span></div>
+      <div><b>Made to order</b><span>Your size, your finish</span></div>
+      <div><b>Showroom in Pune</b><span>See it before you buy</span></div>
     </section>
 
     <section class="blk">
       <div class="sh"><h2>Shop by category</h2></div>
-      <div class="tiles">${liveCats().map(c=>`<a class="tile" href="#/c/${c.key}"><div class="c">${ph("cat_"+c.key, art(c.art,"#8C4A2F"))}</div>${c.name}</a>`).join("")}</div>
-    </section>
-
-    <section class="blk" style="padding-top:0">
-      <div class="usp">
-        <div><b>Solid sheesham</b><span>100% sheesham wood</span></div>
-        <div><b>Made to measure</b><span>Custom size, design &amp; finish</span></div>
-        <div><b>Showroom</b><span>See and feel it before you buy</span></div>
-        <div><b>Handmade</b><span>Crafted by Indian artisans</span></div>
-      </div>
+      <div class="tiles2">${tiles.map(([n,href,k])=>`<a class="tile2" href="${href}">${ph(k,"")}<span class="tl">${n}</span></a>`).join("")}</div>
     </section>
 
     <section class="blk band">
-      <div class="sh"><h2>Bestsellers</h2><a href="#/s/bestseller">View all</a></div>
-      <div class="rail">${best.map(card).join("")}</div>
+      <div class="sh"><h2>Our collection</h2><a href="#/s/all">View all</a></div>
+      <div class="rail">${P.map(card).join("")}</div>
     </section>
-
-    ${(PHOTOS.strip||[]).length?`<section class="blk">
-      <div class="sh"><h2>Our work</h2><a href="#/c/handicraft">View all</a></div>
-      <div class="mq"><div class="mqin">${[...PHOTOS.strip,...PHOTOS.strip].map(u=>`<img src="${u}" alt="SR Handicraft work" loading="lazy">`).join("")}</div></div>
-    </section>`:""}
 
     <section class="blk">
       <div class="promos">
-        <a class="promo a" href="#/c/furniture/dining"><div><h3>Dining sets</h3><p>Pure sheesham, 6 &amp; 8 seater</p><span>Shop dining</span></div>${ph("promo_dining", art("table","#7A4A2C"))}</a>
-        <a class="promo b" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Hand carved for your home</p><span>Shop mandirs</span></div>${ph("promo_pooja", art("mandir","#8A4B2A"))}</a>
-        <a class="promo c" href="#/c/lighting"><div><h3>Lamps &amp; lighting</h3><p>Brass &amp; jute lamps</p><span>Shop lighting</span></div>${ph("promo_lighting", art("lamp","#B8862B"))}</a>
+        <a class="promo a" href="#/c/furniture/dining-sets"><div><h3>Dining sets</h3><p>Solid sheesham, 6 &amp; 8 seater</p><span>Shop dining</span></div>${ph("promo_dining","")}</a>
+        <a class="promo b" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Hand carved for your home</p><span>Shop mandirs</span></div>${ph("promo_pooja","")}</a>
+        <a class="promo c" href="#/page/custom"><div><h3>Made to your size</h3><p>Send your measurements, we build it</p><span>Get a quote</span></div>${ph("promo_custom","")}</a>
       </div>
     </section>
 
-    <section class="blk band">
-      <div class="sh"><h2>Handicraft collection</h2><a href="#/c/handicraft">View all</a></div>
-      <div class="rail">${hc.map(card).join("")}</div>
-    </section>
+    ${(PHOTOS.strip||[]).length?`<section class="blk">
+      <div class="sh"><h2>From our workshop</h2><a href="#/s/all">View all</a></div>
+      <div class="mq"><div class="mqin">${[...PHOTOS.strip,...PHOTOS.strip].map(u=>`<img src="${u}" alt="SR Handicraft sheesham furniture" loading="lazy">`).join("")}</div></div>
+    </section>`:""}
+
+    ${REVIEWS.length?`<section class="blk">
+      <div class="sh"><h2>What our customers say</h2>${G?`<a href="${G}" target="_blank" rel="noopener">All reviews on Google</a>`:""}</div>
+      <div class="revs">${REVIEWS.map(r=>`<figure class="rev"><div class="st">${stars(r.stars||5)}</div><blockquote>${esc(r.text)}</blockquote><figcaption>${esc(r.name)} · Google review</figcaption></figure>`).join("")}</div>
+    </section>`:""}
 
     <section class="blk">
       <div class="store print">
         <div class="t">
-          <h2>Visit our showroom and see the furniture in person</h2>
+          <h2>Visit our showroom</h2>
+          <p class="lead">See and feel the wood before you buy.</p>
           <p>${STORE.address}</p><p>${STORE.hours}</p><p>${STORE.phone}</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
             <a class="btn brass" href="${STORE.maps&&STORE.maps.length>28?STORE.maps:"#/page/store"}" ${STORE.maps&&STORE.maps.length>28?'target="_blank" rel="noopener"':""}>Get directions</a>
             <a class="btn ghost" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, I would like to book a showroom visit.")}" target="_blank" rel="noopener">Book a visit</a>
           </div>
         </div>
-        <div class="map">${ph("showroom", art("mandir","#8A4B2A"))}</div>
+        <div class="map">${ph("showroom","")}</div>
       </div>
     </section>
 
     <section class="blk seo">
-      <h2>Buy solid wood furniture &amp; handicrafts online</h2>
+      <h2>Solid sheesham wood furniture in Pune</h2>
       <div class="more" id="seomore">
         <p>SR Handicraft &amp; Furniture is a solid wood furniture showroom in Patil Nagar, Pune, on the Bengaluru–Mumbai Highway. Every piece is made by our own craftsmen in solid sheesham wood, and the size, design and finish can be changed to fit your home.</p>
-        <h3>Living room furniture</h3>
-        <p>Choose from carved sofas, sofa sets, coffee tables, TV units and bookshelves that suit both modern and traditional homes.</p>
-        <h3>Bedroom furniture</h3>
-        <p>King and queen size beds with storage, wardrobes and chest of drawers built to last for years.</p>
-        <h3>Pooja mandir &amp; carved work</h3>
-        <p>Hand carved sheesham pooja mandirs, jharokha frames and jaali work panels — made by our own craftsmen and customisable in size and finish.</p>
+        <h3>Beds</h3>
+        <p>King and queen size sheesham beds, with storage, carved headboards, tile work and poster frames.</p>
+        <h3>Dining</h3>
+        <p>Solid sheesham dining sets with carved and jaali work tops, in 6 and 8 seater sizes.</p>
+        <h3>Pooja mandirs</h3>
+        <p>Hand carved sheesham floor mandirs with jaali doors, made by our own craftsmen and customisable in size and finish.</p>
         <h3>Why sheesham wood?</h3>
         <p><b>Sheesham</b> (Indian rosewood) is dense, strong and termite resistant, with a rich natural grain. It holds carving and jaali work well and lasts for decades, which is why we use it for every piece we make.</p>
         <h3>Price guide</h3>
         <div class="tscroll"><table><tr><th>Product</th><th>Starting price</th></tr>
-          ${[["Sofas","3 Seater Sofas"],["Beds with storage","King Size Beds"],["Queen size beds","Queen Size Beds"],["Dining sets","Dining Sets"],["Pooja mandirs","Floor Mandirs"],["Wardrobes","Wardrobes"],["Study tables","Study Tables"]].map(([n,s])=>{const v=P.filter(p=>p.sub===s).map(p=>p.price);if(!v.length)return "";return `<tr><td>${n}</td><td>${inr(Math.min(...v))}</td></tr>`}).join("")}
+          ${[["King size beds","King Size Beds"],["Queen size beds","Queen Size Beds"],["Dining sets","Dining Sets"],["Pooja mandirs","Floor Mandirs"],["Dressing tables","Dressing Tables"],["Study tables","Study Tables"]].map(([n,sb])=>{const v=P.filter(p=>p.sub===sb).map(p=>p.price);if(!v.length)return "";return `<tr><td>${n}</td><td>${inr(Math.min(...v))}</td></tr>`}).join("")}
         </table></div>
       </div>
       <button class="btn ghost" style="margin-top:12px" id="seobtn">Read more</button>
@@ -985,7 +1002,7 @@ function listing(title, crumbs, base, cat, subSlug){
         <button class="btn ghost ftoggle" id="ftog" style="height:40px">Filters</button>
         <select id="sort" aria-label="Sort">
           <option value="rel">Sort: Relevance</option><option value="low">Price: Low to High</option>
-          <option value="high">Price: High to Low</option><option value="disc">Discount</option><option value="new">Newest first</option>
+          <option value="high">Price: High to Low</option><option value="new">Newest first</option>
         </select>
       </div>
     </div>
@@ -1018,7 +1035,7 @@ function pdp(p){
       <div class="pinfo">
         <h1>${esc(p.name)}</h1>
         <div class="rt">${SHOP.googleRating?`<b>${SHOP.googleRating} ★</b>${SHOP.googleCount} Google reviews · `:""}${SHOP.googleLink?`<a href="${SHOP.googleLink}" target="_blank" rel="noopener" style="color:var(--rose)">SR Handicraft &amp; Furniture, Pune</a>`:"SR Handicraft &amp; Furniture, Pune"}</div>
-        <div class="price" style="margin-top:10px"><span class="p">${inr(p.price)}</span><s>MRP ${inr(p.mrp)}</s><span class="off">${off(p)}% off</span></div>
+        <div class="price" style="margin-top:10px"><span class="p">${inr(p.price)}</span></div>
         <div class="emi">Inclusive of all taxes.${SHOP.emi?` No-cost EMI from ${inr(p.price/12)}/month.`:""} Size, design and finish can be customised.</div>
         <div class="box">
           <b>Check delivery</b>
@@ -1062,9 +1079,9 @@ function pdp(p){
 
 function cartView(){
   const ids = Object.keys(cart).map(Number).filter(id=>P.find(p=>p.id===id));
-  if (!ids.length) return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / Cart</div><div class="empty" style="margin:20px 0 40px"><h2 style="font-family:var(--display);font-weight:400;color:var(--ink)">Your cart is empty</h2><p>Browse our bestsellers and add something you like.</p><a class="btn" href="#/s/bestseller">Shop bestsellers</a></div></div>`;
+  if (!ids.length) return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / Cart</div><div class="empty" style="margin:20px 0 40px"><h2 style="font-family:var(--display);font-weight:400;color:var(--ink)">Your cart is empty</h2><p>Browse our collection and add something you like.</p><a class="btn" href="#/s/all">Shop the collection</a></div></div>`;
   const rows = ids.map(id=>({p:P.find(x=>x.id===id),q:cart[id]}));
-  const mrp = rows.reduce((a,r)=>a+r.p.mrp*r.q,0), sub = rows.reduce((a,r)=>a+r.p.price*r.q,0);
+  const sub = rows.reduce((a,r)=>a+r.p.price*r.q,0);
   const ship = (SHOP.freeDelivery && sub>=SHOP.freeDelivery) ? 0 : (SHOP.shipping||0), total = sub+ship;
   const msg = "Hi SR Handicraft, I would like to order:\n" + rows.map(r=>`• ${r.p.name} x${r.q} = ${inr(r.p.price*r.q)}`).join("\n") + `\nTotal: ${inr(total)}`;
   return `<div class="wrap">
@@ -1073,15 +1090,14 @@ function cartView(){
     <div class="cart">
       <div>${rows.map(({p,q})=>`<div class="ci">
         <a href="#/p/${p.id}" class="im${pics(p).length?" fl":""}" style="background:${tints[p.id%tints.length]}">${pics(p).length?lys(pics(p)):art(p.type,p.color)}</a>
-        <div><a href="#/p/${p.id}" style="font-weight:600">${esc(p.name)}</a><div class="br" style="color:var(--muted);font-size:14px">${p.material}</div><div class="price"><span class="p">${inr(p.price)}</span><s>${inr(p.mrp)}</s></div></div>
+        <div><a href="#/p/${p.id}" style="font-weight:600">${esc(p.name)}</a><div class="br" style="color:var(--muted);font-size:14px">${p.material}</div><div class="price"><span class="p">${inr(p.price)}</span></div></div>
         <div class="ctrl" style="display:flex;flex-direction:column;align-items:end;gap:8px">
           <div class="qty"><button data-dec="${p.id}" aria-label="Decrease">−</button><span>${q}</span><button data-inc="${p.id}" aria-label="Increase">+</button></div>
           <button class="rm" data-rm="${p.id}">Remove</button>
         </div></div>`).join("")}</div>
       <aside class="sum">
         <b style="font-size:17px">Order summary</b>
-        <div class="r"><span>Total MRP</span><span>${inr(mrp)}</span></div>
-        <div class="r" style="color:var(--ok)"><span>Discount</span><span>− ${inr(mrp-sub)}</span></div>
+        <div class="r"><span>Subtotal</span><span>${inr(sub)}</span></div>
         <div class="r"><span>Delivery</span><span>${ship?inr(ship):(SHOP.freeDelivery&&sub>=SHOP.freeDelivery?"Free":"To be confirmed")}</span></div>
         <div class="r tot"><span>Total</span><span>${inr(total)}</span></div>
         <a class="btn" style="width:100%;margin-top:14px" target="_blank" rel="noopener" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent(msg)}">Place order on WhatsApp</a>
@@ -1134,8 +1150,8 @@ function route(){
   }
   else if (parts[0]==="s") {
     const q = (parts[1]||"").toLowerCase();
-    const base = q==="bestseller" ? P.filter(p=>p.badge==="Bestseller") : P.filter(p=>(p.name+" "+p.sub+" "+p.material+" "+catOf(p.cat).name).toLowerCase().includes(q));
-    html = listing(q==="bestseller"?"Bestsellers":`Results for "${parts[1]}"`, `<a href="#/">Home</a> / Search`, base, null, null);
+    const base = (q==="all"||q==="bestseller") ? P : P.filter(p=>(p.name+" "+p.sub+" "+p.material+" "+catOf(p.cat).name).toLowerCase().includes(q));
+    html = listing((q==="all"||q==="bestseller")?"Our collection":`Results for "${parts[1]}"`, `<a href="#/">Home</a> / Search`, base, null, null);
   }
   else if (parts[0]==="p" && P.find(p=>p.id==parts[1])) html = pdp(P.find(p=>p.id==parts[1]));
   else if (parts[0]==="cart") html = cartView();
@@ -1211,6 +1227,9 @@ window.addEventListener("hashchange",()=>{ route(); scrollTo(0,0); });
 $("#pay").innerHTML = (SHOP.payments||[]).map(x=>`<span>${x}</span>`).join("");
 if(SHOP.offer){ $("#strip").hidden=false; $("#stripmsg").textContent=SHOP.offer; }
 $("#yr").textContent=new Date().getFullYear();
+$("#mbCall").href="tel:"+STORE.phone.replace(/\s/g,"");
+$("#mbWa").href="https://wa.me/"+STORE.whatsapp+"?text="+encodeURIComponent("Hi SR Handicraft, I have a question about your furniture.");
+if(STORE.maps&&STORE.maps.length>28){ const d=$("#mbDir"); d.href=STORE.maps; d.target="_blank"; d.rel="noopener"; }
 
 /* ===== Install as app (PWA) ===== */
 (function(){
