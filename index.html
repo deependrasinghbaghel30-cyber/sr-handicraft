@@ -444,17 +444,17 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 
 <footer>
   <div class="wrap fcols">
-    <div><h4>Company</h4><a href="#/page/about">About SR</a><a href="#/page/artisans">Humare kaarigar</a><a href="#/page/store">Showroom</a><a href="#/page/contact">Contact Us</a></div>
+    <div><h4>Company</h4><a href="#/page/about">About SR</a><a href="#/page/artisans">Our Craftsmen</a><a href="#/page/store">Showroom</a><a href="#/page/contact">Contact Us</a></div>
     <div><h4>Useful Links</h4><a href="#/page/custom">Custom Furniture</a><a href="#/page/bulk">Hotel &amp; Bulk Orders</a><a href="#/page/store">Find Showroom</a><a href="#/page/track">Track Order</a></div>
     <div><h4>Partner With Us</h4><a href="#/page/dealer">Become a Dealer</a><a href="#/page/artisans">Artisan Program</a><a href="#/page/bulk">Interior Designers</a><a href="#/page/export">Export Enquiry</a></div>
-    <div><h4>Need Help?</h4><a href="#/page/faq">FAQs</a><a href="#/page/policies">Delivery &amp; Returns</a><a href="#/page/track">Order ka status</a><a href="#/page/custom">Custom furniture</a></div>
+    <div><h4>Need Help?</h4><a href="#/page/faq">FAQs</a><a href="#/page/policies">Delivery &amp; Returns</a><a href="#/page/track">Order Status</a><a href="#/page/custom">Custom Furniture</a></div>
     <div><h4>Showroom</h4><a href="#/page/store" id="fadr">Patil Nagar, Pune</a><a href="#" id="ftel">+91 96365 10574</a><a id="fmail" hidden></a><a href="#/page/store" id="fhrs">Open daily 10am – 10pm</a></div>
   </div>
   <div class="wrap flinks">
     <p><b>Popular categories: </b><span id="popcats"></span></p>
-    <p><b>Showroom par payment:</b></p>
+    <p><b>Payment at showroom:</b></p>
     <div class="pay" id="pay"></div>
-    <p style="margin-top:10px">Order WhatsApp par confirm hota hai. Online payment website par abhi nahi hai.</p>
+    <p style="margin-top:10px">Orders are confirmed on WhatsApp. Online payment is not available on the website yet.</p>
   </div>
   <div class="fbottom print">
     <div class="wrap"><span>© <span id="yr"></span> SR Handicraft &amp; Furniture</span><span><a href="#/page/policies">Delivery &amp; Returns</a><a href="#/page/contact">Contact</a></span></div>
@@ -508,7 +508,7 @@ const SHOP = {
   shipping:     0,       // delivery charge (0 = "delivery par baat karein")
   warranty:     "",      // jaise "12 months on manufacturing defects" — khali = nahi dikhega
   returns:      "",      // jaise "7 din mein damaged/galat product wapas"
-  assembly:     "Free, humari team karti hai",
+  assembly:     "Free, done by our team",
   /* Aapki ASLI Google rating — Business Profile se copy karein */
   googleRating: "4.6",
   googleCount:  "38",
@@ -720,7 +720,7 @@ function shareData(pid){
   const hash = p ? "#/p/"+p.id : (location.hash||"#/");
   const url = STORE.site ? base+"/"+hash : base+hash;
   const title = p ? p.name+" | SR Handicraft & Furniture" : "SR Handicraft & Furniture";
-  const text = p ? `${p.name} sirf ${inr(p.price)} mein (MRP ${inr(p.mrp)}, ${off(p)}% off) – SR Handicraft & Furniture par dekhiye:` : "SR Handicraft & Furniture – handmade furniture, pooja mandir aur home decor. Dekhiye:";
+  const text = p ? `${p.name} for just ${inr(p.price)} (MRP ${inr(p.mrp)}, ${off(p)}% off) – see it at SR Handicraft & Furniture:` : "SR Handicraft & Furniture – solid wood furniture and hand carved pooja mandirs. Take a look:";
   return {url,title,text};
 }
 function waHref(pid){ const d=shareData(pid); return "https://api.whatsapp.com/send?text="+encodeURIComponent(d.text+" "+d.url); }
@@ -729,7 +729,7 @@ function copyText(t){
   if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(t).then(()=>toast("Link copied"),()=>fallbackCopy(t)); }
   else fallbackCopy(t);
 }
-function fallbackCopy(t){ const i=document.createElement("textarea"); i.value=t; i.style.position="fixed"; i.style.opacity="0"; document.body.appendChild(i); i.select(); try{document.execCommand("copy");toast("Link copied");}catch(e){toast("Link select karke copy karein");} i.remove(); }
+function fallbackCopy(t){ const i=document.createElement("textarea"); i.value=t; i.style.position="fixed"; i.style.opacity="0"; document.body.appendChild(i); i.select(); try{document.execCommand("copy");toast("Link copied");}catch(e){toast("Please select the link and copy it");} i.remove(); }
 function doShare(kind,d){
   const u=encodeURIComponent(d.url), t=encodeURIComponent(d.text), full=encodeURIComponent(d.text+" "+d.url);
   const links={
@@ -810,7 +810,7 @@ function card(p){
       ${SHOP.emi?`<span class="emi">EMI from ${inr(p.price/12)}/month</span>`:`<span class="emi">${p.material}</span>`}
       <div class="cact">
         <button class="add" data-add="${p.id}">Add to cart</button>
-        <a class="wabtn" href="${waHref(p.id)}" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="WhatsApp par share karein">${SHI.wa}</a>
+        <a class="wabtn" href="${waHref(p.id)}" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="Share on WhatsApp">${SHI.wa}</a>
       </div>
     </div>
   </article>`;
@@ -839,8 +839,8 @@ function home(){
     <section class="hero">
       <div class="hmain print">
         <div>
-          <h1>Haath ki kaarigari, ghar bhar ki shaan</h1>
-          <p>Sheesham, mango aur teak wood ka furniture — bed, sofa, dining, wardrobe aur haath se carved pooja mandir. Apne size ka banwaiye.</p>
+          <h1>Handcrafted furniture, made to last</h1>
+          <p>Solid sheesham, mango and teak wood furniture — beds, sofas, dining sets, wardrobes and hand carved pooja mandirs. Made to your size.</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn" href="#/c/furniture">Shop furniture</a>
             <a class="btn ghost" href="#/c/handicraft">Explore handicraft</a>
@@ -849,8 +849,8 @@ function home(){
         <div class="art">${ph("hero", art("sofa","#8C4A2F"))}</div>
       </div>
       <div class="hside">
-        <a class="hcard" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Haath se carved, sheesham wood</p><span class="l">Shop now</span></div>${ph("brass", art("elephant","#C9962F"))}</a>
-        <a class="hcard" href="#/page/custom"><div><h3>Apne size ka furniture</h3><p>Custom design, wood aur finish chuniye</p><span class="l">Get a quote</span></div>${ph("custom", art("wardrobe","#8E5B3A"))}</a>
+        <a class="hcard" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Hand carved in sheesham wood</p><span class="l">Shop now</span></div>${ph("brass", art("elephant","#C9962F"))}</a>
+        <a class="hcard" href="#/page/custom"><div><h3>Made to your size</h3><p>Choose your design, wood and finish</p><span class="l">Get a quote</span></div>${ph("custom", art("wardrobe","#8E5B3A"))}</a>
       </div>
     </section>
 
@@ -862,8 +862,8 @@ function home(){
     <section class="blk" style="padding-top:0">
       <div class="usp">
         <div><b>Solid wood</b><span>Sheesham, mango &amp; teak</span></div>
-        <div><b>Apne size ka</b><span>Custom size, wood &amp; finish</span></div>
-        <div><b>Showroom</b><span>Dekh kar, chhu kar khareediye</span></div>
+        <div><b>Made to measure</b><span>Custom size, wood &amp; finish</span></div>
+        <div><b>Showroom</b><span>See and feel it before you buy</span></div>
         <div><b>Handmade</b><span>Crafted by Indian artisans</span></div>
       </div>
     </section>
@@ -874,14 +874,14 @@ function home(){
     </section>
 
     ${(PHOTOS.strip||[]).length?`<section class="blk">
-      <div class="sh"><h2>Hamara kaam</h2><a href="#/c/handicraft">View all</a></div>
+      <div class="sh"><h2>Our work</h2><a href="#/c/handicraft">View all</a></div>
       <div class="mq"><div class="mqin">${[...PHOTOS.strip,...PHOTOS.strip].map(u=>`<img src="${u}" alt="SR Handicraft work" loading="lazy">`).join("")}</div></div>
     </section>`:""}
 
     <section class="blk">
       <div class="promos">
         <a class="promo a" href="#/c/furniture/dining"><div><h3>Dining sets</h3><p>Pure sheesham, 6 &amp; 8 seater</p><span>Shop dining</span></div>${ph("promo_dining", art("table","#7A4A2C"))}</a>
-        <a class="promo b" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Hand carved, ghar ki pooja ke liye</p><span>Shop mandirs</span></div>${ph("promo_pooja", art("mandir","#8A4B2A"))}</a>
+        <a class="promo b" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Hand carved for your home</p><span>Shop mandirs</span></div>${ph("promo_pooja", art("mandir","#8A4B2A"))}</a>
         <a class="promo c" href="#/c/lighting"><div><h3>Lamps &amp; lighting</h3><p>Brass &amp; jute lamps</p><span>Shop lighting</span></div>${ph("promo_lighting", art("lamp","#B8862B"))}</a>
       </div>
     </section>
@@ -894,11 +894,11 @@ function home(){
     <section class="blk">
       <div class="store print">
         <div class="t">
-          <h2>Showroom par aaiye, furniture chhu kar dekhiye</h2>
+          <h2>Visit our showroom and see the furniture in person</h2>
           <p>${STORE.address}</p><p>${STORE.hours}</p><p>${STORE.phone}</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
             <a class="btn brass" href="${STORE.maps&&STORE.maps.length>28?STORE.maps:"#/page/store"}" ${STORE.maps&&STORE.maps.length>28?'target="_blank" rel="noopener"':""}>Get directions</a>
-            <a class="btn ghost" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, mujhe showroom visit book karni hai")}" target="_blank" rel="noopener">Book a visit</a>
+            <a class="btn ghost" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, I would like to book a showroom visit.")}" target="_blank" rel="noopener">Book a visit</a>
           </div>
         </div>
         <div class="map">${ph("showroom", art("mandir","#8A4B2A"))}</div>
@@ -965,7 +965,7 @@ function listing(title, crumbs, base, cat, subSlug){
         <h4>Material</h4>${mats.map(m=>`<label><input type="checkbox" data-f="mat" value="${m}" ${LST.mat.includes(m)?"checked":""}>${m}</label>`).join("")}
         ${(LST.price.length||LST.mat.length)?`<button class="btn ghost" id="clearf" style="margin-top:12px;height:38px;width:100%">Clear filters</button>`:""}
       </aside>
-      <div>${items.length?`<div class="grid">${items.map(card).join("")}</div>`:`<div class="empty"><p>Is filter mein koi product nahi mila. Filters hata kar dobara dekhiye.</p><button class="btn" id="clearf2">Clear filters</button></div>`}</div>
+      <div>${items.length?`<div class="grid">${items.map(card).join("")}</div>`:`<div class="empty"><p>No products match these filters. Try removing a filter.</p><button class="btn" id="clearf2">Clear filters</button></div>`}</div>
     </div>
   </div>`;
 }
@@ -988,7 +988,7 @@ function pdp(p){
         <h1>${esc(p.name)}</h1>
         <div class="rt">${SHOP.googleRating?`<b>${SHOP.googleRating} ★</b>${SHOP.googleCount} Google reviews · `:""}${SHOP.googleLink?`<a href="${SHOP.googleLink}" target="_blank" rel="noopener" style="color:var(--rose)">SR Handicraft &amp; Furniture, Pune</a>`:"SR Handicraft &amp; Furniture, Pune"}</div>
         <div class="price" style="margin-top:10px"><span class="p">${inr(p.price)}</span><s>MRP ${inr(p.mrp)}</s><span class="off">${off(p)}% off</span></div>
-        <div class="emi">Inclusive of all taxes.${SHOP.emi?` No-cost EMI from ${inr(p.price/12)}/month.`:""} Size, wood aur finish customise ho sakta hai.</div>
+        <div class="emi">Inclusive of all taxes.${SHOP.emi?` No-cost EMI from ${inr(p.price/12)}/month.`:""} Size, wood and finish can be customised.</div>
         <div class="box">
           <b>Check delivery</b>
           <div class="pin" style="margin-top:8px"><input id="pin" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit pincode" aria-label="Pincode"><button class="btn ghost" id="pinbtn" style="height:42px">Check</button></div>
@@ -1002,7 +1002,7 @@ function pdp(p){
           <button class="btn brass" data-buy="${p.id}">Buy now</button>
           <button class="btn ghost" data-wish="${p.id}" style="flex:0 0 auto">${wish.includes(p.id)?"♥ Wishlisted":"♡ Wishlist"}</button>
         </div>
-        <a class="wabig" href="${waHref(p.id)}" target="_blank" rel="noopener">${SHI.wa}<span>WhatsApp par share karein</span></a>
+        <a class="wabig" href="${waHref(p.id)}" target="_blank" rel="noopener">${SHI.wa}<span>Share on WhatsApp</span></a>
         <div class="shr">
           <span>Share:</span>
           <button type="button" class="sc swa" data-sh="wa" data-pid="${p.id}" aria-label="Share on WhatsApp">${SHI.wa}</button>
@@ -1022,7 +1022,7 @@ function pdp(p){
             <tr><td>Product ID</td><td>SR-${String(p.id).padStart(4,"0")}</td></tr>
           </table>
         </div>
-        <div class="box"><b>Description</b><p style="margin:6px 0 0;color:var(--muted)">Hand finished by skilled artisans using ${p.material.toLowerCase()}. Small variations in grain and colour are natural and make every piece unique. Size or finish change karwana ho to WhatsApp par message kijiye.</p></div>
+        <div class="box"><b>Description</b><p style="margin:6px 0 0;color:var(--muted)">Hand finished by skilled artisans using ${p.material.toLowerCase()}. Small variations in grain and colour are natural and make every piece unique. To change the size or finish, message us on WhatsApp.</p></div>
       </div>
     </div>
     ${sim.length?`<section class="blk"><div class="sh"><h2>Similar products</h2><a href="#/c/${cat.key}">View all</a></div><div class="rail">${sim.map(card).join("")}</div></section>`:""}
@@ -1031,11 +1031,11 @@ function pdp(p){
 
 function cartView(){
   const ids = Object.keys(cart).map(Number).filter(id=>P.find(p=>p.id===id));
-  if (!ids.length) return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / Cart</div><div class="empty" style="margin:20px 0 40px"><h2 style="font-family:var(--display);font-weight:400;color:var(--ink)">Cart khali hai</h2><p>Bestsellers dekhiye aur pasand ka product add kijiye.</p><a class="btn" href="#/s/bestseller">Shop bestsellers</a></div></div>`;
+  if (!ids.length) return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / Cart</div><div class="empty" style="margin:20px 0 40px"><h2 style="font-family:var(--display);font-weight:400;color:var(--ink)">Your cart is empty</h2><p>Browse our bestsellers and add something you like.</p><a class="btn" href="#/s/bestseller">Shop bestsellers</a></div></div>`;
   const rows = ids.map(id=>({p:P.find(x=>x.id===id),q:cart[id]}));
   const mrp = rows.reduce((a,r)=>a+r.p.mrp*r.q,0), sub = rows.reduce((a,r)=>a+r.p.price*r.q,0);
   const ship = (SHOP.freeDelivery && sub>=SHOP.freeDelivery) ? 0 : (SHOP.shipping||0), total = sub+ship;
-  const msg = "Hi SR Handicraft, mujhe ye order karna hai:\n" + rows.map(r=>`• ${r.p.name} x${r.q} = ${inr(r.p.price*r.q)}`).join("\n") + `\nTotal: ${inr(total)}`;
+  const msg = "Hi SR Handicraft, I would like to order:\n" + rows.map(r=>`• ${r.p.name} x${r.q} = ${inr(r.p.price*r.q)}`).join("\n") + `\nTotal: ${inr(total)}`;
   return `<div class="wrap">
     <div class="crumbs"><a href="#/">Home</a> / Cart</div>
     <div class="lhead"><h1>My cart<small>${rows.reduce((a,r)=>a+r.q,0)} items</small></h1></div>
@@ -1051,10 +1051,10 @@ function cartView(){
         <b style="font-size:17px">Order summary</b>
         <div class="r"><span>Total MRP</span><span>${inr(mrp)}</span></div>
         <div class="r" style="color:var(--ok)"><span>Discount</span><span>− ${inr(mrp-sub)}</span></div>
-        <div class="r"><span>Delivery</span><span>${ship?inr(ship):(SHOP.freeDelivery&&sub>=SHOP.freeDelivery?"Free":"Baat kar lenge")}</span></div>
+        <div class="r"><span>Delivery</span><span>${ship?inr(ship):(SHOP.freeDelivery&&sub>=SHOP.freeDelivery?"Free":"To be confirmed")}</span></div>
         <div class="r tot"><span>Total</span><span>${inr(total)}</span></div>
         <a class="btn" style="width:100%;margin-top:14px" target="_blank" rel="noopener" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent(msg)}">Place order on WhatsApp</a>
-        <p style="font-size:13px;color:var(--muted);margin:10px 0 0">${SHOP.freeDelivery? (sub>=SHOP.freeDelivery?"Aapko free delivery mil rahi hai.":`${inr(SHOP.freeDelivery-sub)} aur add karein aur free delivery paayein.`) : "Delivery charge aapke area ke hisaab se — WhatsApp par bata denge."}</p>
+        <p style="font-size:13px;color:var(--muted);margin:10px 0 0">${SHOP.freeDelivery? (sub>=SHOP.freeDelivery?"You get free delivery.":`Add ${inr(SHOP.freeDelivery-sub)} more for free delivery.`) : "Delivery charges depend on your area — we will confirm on WhatsApp."}</p>
       </aside>
     </div>
   </div>`;
@@ -1064,25 +1064,25 @@ function wishView(){
   const l = P.filter(p=>wish.includes(p.id));
   return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / Wishlist</div>
     <div class="lhead"><h1>My wishlist<small>${l.length} items</small></h1></div>
-    ${l.length?`<div class="grid" style="margin-bottom:40px">${l.map(card).join("")}</div>`:`<div class="empty" style="margin-bottom:40px"><p>Wishlist khali hai. Product par ♡ dabaiye, wo yahan save ho jayega.</p><a class="btn" href="#/">Start shopping</a></div>`}</div>`;
+    ${l.length?`<div class="grid" style="margin-bottom:40px">${l.map(card).join("")}</div>`:`<div class="empty" style="margin-bottom:40px"><p>Your wishlist is empty. Tap ♡ on any product to save it here.</p><a class="btn" href="#/">Start shopping</a></div>`}</div>`;
 }
 
 const PAGES = {
   store:["Visit our showroom",`<p>${STORE.address}</p><p>${STORE.hours}</p><p>Phone: ${STORE.phone}</p>${STORE.maps&&STORE.maps.length>28?`<p><a href="${STORE.maps}" target="_blank" rel="noopener" style="color:var(--rose);font-weight:600">Open in Google Maps</a></p>`:""}`],
-  custom:["Apne size ka furniture",`<p>Ghar ki jagah ke hisaab se furniture banwana ho to hum bana dete hain — bed, wardrobe, dining table, mandir, kuch bhi.</p><p><b>Kaise kaam hota hai:</b></p><p>1. WhatsApp par jagah ki photo aur naap bhejiye<br>2. Wood (sheesham / mango / teak) aur finish chuniye<br>3. Hum design aur rate bata denge<br>4. Pasand aaye to banana shuru</p><p>Showroom par aakar samples dekh sakte hain: ${STORE.address}</p>`],
-  bulk:["Hotel, office & bulk orders",`<p>Hotel, restaurant, office aur interior designers ke liye hum bulk mein banate hain — ek jaisa design, ek jaisi finish, poore order mein.</p><p>Kitne piece chahiye, kis design ke, aur kab tak — ye WhatsApp par bhej dijiye. Rate aur time bata denge.</p>`],
-  dealer:["Dealer baniye",`<p>Apne sheher mein SR Handicraft ka furniture bechna chahte hain to humse baat kijiye. Hum sheesham, mango aur teak wood ka furniture seedha banate hain, isliye dealer ko sahi rate milta hai.</p><p>Apna sheher aur dukaan ki jaankari WhatsApp par bhejiye.</p>`],
-  track:["Order ka status",`<p>Apna naam ya order number WhatsApp par bhej dijiye — hum turant bata denge ki aapka furniture kis stage par hai.</p><p>Phone: ${STORE.phone}</p>`],
+  custom:["Custom furniture",`<p>Need furniture made to fit your space? We build it to order — beds, wardrobes, dining tables, mandirs and more.</p><p><b>How it works:</b></p><p>1. Send us a photo and measurements of the space on WhatsApp<br>2. Choose the wood (sheesham / mango / teak) and finish<br>3. We share the design and price<br>4. Once you approve, we start making it</p><p>You can also see samples at our showroom: ${STORE.address}</p>`],
+  bulk:["Hotel, office & bulk orders",`<p>We make furniture in bulk for hotels, restaurants, offices and interior designers — the same design and finish across the whole order.</p><p>Send us the quantity, design and timeline on WhatsApp and we will share the price and delivery time.</p>`],
+  dealer:["Become a dealer",`<p>Want to sell SR Handicraft furniture in your city? Talk to us. We make sheesham, mango and teak wood furniture ourselves, so dealers get fair rates.</p><p>Send us your city and store details on WhatsApp.</p>`],
+  track:["Order status",`<p>Send us your name or order number on WhatsApp and we will tell you right away what stage your furniture is at.</p><p>Phone: ${STORE.phone}</p>`],
   contact:["Contact us",`<p>Phone: ${STORE.phone}</p><p>WhatsApp: ${STORE.phone}</p><p>${STORE.address}</p>${STORE.email?`<p>Email: ${STORE.email}</p>`:""}`],
-  about:["SR Handicraft & Furniture ke baare mein",`<p>Hum Pune mein solid wood furniture banate aur bechte hain — sheesham, mango aur teak. Bed, sofa, dining set, wardrobe, study table, dressing table aur haath se carved pooja mandir.</p><p>Har piece humare apne kaarigar banate hain, isliye size, wood aur finish aapke ghar ke hisaab se badla ja sakta hai.</p><p>Showroom: ${STORE.address}<br>${STORE.hours}</p>`],
-  artisans:["Humare kaarigar",`<p>Humara furniture machine se nahi, haath se banta hai. Carving, jaali ka kaam, tile work — sab kaarigar apne haath se karte hain.</p><p>Isiliye har piece mein lakdi ka grain aur rang thoda alag hota hai. Yahi solid wood ki pehchan hai.</p>`],
-  export:["Export enquiry",`<p>Bahar ke buyers ke liye bulk order — sheesham aur mango wood furniture aur handicraft.</p><p>Item, quantity aur destination WhatsApp par bhej dijiye: ${STORE.phone}</p>`],
-  faq:["FAQs",`<p><b>Apne size ka bana sakte hain?</b> Haan. Size, wood aur finish aap chun sakte hain — WhatsApp par photo aur naap bhej dijiye.</p><p><b>Showroom kahan hai?</b> ${STORE.address}. ${STORE.hours}.</p><p><b>Delivery kitne din mein?</b> Stock ka saaman jaldi, custom order mein zyada time lagta hai — order ke waqt exact bata dete hain.</p>${SHOP.assembly?`<p><b>Assembly?</b> ${SHOP.assembly}.</p>`:""}`],
-  policies:["Shipping, returns & warranty",`${SHOP.returns?`<p><b>Returns:</b> ${SHOP.returns}</p>`:""}${SHOP.warranty?`<p><b>Warranty:</b> ${SHOP.warranty}</p>`:""}${SHOP.assembly?`<p><b>Assembly:</b> ${SHOP.assembly}</p>`:""}<p><b>Delivery:</b> ${SHOP.freeDelivery?`${inr(SHOP.freeDelivery)} se upar ke order par free delivery.`:"Delivery charge area ke hisaab se lagta hai — order se pehle bata diya jayega."}</p>`]
+  about:["About SR Handicraft & Furniture",`<p>We make and sell solid wood furniture in Pune — sheesham, mango and teak. Beds, sofas, dining sets, wardrobes, study tables, dressing tables and hand carved pooja mandirs.</p><p>Every piece is made by our own craftsmen, so the size, wood and finish can be adjusted to suit your home.</p><p>Showroom: ${STORE.address}<br>${STORE.hours}</p>`],
+  artisans:["Our craftsmen",`<p>Our furniture is made by hand, not by machine. Carving, jaali work and tile work are all done by our craftsmen.</p><p>That is why the grain and colour of the wood vary slightly from piece to piece — the mark of real solid wood.</p>`],
+  export:["Export enquiry",`<p>Bulk orders for international buyers — sheesham and mango wood furniture and handicrafts.</p><p>Send the item, quantity and destination on WhatsApp: ${STORE.phone}</p>`],
+  faq:["FAQs",`<p><b>Can you make furniture to my size?</b> Yes. You can choose the size, wood and finish — send us a photo and measurements on WhatsApp.</p><p><b>Where is the showroom?</b> ${STORE.address}. ${STORE.hours}.</p><p><b>How long does delivery take?</b> In-stock items ship quickly; custom orders take longer. We confirm the exact time when you order.</p>${SHOP.assembly?`<p><b>Assembly?</b> ${SHOP.assembly}.</p>`:""}`],
+  policies:["Shipping, returns & warranty",`${SHOP.returns?`<p><b>Returns:</b> ${SHOP.returns}</p>`:""}${SHOP.warranty?`<p><b>Warranty:</b> ${SHOP.warranty}</p>`:""}${SHOP.assembly?`<p><b>Assembly:</b> ${SHOP.assembly}</p>`:""}<p><b>Delivery:</b> ${SHOP.freeDelivery?`Free delivery on orders above ${inr(SHOP.freeDelivery)}.`:"Delivery charges depend on your area and are confirmed before you order."}</p>`]
 };
 function page(k){
-  const [t,b] = PAGES[k] || ["Page not found","<p>Ye page nahi mila.</p>"];
-  return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / ${t}</div><div style="max-width:720px;padding:10px 0 40px"><h1 style="font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);margin:0 0 12px">${t}</h1>${b}<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, "+t+" ke baare mein jaankari chahiye")}" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn ghost" href="tel:${STORE.phone.replace(/\s/g,"")}">Call us</a></div></div></div>`;
+  const [t,b] = PAGES[k] || ["Page not found","<p>We could not find this page.</p>"];
+  return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / ${t}</div><div style="max-width:720px;padding:10px 0 40px"><h1 style="font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);margin:0 0 12px">${t}</h1>${b}<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, I would like to know more about: "+t)}" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn ghost" href="tel:${STORE.phone.replace(/\s/g,"")}">Call us</a></div></div></div>`;
 }
 
 /* ============ ROUTER ============ */
@@ -1136,10 +1136,10 @@ function bindView(){
   if(qv){ $("#qm").onclick=()=>{q=Math.max(1,q-1);qv.textContent=q;}; $("#qp").onclick=()=>{q=Math.min(10,q+1);qv.textContent=q;}; }
   const pb=$("#pinbtn"); if(pb) pb.onclick=()=>{
     const v=$("#pin").value.trim(), r=$("#pinres");
-    if(!/^[1-9]\d{5}$/.test(v)){ r.style.color="var(--warn)"; r.textContent="Sahi 6-digit pincode daaliye."; return; }
+    if(!/^[1-9]\d{5}$/.test(v)){ r.style.color="var(--warn)"; r.textContent="Please enter a valid 6-digit pincode."; return; }
     const local=(SHOP.localPins||[]).some(x=>v.startsWith(x));
-    if(local){ r.style.color="var(--ok)"; r.textContent=`Haan, ${v} mein hum delivery karte hain.${SHOP.assembly?" Assembly: "+SHOP.assembly.toLowerCase()+".":""} Date order confirm karte waqt bata denge.`; }
-    else { r.style.color="var(--ink)"; r.textContent=`${v} humare regular delivery area se bahar hai. Transport se bhej sakte hain — charge aur time WhatsApp par bata denge.`; }
+    if(local){ r.style.color="var(--ok)"; r.textContent=`Yes, we deliver to ${v}.${SHOP.assembly?" Assembly: "+SHOP.assembly.toLowerCase()+".":""} We will confirm the date when you order.`; }
+    else { r.style.color="var(--ink)"; r.textContent=`${v} is outside our regular delivery area. We can ship by transport — we will share the charge and time on WhatsApp.`; }
   };
   document.querySelectorAll("[data-addq]").forEach(b=>b.onclick=()=>{const id=+b.dataset.addq;cart[id]=(cart[id]||0)+q;save("sr_cart",cart);counts();toast("Added to cart");});
   document.querySelectorAll("[data-buy]").forEach(b=>b.onclick=()=>{const id=+b.dataset.buy;cart[id]=(cart[id]||0)+q;save("sr_cart",cart);counts();location.hash="#/cart";});
@@ -1166,7 +1166,7 @@ qi.addEventListener("input",()=>{
   const v=qi.value.trim().toLowerCase();
   if(v.length<2){sg.style.display="none";return;}
   const r=P.filter(p=>(p.name+" "+p.sub+" "+p.material).toLowerCase().includes(v)).slice(0,6);
-  sg.innerHTML = r.length ? r.map(p=>`<a href="#/p/${p.id}">${esc(p.name)}<span>${inr(p.price)}</span></a>`).join("") : `<a href="#/s/${encodeURIComponent(v)}">"${esc(v)}" ke liye sab results dekhein<span></span></a>`;
+  sg.innerHTML = r.length ? r.map(p=>`<a href="#/p/${p.id}">${esc(p.name)}<span>${inr(p.price)}</span></a>`).join("") : `<a href="#/s/${encodeURIComponent(v)}">See all results for "${esc(v)}"<span></span></a>`;
   sg.style.display="block";
 });
 $("#searchForm").addEventListener("submit",e=>{e.preventDefault();const v=qi.value.trim();if(v){location.hash="#/s/"+encodeURIComponent(v);qi.blur();}});
@@ -1185,7 +1185,7 @@ $("#ftel").textContent = STORE.phone; $("#ftel").href = "tel:"+STORE.phone.repla
 $("#fhrs").textContent = STORE.hours;
 if(STORE.email){ const m=$("#fmail"); m.hidden=false; m.textContent=STORE.email; m.href="mailto:"+STORE.email; }
 document.querySelector('meta[name="description"]').setAttribute("content",
-  "SR Handicraft & Furniture, Patil Nagar Pune — sheesham, mango aur teak wood furniture: storage beds, sofa sets, dining sets, wardrobes, pooja mandir aur home decor. Custom size, free delivery & assembly.");
+  "SR Handicraft & Furniture, Patil Nagar, Pune — solid sheesham, mango and teak wood furniture: storage beds, sofa sets, dining sets, wardrobes and hand carved pooja mandirs. Custom sizes available.");
 buildNav(); counts(); route();
 </script>
 </body>
