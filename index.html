@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SR Handicraft & Furniture | Solid Wood Furniture & Handicrafts Online</title>
 <meta name="description" content="Solid sheesham wood furniture in Pune — storage beds, sofa sets, dining sets, wardrobes, study tables and hand carved pooja mandirs. Custom sizes. Showroom at Patil Nagar, Bengaluru–Mumbai Highway.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6B2D1C">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SR Handicraft">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -376,6 +384,20 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 @keyframes mqs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:700px){.mqin img{height:130px}.mqin{animation-duration:30s}}
 @media (prefers-reduced-motion: reduce){.mqin{animation:none}}
+
+/* ===== Install app ===== */
+.appbar{position:fixed;left:12px;right:84px;bottom:14px;z-index:55;display:flex;align-items:center;gap:10px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 10px 10px 12px;box-shadow:0 10px 30px rgba(0,0,0,.18);animation:abup .3s ease}
+.appbar[hidden]{display:none}
+.appbar img{border-radius:10px;flex:0 0 44px}
+.ab-t{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.ab-t b{font-size:14px}
+.ab-t span{font-size:12px;color:var(--muted)}
+.appbar .btn{height:38px;padding:0 14px;flex:0 0 auto}
+.appbar .btn[hidden]{display:none}
+.ab-x{border:0;background:none;color:var(--muted);font-size:22px;line-height:1;cursor:pointer;padding:0 4px;flex:0 0 auto}
+@media(min-width:761px){.appbar{left:auto;right:90px;max-width:430px}}
+@keyframes abup{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+@media (display-mode: standalone){.appbar,#installBtn{display:none!important}}
 </style>
 </head>
 <body>
@@ -408,6 +430,9 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
       <div class="sugg" id="sugg"></div>
     </form>
     <div class="icons">
+      <button class="ib" type="button" id="installBtn" aria-label="Install app" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7v8M8.8 12 12 15.2 15.2 12"/></svg><span class="lbl">App</span>
+      </button>
       <button class="ib" type="button" data-share="page" aria-label="Share">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span class="lbl">Share</span>
       </button>
@@ -480,6 +505,12 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
     </div>
     <div class="shlink"><input id="shurl" readonly aria-label="Link"><button type="button" class="btn" data-sh="copy">Copy link</button></div>
   </div>
+</div>
+<div class="appbar" id="appbar" role="dialog" aria-label="Install app" hidden>
+  <img src="icon-192.png" alt="" width="44" height="44">
+  <div class="ab-t"><b>Install our app</b><span id="abmsg">One tap from your home screen. Free.</span></div>
+  <button type="button" class="btn" id="abInstall">Install</button>
+  <button type="button" class="ab-x" id="abClose" aria-label="Close">&times;</button>
 </div>
 <div class="toast" id="toast" role="status"></div>
 
@@ -1180,6 +1211,41 @@ window.addEventListener("hashchange",()=>{ route(); scrollTo(0,0); });
 $("#pay").innerHTML = (SHOP.payments||[]).map(x=>`<span>${x}</span>`).join("");
 if(SHOP.offer){ $("#strip").hidden=false; $("#stripmsg").textContent=SHOP.offer; }
 $("#yr").textContent=new Date().getFullYear();
+
+/* ===== Install as app (PWA) ===== */
+(function(){
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  if ('serviceWorker' in navigator && window.isSecureContext && location.protocol !== 'file:') {
+    addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  }
+  if (standalone) return;
+  const bar=$("#appbar"), btn=$("#installBtn"), go=$("#abInstall");
+  const KEY='sr_app_dismissed', WEEK=7*864e5;
+  const snoozed=()=>{ try{ return Date.now()-(+localStorage.getItem(KEY)||0) < WEEK; }catch(e){ return false; } };
+  const hide=()=>{ bar.hidden=true; };
+  let deferred=null;
+  async function install(){
+    if(!deferred) return;
+    deferred.prompt();
+    const r = await deferred.userChoice.catch(()=>({}));
+    deferred=null; btn.hidden=true; hide();
+    if(r && r.outcome==='accepted') toast('App installed');
+  }
+  addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); deferred=e; btn.hidden=false;
+    if(!snoozed()) setTimeout(()=>{ if(deferred) bar.hidden=false; }, 4000);
+  });
+  addEventListener('appinstalled', () => { deferred=null; btn.hidden=true; hide(); });
+  btn.onclick=install; go.onclick=install;
+  $("#abClose").onclick=()=>{ hide(); try{ localStorage.setItem(KEY, Date.now()); }catch(e){} };
+  // iPhone/iPad Safari has no install prompt — show the manual steps instead
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  if(ios && !snoozed()){
+    $("#abmsg").innerHTML='Tap <b>Share</b> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M12 3v12M8 7l4-4 4 4M5 12v8h14v-8"/></svg> then <b>Add to Home Screen</b>.';
+    go.hidden=true;
+    setTimeout(()=>{ bar.hidden=false; }, 4000);
+  }
+})();
 $("#fadr").textContent = STORE.address;
 $("#ftel").textContent = STORE.phone; $("#ftel").href = "tel:"+STORE.phone.replace(/\s/g,"");
 $("#fhrs").textContent = STORE.hours;
