@@ -74,7 +74,8 @@ textarea.i{min-height:90px;resize:vertical}
 .inst{display:none}.can-install .inst{display:inline-block}
 .ios-tip{display:none;font-size:13px;color:var(--muted);background:#fff;border:1px dashed #CDBBA8;border-radius:10px;padding:10px 12px;margin-top:14px;text-align:left}.is-ios .ios-tip{display:block}
 .top .inst{background:#fff;color:var(--rose);font-weight:700}
-@media(max-width:430px){.top{gap:6px;padding:10px}.top b{font-size:14px}.top button,.top a{padding:6px 8px;font-size:12px}}
+.top button,.top a,.top b{white-space:nowrap}
+@media(max-width:430px){.top{gap:6px;padding:10px}.top .lg{display:none}.top button,.top a{padding:7px 9px;font-size:12.5px}}
 </style>
 </head>
 <body>
@@ -257,7 +258,7 @@ function renderLogin(){
 function render(){
   const tabs = [["products","Products"],["photos","Website photos"],["cats","Categories"],["account","My account"],...(S.isSuper?[["team","Team"]]:[])];
   $("#app").innerHTML = `
-    <div class="top"><b>SR Handicraft · Admin</b><span class="sp"></span><button class="inst" type="button">Install app</button><a href="/" target="_blank">Website</a><button id="so">Sign out</button></div>
+    <div class="top"><b>SR <span class="lg">Handicraft · </span>Admin</b><span class="sp"></span><button class="inst" type="button">Install app</button><a href="/" target="_blank">Website</a><button id="so">Sign out</button></div>
     <div class="tabs">${tabs.map(([k,l])=>`<button data-tab="${k}" class="${S.tab===k?"on":""}">${l}</button>`).join("")}</div>
     <main id="main"></main>`;
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { S.tab = b.dataset.tab; render(); });
