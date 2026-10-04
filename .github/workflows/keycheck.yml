@@ -1,0 +1,17 @@
+name: keycheck
+on:
+  push:
+    branches: [ci-test]
+jobs:
+  k:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check
+        run: |
+          K=AIzaSyBHq2EIVKvvUTFYs8PHVnvpMOt0F3fvEiw
+          A=$(curl -s "https://firestore.googleapis.com/v1/projects/sr-handicraft/databases/(default)/documents/products?pageSize=1&key=$K" | head -c 400)
+          B=$(curl -s "https://firestore.googleapis.com/v1/projects/sr-handicraft/databases/(default)/documents/admins?key=$K" | head -c 400)
+          C=$(curl -s -X POST -H 'Content-Type: application/json' -d '{"email":"nobody-test@example.com","password":"wrongpass1","returnSecureToken":true}' "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=$K" | head -c 400)
+          M="PRODUCTS: $A ||| ADMINS: $B ||| AUTH: $C"
+          echo "$M"
+          echo "::error title=K::$(echo "$M" | tr '\n' ' ')"
