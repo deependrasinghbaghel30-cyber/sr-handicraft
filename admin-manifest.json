@@ -1,0 +1,17 @@
+{
+  "id": "/admin.html",
+  "name": "SR Handicraft Admin",
+  "short_name": "SR Admin",
+  "description": "Manage products and website photos for SR Handicraft & Furniture.",
+  "start_url": "/admin.html?source=app",
+  "scope": "/admin",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F3EE",
+  "theme_color": "#6B2D1C",
+  "icons": [
+    { "src": "/admin-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/admin-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/admin-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
