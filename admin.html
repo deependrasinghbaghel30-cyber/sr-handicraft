@@ -93,12 +93,31 @@ textarea.i{min-height:90px;resize:vertical}
   var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   if (ios) document.documentElement.classList.add('is-ios');
   window.__install = null;
-  addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); window.__install = e; document.documentElement.classList.add('can-install'); });
-  addEventListener('appinstalled', function(){ window.__install = null; document.documentElement.classList.remove('can-install'); });
+  document.documentElement.classList.add('can-install');   // button always offered; falls back to the manual steps
+  addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); window.__install = e; });
+  addEventListener('appinstalled', function(){ window.__install = null; document.documentElement.classList.remove('can-install'); closeHelp(); });
+  function closeHelp(){ var h = document.getElementById('ihelp'); if (h) h.remove(); }
+  function help(){
+    closeHelp();
+    var steps = ios
+      ? '<li>Open this page in <b>Safari</b>.</li><li>Tap <b>Share</b> (the square with an arrow, at the bottom).</li><li>Scroll and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>'
+      : '<li>Tap the <b>⋮</b> menu at the top-right of Chrome.</li><li>Tap <b>Add to Home screen</b> (or <b>Install app</b>).</li><li>Tap <b>Install</b>. The <b>SR Admin</b> icon appears on your home screen.</li>';
+    var d = document.createElement('div'); d.id = 'ihelp';
+    d.setAttribute('style','position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center');
+    d.innerHTML = '<div style="background:#fff;border-radius:16px 16px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));width:100%;max-width:480px">'
+      + '<h3 style="margin:0 0 6px;color:#6B2D1C">Install SR Admin app</h3>'
+      + '<ol style="margin:8px 0 10px;padding-left:20px;line-height:1.7">' + steps + '</ol>'
+      + '<p style="font-size:12.5px;color:#7A6B5E;margin:0 0 14px">Already installed? Look for the cream <b>SR ADMIN</b> icon on your home screen.</p>'
+      + '<button type="button" class="btn" style="width:100%" id="ihok">OK</button></div>';
+    d.addEventListener('click', function(ev){ if (ev.target === d || ev.target.id === 'ihok') closeHelp(); });
+    document.body.appendChild(d);
+  }
   document.addEventListener('click', function(e){
-    var b = e.target.closest && e.target.closest('.inst'); if (!b || !window.__install) return;
-    e.preventDefault(); var p = window.__install; window.__install = null; document.documentElement.classList.remove('can-install');
-    p.prompt(); p.userChoice.catch(function(){});
+    var b = e.target.closest && e.target.closest('.inst'); if (!b) return;
+    e.preventDefault();
+    if (!window.__install) return help();
+    var p = window.__install; window.__install = null;
+    p.prompt(); p.userChoice.then(function(r){ if (r && r.outcome === 'accepted') document.documentElement.classList.remove('can-install'); }).catch(function(){});
   });
 })();
 </script>
