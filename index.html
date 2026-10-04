@@ -592,6 +592,7 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
+<script src="data.js"></script>
 <script>
 /* ============ CONFIG: yahan apni details badlo ============ */
 const STORE = {
@@ -624,76 +625,6 @@ const SHOP = {
   googleLink:   ""       // Google listing ka link (reviews page)
 };
 
-/* ============ CATEGORIES (mega menu) ============ */
-const CATS = [
-  {key:"furniture", name:"Furniture", art:"bed", groups:[
-    {name:"Beds", subs:["King Size Beds","Queen Size Beds"]},
-    {name:"Living Room", subs:["Sofa Sets","Coffee Tables","Nesting Tables","Console Tables"]},
-    {name:"Dining", subs:["Dining Sets"]},
-    {name:"Storage", subs:["Sideboards","Bar Cabinets"]},
-    {name:"Bedroom", subs:["Dressing Tables"]},
-    {name:"Study", subs:["Study Tables"]}
-  ]},
-  {key:"pooja", name:"Pooja Mandir", art:"mandir", groups:[
-    {name:"Mandirs", subs:["Floor Mandirs"]}
-  ]}
-];
-
-
-/* ============================================================
-   PHOTOS: yahan apni asli photos ke link daalo
-   ------------------------------------------------------------
-   - Har jagah EK se zyada photo daal sakte ho. Site par wo
-     apne aap ghoomti rahengi (float karti rahengi).
-   - Photo ka link kuch bhi ho sakta hai:
-       "sofa-1.jpg"  (same folder mein  banao)
-       "https://..."        (Google Drive/Cloudinary/koi bhi link)
-   - Jahan photo nahi daaloge, wahan purani drawing hi dikhegi.
-   - Product ki photo: uski id ka number likho (neeche dekho).
-   ============================================================ */
-const PHOTOS = {
-  /* --- Sections --- */
-  hero:      ["bed-room-1-w.jpg","sofa-set-2.jpg","poster-bed-2-w.jpg","sofa-set-1.jpg","bed-room-3-w.jpg"],
-  promo_dining:  ["dining-set-2.jpg","dining-set-1.jpg"],
-  promo_pooja:   ["mandir-1-room.jpg","mandir-2-room.jpg"],
-  promo_custom:  ["wardrobe-1.jpg","wardrobe-2.jpg","dressing-1.jpg"],
-  showroom:  ["sofa-set-3.jpg","mandir-2.jpg","sideboard-1.jpg","dressing-1.jpg","mandir-1.jpg"],
-  strip:     ["bed-storage-3.jpg","mandir-2.jpg","bed-tile-1.jpg","dressing-1.jpg","dining-top-1.jpg","poster-bed-3.jpg","mandir-1.jpg","bed-storage-1.jpg","coffee-table-room.jpg","sofa-jaali-detail.jpg","bar-cabinet-room.jpg","nesting-room.jpg","sideboard-room.jpg","bed-tile-1-detail.jpg","dining-set-3-detail.jpg"],
-
-  /* --- Category tiles (sub-category ke naam se) --- */
-  tile_beds:["bed-room-2.jpg","poster-bed-1.jpg"],
-  tile_dining:["dining-set-2.jpg","dining-set-1.jpg"],
-  tile_pooja:["mandir-1-room.jpg","mandir-2-room.jpg"],
-  tile_dressing:["dressing-1.jpg"],
-  tile_study:["study-2.jpg","study-1.jpg"],
-  tile_sofa:["sofa-set-1.jpg","sofa-jaali-1.jpg","sofa-wood-1.jpg"],
-  tile_coffee:["coffee-table-room.jpg","coffee-table-1.jpg"],
-  tile_storage:["sideboard-room.jpg","bar-cabinet-room.jpg"],
-  cat_furniture:["bed-room-1.jpg"],
-  cat_pooja:["mandir-1-room.jpg"],
-
-  /* --- Products (id ke saamne uski photos) --- */
-  4:  ["bed-room-1.jpg","bed-storage-2.jpg","bed-storage-1.jpg"],
-  5:  ["bed-room-2.jpg","bed-room-3.jpg","bed-storage-3.jpg"],
-  6:  ["dining-set-2.jpg","dining-set-1.jpg","dining-top-1.jpg"],
-  16: ["mandir-1-room.jpg","mandir-1.jpg","mandir-1-detail.jpg"],
-  17: ["mandir-2-room.jpg","mandir-2.jpg","mandir-2-detail.jpg"],
-  20: ["dressing-1.jpg","dressing-1-detail.jpg","dressing-1-detail2.jpg"],
-  26: ["poster-bed-3.jpg","poster-bed-1.jpg","poster-bed-2.jpg"],
-  29: ["study-1.jpg","study-2.jpg"],
-  30: ["bed-tile-1.jpg","bed-tile-1-detail.jpg"],
-  40: ["sofa-set-1.jpg","sofa-set-2.jpg","sofa-set-3.jpg"],
-  41: ["sofa-jaali-1.jpg","sofa-jaali-detail.jpg","sofa-jaali-detail2.jpg"],
-  42: ["sofa-wood-1.jpg","sofa-wood-detail.jpg","sofa-wood-detail2.jpg"],
-  43: ["coffee-table-room.jpg","coffee-table-1.jpg","coffee-table-detail.jpg","sofa-set-3.jpg"],
-  44: ["nesting-room.jpg","nesting-1.jpg","nesting-detail.jpg"],
-  45: ["console-1.jpg","console-1-detail.jpg"],
-  46: ["sideboard-room.jpg","sideboard-1.jpg","sideboard-detail.jpg"],
-  47: ["bar-cabinet-room.jpg","bar-cabinet-1.jpg","bar-cabinet-detail.jpg","bar-cabinet-2.jpg"],
-  48: ["bed-slat-room.jpg","bed-slat-1.jpg","bed-slat-detail.jpg"],
-  49: ["dining-set-3.jpg","dining-set-3-detail.jpg","dining-set-3-detail2.jpg"],
-};
-
 /* ============ REVIEWS: sirf ASLI Google reviews yahan daalein ============
    Google listing se copy karein. Khali rahega to section dikhega hi nahi.
    { name:"Rahul S.", text:"Bahut achha kaam...", stars:5 }            */
@@ -708,29 +639,6 @@ function ph(key, fallback){
   const L = PHOTOS[key]||[];
   return L.length ? `<span class="ph fl">${lys(L)}</span>` : fallback;
 }
-
-/* ============ PRODUCTS: yahan apne products daalo ============ */
-const P = [
- {id:4, name:"Sheesham King Size Bed with Storage",  cat:"furniture",sub:"King Size Beds", type:"bed",   color:"#A34A3A",material:"Sheesham Wood",price:54999},
- {id:30,name:"Hand Painted Tile Headboard Bed",      cat:"furniture",sub:"King Size Beds", type:"bed",   color:"#6B4A33",material:"Sheesham Wood",price:49999},
- {id:26,name:"Tile Work Poster Bed",                 cat:"furniture",sub:"Queen Size Beds",type:"bed",   color:"#7A4A2C",material:"Sheesham Wood",price:44999},
- {id:5, name:"Sheesham Queen Size Bed",              cat:"furniture",sub:"Queen Size Beds",type:"bed",   color:"#C7A36A",material:"Sheesham Wood",price:31999},
- {id:6, name:"Carved Sheesham 6 Seater Dining Set",  cat:"furniture",sub:"Dining Sets",    type:"table", color:"#7A4A2C",material:"Sheesham Wood",price:46999},
- {id:20,name:"Arched Mirror Dressing Table",         cat:"furniture",sub:"Dressing Tables",type:"mirror",color:"#8E5B3A",material:"Sheesham Wood",price:24999},
- {id:29,name:"Sheesham Study Table",                 cat:"furniture",sub:"Study Tables",   type:"table", color:"#8B5E3C",material:"Sheesham Wood",price:11499},
- {id:16,name:"Carved Sheesham Pooja Mandir",         cat:"pooja",    sub:"Floor Mandirs",  type:"mandir",color:"#8A4B2A",material:"Sheesham Wood",price:18999},
- {id:17,name:"Jaali Door Sheesham Pooja Mandir",     cat:"pooja",    sub:"Floor Mandirs",  type:"mandir",color:"#B97A45",material:"Sheesham Wood",price:16999},
- {id:48,name:"Slatted Headboard Box Storage Bed",    cat:"furniture",sub:"King Size Beds", type:"bed",   color:"#7A4A2C",material:"Sheesham Wood",price:39999},
- {id:40,name:"Carved Sheesham Sofa Set with Coffee Table",cat:"furniture",sub:"Sofa Sets", type:"sofa",  color:"#7A4A2C",material:"Sheesham Wood",price:89999},
- {id:41,name:"Jaali Work Sheesham Sofa Set",         cat:"furniture",sub:"Sofa Sets",      type:"sofa",  color:"#5A3B28",material:"Sheesham Wood",price:64999},
- {id:42,name:"Sheesham Wooden Sofa Set",             cat:"furniture",sub:"Sofa Sets",      type:"sofa",  color:"#8B5E3C",material:"Sheesham Wood",price:42999},
- {id:43,name:"Brass Stud Coffee Table with Stools",  cat:"furniture",sub:"Coffee Tables",  type:"table", color:"#7A4A2C",material:"Sheesham Wood",price:22999},
- {id:44,name:"Sheesham Nesting Tables (Set of 3)",   cat:"furniture",sub:"Nesting Tables", type:"table", color:"#8E5B3A",material:"Sheesham Wood",price:9999},
- {id:45,name:"Sheesham Console Table",               cat:"furniture",sub:"Console Tables", type:"table", color:"#A34A3A",material:"Sheesham Wood",price:14999},
- {id:49,name:"Jaali Back Sheesham Dining Set",       cat:"furniture",sub:"Dining Sets",    type:"table", color:"#8B5E3C",material:"Sheesham Wood",price:52999},
- {id:46,name:"Sheesham Sideboard with Drawers",      cat:"furniture",sub:"Sideboards",     type:"shelf", color:"#8E5B3A",material:"Sheesham Wood",price:38999},
- {id:47,name:"Brass Stud Bar Cabinet",               cat:"furniture",sub:"Bar Cabinets",   type:"wardrobe",color:"#6B4A33",material:"Sheesham Wood",price:34999}
-];
 
 /* ============ HELPERS ============ */
 /* khali category/sub menu mein na dikhein — product add karte hi apne aap aa jayenge */
@@ -894,7 +802,7 @@ function card(p){
     <div class="bd">
       <a href="#/p/${p.id}" class="nm">${esc(p.name)}</a>
       <div class="price"><span class="p">${inr(p.price)}</span></div>
-      ${SHOP.emi?`<span class="emi">EMI from ${inr(p.price/12)}/month</span>`:`<span class="emi">${p.material}</span>`}
+      ${SHOP.emi?`<span class="emi">EMI from ${inr(p.price/12)}/month</span>`:`<span class="emi">${esc(p.material)}</span>`}
       <div class="cact">
         <button class="add" data-add="${p.id}">Add to cart</button>
         <a class="wabtn" href="${waHref(p.id)}" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="Share on WhatsApp">${SHI.wa}</a>
@@ -1109,15 +1017,16 @@ function pdp(p){
         <div class="box">
           <b>Specifications</b>
           <table class="specs" style="margin-top:6px">
-            <tr><td>Material</td><td>${p.material}</td></tr>
-            <tr><td>Category</td><td>${p.sub}</td></tr>
+            <tr><td>Material</td><td>${esc(p.material)}</td></tr>
+            ${p.size?`<tr><td>Size</td><td>${esc(p.size)}</td></tr>`:""}
+            <tr><td>Category</td><td>${esc(p.sub)}</td></tr>
             <tr><td>Finish</td><td>Natural / Honey (customisable)</td></tr>
             ${SHOP.warranty?`<tr><td>Warranty</td><td>${SHOP.warranty}</td></tr>`:""}
             ${SHOP.assembly?`<tr><td>Assembly</td><td>${SHOP.assembly}</td></tr>`:""}
             <tr><td>Product ID</td><td>SR-${String(p.id).padStart(4,"0")}</td></tr>
           </table>
         </div>
-        <div class="box"><b>Description</b><p style="margin:6px 0 0;color:var(--muted)">Hand finished by skilled artisans using ${p.material.toLowerCase()}. Small variations in grain and colour are natural and make every piece unique. To change the size or finish, message us on WhatsApp.</p></div>
+        <div class="box"><b>Description</b><p style="margin:6px 0 0;color:var(--muted);white-space:pre-line">${p.desc?esc(p.desc)+"<br><br>":""}Hand finished by skilled artisans using ${esc(p.material.toLowerCase())}. Small variations in grain and colour are natural and make every piece unique. To change the size or finish, message us on WhatsApp.</p></div>
       </div>
     </div>
     ${sim.length?`<section class="blk"><div class="sh"><h2>Similar products</h2><a href="#/c/${cat.key}">View all</a></div><div class="rail">${sim.map(card).join("")}</div></section>`:""}
@@ -1161,15 +1070,6 @@ function wishView(){
     ${l.length?`<div class="grid" style="margin-bottom:40px">${l.map(card).join("")}</div>`:`<div class="empty" style="margin-bottom:40px"><p>Your wishlist is empty. Tap ♡ on any product to save it here.</p><a class="btn" href="#/">Start shopping</a></div>`}</div>`;
 }
 
-/* ============ CUSTOM WORK: wardrobes made to order (add more lines to show more) ============ */
-const CUSTOM_WORK = [
-  ["wardrobe-1.jpg","4-door wardrobe with diamond block carving"],
-  ["wardrobe-2.jpg","Floor-to-ceiling wardrobe with loft storage, made to fit the room"],
-  ["wardrobe-3.jpg","Hand carved floral wardrobe doors (close-up)"],
-  ["wardrobe-4.jpg","4-door panel wardrobe in a rich mahogany finish"],
-  ["wardrobe-5.jpg","2-door wardrobe with drawers"],
-  ["wardrobe-6.jpg","Wardrobe with 3D block carving (close-up)"],
-];
 function customGallery(){
   if(!CUSTOM_WORK.length) return "";
   return `<h2 style="font-family:var(--display);font-weight:400;font-size:24px;margin:26px 0 4px">Custom wardrobes we have made</h2>
@@ -1182,7 +1082,7 @@ function openLb(src){
 }
 const PAGES = {
   store:["Visit our showroom",`<p>${STORE.address}</p><p>${STORE.hours}</p><p>Phone: ${STORE.phone}</p>${STORE.maps&&STORE.maps.length>28?`<p><a href="${STORE.maps}" target="_blank" rel="noopener" style="color:var(--rose);font-weight:600">Open in Google Maps</a></p>`:""}`],
-  custom:["Custom furniture",`<p>Need furniture made to fit your space? We build it to order — beds, wardrobes, dining tables, mandirs and more.</p><p><b>How it works:</b></p><p>1. Send us a photo and measurements of the space on WhatsApp<br>2. Choose the design and finish<br>3. We share the design and price<br>4. Once you approve, we start making it</p><p>You can also see samples at our showroom: ${STORE.address}</p>${customGallery()}`],
+  custom:["Custom furniture",()=>`<p>Need furniture made to fit your space? We build it to order — beds, wardrobes, dining tables, mandirs and more.</p><p><b>How it works:</b></p><p>1. Send us a photo and measurements of the space on WhatsApp<br>2. Choose the design and finish<br>3. We share the design and price<br>4. Once you approve, we start making it</p><p>You can also see samples at our showroom: ${STORE.address}</p>${customGallery()}`],
   bulk:["Hotel, office & bulk orders",`<p>We make furniture in bulk for hotels, restaurants, offices and interior designers — the same design and finish across the whole order.</p><p>Send us the quantity, design and timeline on WhatsApp and we will share the price and delivery time.</p>`],
   dealer:["Become a dealer",`<p>Want to sell SR Handicraft furniture in your city? Talk to us. We make solid sheesham wood furniture ourselves, so dealers get fair rates.</p><p>Send us your city and store details on WhatsApp.</p>`],
   track:["Order status",`<p>Send us your name or order number on WhatsApp and we will tell you right away what stage your furniture is at.</p><p>Phone: ${STORE.phone}</p>`],
@@ -1194,7 +1094,8 @@ const PAGES = {
   policies:["Shipping, returns & warranty",`${SHOP.returns?`<p><b>Returns:</b> ${SHOP.returns}</p>`:""}${SHOP.warranty?`<p><b>Warranty:</b> ${SHOP.warranty}</p>`:""}${SHOP.assembly?`<p><b>Assembly:</b> ${SHOP.assembly}</p>`:""}<p><b>Delivery:</b> ${SHOP.freeDelivery?`Free delivery on orders above ${inr(SHOP.freeDelivery)}.`:"Delivery charges depend on your area and are confirmed before you order."}</p>`]
 };
 function page(k){
-  const [t,b] = PAGES[k] || ["Page not found","<p>We could not find this page.</p>"];
+  let [t,b] = PAGES[k] || ["Page not found","<p>We could not find this page.</p>"];
+  if (typeof b === "function") b = b();
   return `<div class="wrap"><div class="crumbs"><a href="#/">Home</a> / ${t}</div><div style="max-width:720px;padding:10px 0 40px"><h1 style="font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);margin:0 0 12px">${t}</h1>${b}<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, I would like to know more about: "+t)}" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn ghost" href="tel:${STORE.phone.replace(/\s/g,"")}">Call us</a></div></div></div>`;
 }
 
@@ -1337,7 +1238,58 @@ $("#fhrs").textContent = STORE.hours;
 if(STORE.email){ const m=$("#fmail"); m.hidden=false; m.textContent=STORE.email; m.href="mailto:"+STORE.email; }
 document.querySelector('meta[name="description"]').setAttribute("content",
   "SR Handicraft & Furniture, Patil Nagar, Pune — solid sheesham wood furniture: storage beds, sofa sets, dining sets, wardrobes and hand carved pooja mandirs. Custom sizes available.");
+/* ============ LIVE DATA from the admin panel (admin.html) ============
+   Products, photos and categories saved in the admin panel are read here.
+   The last copy is kept on the phone, so the site opens instantly and works
+   offline; the built-in data.js is only used until the first import. */
+const LIVE = { projectId: "", apiKey: "" };
+function fsv(v){
+  if(!v) return null;
+  if("stringValue" in v) return v.stringValue;
+  if("integerValue" in v) return +v.integerValue;
+  if("doubleValue" in v) return v.doubleValue;
+  if("booleanValue" in v) return v.booleanValue;
+  if("timestampValue" in v) return v.timestampValue;
+  if("arrayValue" in v) return (v.arrayValue.values||[]).map(fsv);
+  if("mapValue" in v){ const o={}, f=v.mapValue.fields||{}; for(const k in f) o[k]=fsv(f[k]); return o; }
+  return null;
+}
+const fsDoc = d => { const o={}, f=(d&&d.fields)||{}; for(const k in f) o[k]=fsv(f[k]); return o; };
+function applyLive(d){
+  if(!d) return;
+  if(Array.isArray(d.products) && d.products.length){
+    const list = d.products.filter(p=>p && p.name && !p.hidden && Number.isFinite(+p.id))
+      .map(p=>({...p, id:+p.id, price:+p.price||0, material:p.material||"Sheesham Wood", type:p.type||"table", color:p.color||"#7A4A2C", img:Array.isArray(p.img)?p.img:[]}));
+    list.sort((a,b)=>(!!b.featured-!!a.featured)||((a.order??1e9)-(b.order??1e9))||(a.id-b.id));
+    P.length=0; list.forEach(p=>P.push(p));
+  }
+  const c = d.config || {};
+  if(c.photos) for(const k in c.photos) if(Array.isArray(c.photos[k])) PHOTOS[k]=c.photos[k];
+  if(Array.isArray(c.cats) && c.cats.length){ CATS.length=0; c.cats.forEach(x=>CATS.push(x)); }
+  if(Array.isArray(c.customWork)){ CUSTOM_WORK.length=0; c.customWork.forEach(x=>{ if(x&&x.src) CUSTOM_WORK.push([x.src, x.cap||""]); }); }
+}
+async function fetchLive(){
+  if(!LIVE.projectId) return null;
+  const emu = location.hostname==="127.0.0.1" && /[?&]emu\b/.test(location.search);   // automated test only
+  const base=`${emu?"http://127.0.0.1:8080":"https://firestore.googleapis.com"}/v1/projects/${LIVE.projectId}/databases/(default)/documents`, key=`key=${LIVE.apiKey}`;
+  const products=[]; let tok="", ok=false;
+  do {
+    const r = await fetch(`${base}/products?pageSize=300&${key}${tok?`&pageToken=${encodeURIComponent(tok)}`:""}`);
+    if(!r.ok) break; ok=true;
+    const j = await r.json(); (j.documents||[]).forEach(x=>products.push(fsDoc(x))); tok=j.nextPageToken||"";
+  } while(tok);
+  const cr = await fetch(`${base}/site/config?${key}`);
+  const config = cr.ok ? fsDoc(await cr.json()) : {};
+  return (ok||cr.ok) ? {products, config} : null;
+}
+const LIVEKEY="sr_live_v1", cachedLive=load(LIVEKEY,null);
+try { applyLive(cachedLive); } catch(e){}
 buildNav(); counts(); route();
+fetchLive().then(d=>{
+  if(!d) return;
+  if(JSON.stringify(d)===JSON.stringify(cachedLive)) return;
+  save(LIVEKEY,d); applyLive(d); buildNav(); counts(); rerender(true);
+}).catch(()=>{});
 </script>
 </body>
 </html>
