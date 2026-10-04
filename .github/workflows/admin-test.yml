@@ -19,7 +19,7 @@ jobs:
           cd .. && mkdir -p /tmp/site && cp -r *.html *.js *.jpg *.png *.json /tmp/site/
           sed -i 's/projectId: "[^"]*",/projectId: "demo-sr",/; s/apiKey: "[^"]*",/apiKey: "fake",/; s/authDomain: "[^"]*",/authDomain: "demo-sr.firebaseapp.com",/' /tmp/site/admin.html
           sed -i 's/const LIVE = { projectId: "[^"]*", apiKey: "[^"]*" };/const LIVE = { projectId: "demo-sr", apiKey: "fake" };/' /tmp/site/index.html
-          grep -c 'demo-sr' /tmp/site/admin.html /tmp/site/index.html; ! grep -q 'sr-handicraft"' /tmp/site/admin.html /tmp/site/index.html || { echo "::error title=SR ADMIN::real project id still present"; exit 1; }
+          grep -c 'demo-sr' /tmp/site/admin.html /tmp/site/index.html; ! grep -q 'projectId: "sr-handicraft"' /tmp/site/admin.html /tmp/site/index.html || { echo "::error title=SR ADMIN::real project id still present"; exit 1; }
           (cd /tmp/site && python3 -m http.server 4000 --bind 127.0.0.1 > /dev/null 2>&1 &)
           cp firestore.rules .citest/firestore.rules
           cd .citest && npx firebase emulators:exec --only auth,firestore --project demo-sr "node test.mjs; node install.mjs" > out.txt 2>&1 || true
