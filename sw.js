@@ -2,8 +2,8 @@
    - Pages: network first, so price/photo updates show immediately; cached copy
      is used only when the phone is offline.
    - Photos & icons: served from cache instantly, refreshed in the background. */
-const VERSION = 'sr-v6';
-const SHELL = ['/', '/index.html', '/manifest.json', '/icon-192.png', '/icon-512.png'];
+const VERSION = 'sr-v7';
+const SHELL = ['/', '/index.html', '/data.js', '/manifest.json', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -21,7 +21,13 @@ self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  if (url.origin !== location.origin) return;          // leave Google fonts, WhatsApp etc. alone
+  if (url.origin !== location.origin) return;          // leave Google fonts, WhatsApp, the database etc. alone
+  if (url.pathname.startsWith('/admin')) return;        // admin panel: always live, never cached
+
+  if (url.pathname === '/data.js') {                    // built-in catalogue: fresh when online, cached for offline
+    e.respondWith(fetch(req).then(res => { const c = res.clone(); caches.open(VERSION).then(x => x.put('/data.js', c)); return res; }).catch(() => caches.match('/data.js')));
+    return;
+  }
 
   if (req.mode === 'navigate' || url.pathname === '/' || url.pathname.endsWith('.html')) {
     e.respondWith(
