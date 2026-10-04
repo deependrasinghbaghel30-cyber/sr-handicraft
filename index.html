@@ -463,6 +463,14 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 @media(min-width:761px){.appbar{left:auto;right:90px;max-width:430px}}
 @keyframes abup{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
 @media (display-mode: standalone){.appbar,#installBtn{display:none!important}}
+/* custom work gallery */
+.cwg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 6px}
+@media(min-width:640px){.cwg{grid-template-columns:repeat(3,1fr)}}
+.cwg figure{margin:0;cursor:zoom-in}
+.cwg img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:var(--card)}
+.cwg figcaption{font-size:12.5px;color:var(--muted,#6b5e52);margin-top:6px;line-height:1.35}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(20,14,10,.92);display:flex;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
+.lb img{max-width:100%;max-height:88vh;border-radius:10px}
 </style>
 </head>
 <body>
@@ -648,7 +656,7 @@ const PHOTOS = {
   hero:      ["bed-room-1-w.jpg","sofa-set-2.jpg","poster-bed-2-w.jpg","sofa-set-1.jpg","bed-room-3-w.jpg"],
   promo_dining:  ["dining-set-2.jpg","dining-set-1.jpg"],
   promo_pooja:   ["mandir-1-room.jpg","mandir-2-room.jpg"],
-  promo_custom:  ["dressing-1.jpg"],
+  promo_custom:  ["wardrobe-1.jpg","wardrobe-2.jpg","dressing-1.jpg"],
   showroom:  ["sofa-set-3.jpg","mandir-2.jpg","sideboard-1.jpg","dressing-1.jpg","mandir-1.jpg"],
   strip:     ["bed-storage-3.jpg","mandir-2.jpg","bed-tile-1.jpg","dressing-1.jpg","dining-top-1.jpg","poster-bed-3.jpg","mandir-1.jpg","bed-storage-1.jpg","coffee-table-room.jpg","sofa-jaali-detail.jpg","bar-cabinet-room.jpg","nesting-room.jpg","sideboard-room.jpg","bed-tile-1-detail.jpg","dining-set-3-detail.jpg"],
 
@@ -1153,9 +1161,28 @@ function wishView(){
     ${l.length?`<div class="grid" style="margin-bottom:40px">${l.map(card).join("")}</div>`:`<div class="empty" style="margin-bottom:40px"><p>Your wishlist is empty. Tap ♡ on any product to save it here.</p><a class="btn" href="#/">Start shopping</a></div>`}</div>`;
 }
 
+/* ============ CUSTOM WORK: wardrobes made to order (add more lines to show more) ============ */
+const CUSTOM_WORK = [
+  ["wardrobe-1.jpg","4-door wardrobe with diamond block carving"],
+  ["wardrobe-2.jpg","Floor-to-ceiling wardrobe with loft storage, made to fit the room"],
+  ["wardrobe-3.jpg","Hand carved floral wardrobe doors (close-up)"],
+  ["wardrobe-4.jpg","4-door panel wardrobe in a rich mahogany finish"],
+  ["wardrobe-5.jpg","2-door wardrobe with drawers"],
+  ["wardrobe-6.jpg","Wardrobe with 3D block carving (close-up)"],
+];
+function customGallery(){
+  if(!CUSTOM_WORK.length) return "";
+  return `<h2 style="font-family:var(--display);font-weight:400;font-size:24px;margin:26px 0 4px">Custom wardrobes we have made</h2>
+  <p style="margin:0">Solid sheesham wood, built to each customer's size and design.</p>
+  <div class="cwg">${CUSTOM_WORK.map(([src,cap])=>`<figure onclick="openLb('${src}')"><img src="${src}" alt="${cap}" loading="lazy"><figcaption>${cap}</figcaption></figure>`).join("")}</div>`;
+}
+function openLb(src){
+  const d=document.createElement("div"); d.className="lb"; d.innerHTML=`<img src="${src}" alt="">`;
+  d.onclick=()=>d.remove(); document.body.appendChild(d);
+}
 const PAGES = {
   store:["Visit our showroom",`<p>${STORE.address}</p><p>${STORE.hours}</p><p>Phone: ${STORE.phone}</p>${STORE.maps&&STORE.maps.length>28?`<p><a href="${STORE.maps}" target="_blank" rel="noopener" style="color:var(--rose);font-weight:600">Open in Google Maps</a></p>`:""}`],
-  custom:["Custom furniture",`<p>Need furniture made to fit your space? We build it to order — beds, wardrobes, dining tables, mandirs and more.</p><p><b>How it works:</b></p><p>1. Send us a photo and measurements of the space on WhatsApp<br>2. Choose the design and finish<br>3. We share the design and price<br>4. Once you approve, we start making it</p><p>You can also see samples at our showroom: ${STORE.address}</p>`],
+  custom:["Custom furniture",`<p>Need furniture made to fit your space? We build it to order — beds, wardrobes, dining tables, mandirs and more.</p><p><b>How it works:</b></p><p>1. Send us a photo and measurements of the space on WhatsApp<br>2. Choose the design and finish<br>3. We share the design and price<br>4. Once you approve, we start making it</p><p>You can also see samples at our showroom: ${STORE.address}</p>${customGallery()}`],
   bulk:["Hotel, office & bulk orders",`<p>We make furniture in bulk for hotels, restaurants, offices and interior designers — the same design and finish across the whole order.</p><p>Send us the quantity, design and timeline on WhatsApp and we will share the price and delivery time.</p>`],
   dealer:["Become a dealer",`<p>Want to sell SR Handicraft furniture in your city? Talk to us. We make solid sheesham wood furniture ourselves, so dealers get fair rates.</p><p>Send us your city and store details on WhatsApp.</p>`],
   track:["Order status",`<p>Send us your name or order number on WhatsApp and we will tell you right away what stage your furniture is at.</p><p>Phone: ${STORE.phone}</p>`],
