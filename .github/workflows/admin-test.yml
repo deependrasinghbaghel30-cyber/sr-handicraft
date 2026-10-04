@@ -16,15 +16,15 @@ jobs:
       - name: Test
         run: |
           cd .citest && npm install --no-audit --no-fund > /dev/null 2>&1 && npx playwright install --with-deps chromium > /dev/null 2>&1
-          cd .. && mkdir -p /tmp/site && cp -r *.html *.js *.jpg *.png manifest.json /tmp/site/
+          cd .. && mkdir -p /tmp/site && cp -r *.html *.js *.jpg *.png *.json /tmp/site/
           sed -i 's/projectId: "",/projectId: "demo-sr",/; s/apiKey: "",/apiKey: "fake",/; s/authDomain: "",/authDomain: "demo-sr.firebaseapp.com",/' /tmp/site/admin.html
           sed -i 's/const LIVE = { projectId: "", apiKey: "" };/const LIVE = { projectId: "demo-sr", apiKey: "fake" };/' /tmp/site/index.html
           (cd /tmp/site && python3 -m http.server 4000 --bind 127.0.0.1 > /dev/null 2>&1 &)
           cp firestore.rules .citest/firestore.rules
-          cd .citest && npx firebase emulators:exec --only auth,firestore --project demo-sr "node test.mjs" > out.txt 2>&1 || true
+          cd .citest && npx firebase emulators:exec --only auth,firestore --project demo-sr "node test.mjs; node install.mjs" > out.txt 2>&1 || true
           cat out.txt | tail -40
           python3 -c "
-          t=open('out.txt',errors='replace').read(); i=t.find('SR ADMIN:'); b=t[i:] if i>=0 else t[-6000:]
+          t=open('out.txt',errors='replace').read(); i=t.find('SR ADMIN:'); b=t[i:] if i>=0 else t[-6000:]; j=t.find('INSTALL CHECK:'); b=b if j<0 or j>i else b+t[j:]
           print('::error title=T::'+b.replace('%','%25').replace('\n','%0A')[:7000])"
       - name: shots
         if: always()

@@ -6,7 +6,13 @@
 <meta name="robots" content="noindex, nofollow">
 <title>SR Handicraft — Admin</title>
 <link rel="icon" href="favicon-32.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" href="admin-apple-touch-icon.png">
+<link rel="manifest" href="admin-manifest.json">
+<meta name="theme-color" content="#6B2D1C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SR Admin">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
 :root{--bg:#F7F3EE;--card:#fff;--ink:#2A2019;--muted:#7A6B5E;--line:#E8DFD4;--rose:#6B2D1C;--brass:#B7832F;--ok:#2F7D4F;--warn:#B3261E}
 *{box-sizing:border-box}
@@ -65,23 +71,48 @@ textarea.i{min-height:90px;resize:vertical}
 .cap{width:96px;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:4px;margin-top:4px}
 .err{color:var(--warn);font-size:13px;margin-top:8px}
 .prog{font-size:12px;color:var(--muted);margin-top:6px}
+.inst{display:none}.can-install .inst{display:inline-block}
+.ios-tip{display:none;font-size:13px;color:var(--muted);background:#fff;border:1px dashed #CDBBA8;border-radius:10px;padding:10px 12px;margin-top:14px;text-align:left}.is-ios .ios-tip{display:block}
+.top .inst{background:#fff;color:var(--rose);font-weight:700}
+@media(max-width:430px){.top{gap:6px;padding:10px}.top b{font-size:14px}.top button,.top a{padding:6px 8px;font-size:12px}}
 </style>
 </head>
 <body>
 <div id="app"><div class="center">Loading…</div></div>
 <div class="toast" id="toast"></div>
 
+<!-- install as app -->
+<script>
+(function(){
+  var standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  if ('serviceWorker' in navigator && window.isSecureContext) {
+    addEventListener('load', function(){ navigator.serviceWorker.register('/admin-sw.js', { scope: '/admin' }).catch(function(){}); });
+  }
+  if (standalone) return;
+  var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (ios) document.documentElement.classList.add('is-ios');
+  window.__install = null;
+  addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); window.__install = e; document.documentElement.classList.add('can-install'); });
+  addEventListener('appinstalled', function(){ window.__install = null; document.documentElement.classList.remove('can-install'); });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('.inst'); if (!b || !window.__install) return;
+    e.preventDefault(); var p = window.__install; window.__install = null; document.documentElement.classList.remove('can-install');
+    p.prompt(); p.userChoice.catch(function(){});
+  });
+})();
+</script>
+
 <!-- built-in catalogue (used for the one-time import) -->
 <script src="data.js"></script>
 <script type="module">
 /* ================= SETTINGS ================= */
 const FB = {            // Firebase web config (public — security comes from the Firestore rules)
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyBHq2EIVKvvUTFYs8PHVnvpMOt0F3fvEiw",
+  authDomain: "sr-handicraft.firebaseapp.com",
+  projectId: "sr-handicraft",
+  storageBucket: "sr-handicraft.firebasestorage.app",
+  messagingSenderId: "903781035951",
+  appId: "1:903781035951:web:7169737e8e2de7cceb895a"
 };
 const SUPER = "deependrasinghbaghel30@gmail.com";       // always full access
 const CLOUD = { name: "zlpxm0vk", preset: "beyond-walls", folder: "sr-handicraft" };   // photo uploads
@@ -203,6 +234,8 @@ function renderLogin(){
     <button class="btn" style="width:100%" id="lb">Sign in</button>
     <div class="err" id="lerr"></div>
     <p style="margin:14px 0 0;text-align:center"><a href="#" id="fp" style="font-size:13px">Forgot password?</a></p>
+    <button type="button" class="btn ghost inst" style="width:100%;margin-top:14px">Install admin app on this phone</button>
+    <div class="ios-tip">To install as an app on iPhone: tap <b>Share</b> (square with arrow) at the bottom of Safari, then <b>Add to Home Screen</b>.</div>
   </form></div>`;
   $("#lf").onsubmit = async e => {
     e.preventDefault(); $("#lerr").textContent = ""; $("#lb").disabled = true;
@@ -210,7 +243,7 @@ function renderLogin(){
     catch (err) {
       $("#lerr").textContent = err.code === "auth/too-many-requests" ? "Too many attempts — wait 10–15 minutes, or use Forgot password."
         : err.code === "auth/network-request-failed" ? "No internet connection." : "Email or password is wrong (passwords are case-sensitive).";
-    } finally { $("#lb").disabled = false; }
+    } finally { const lb = $("#lb"); if (lb) lb.disabled = false; }
   };
   $("#fp").onclick = async e => {
     e.preventDefault(); const em = $("#le").value.trim();
@@ -224,7 +257,7 @@ function renderLogin(){
 function render(){
   const tabs = [["products","Products"],["photos","Website photos"],["cats","Categories"],["account","My account"],...(S.isSuper?[["team","Team"]]:[])];
   $("#app").innerHTML = `
-    <div class="top"><b>SR Handicraft · Admin</b><span class="sp"></span><a href="/" target="_blank">View website</a><button id="so">Sign out</button></div>
+    <div class="top"><b>SR Handicraft · Admin</b><span class="sp"></span><button class="inst" type="button">Install app</button><a href="/" target="_blank">Website</a><button id="so">Sign out</button></div>
     <div class="tabs">${tabs.map(([k,l])=>`<button data-tab="${k}" class="${S.tab===k?"on":""}">${l}</button>`).join("")}</div>
     <main id="main"></main>`;
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { S.tab = b.dataset.tab; render(); });
@@ -301,7 +334,7 @@ function editProduct(orig){
       keep(); const files = await pickFiles(true); if (!files.length) return;
       const pr = $("#pprog"); $("#psave").disabled = true;
       try { const urls = await uploadMany(files, (i,n)=>pr.textContent=`Uploading photo ${i} of ${n}…`); p.img = [...(p.img||[]), ...urls]; draw(); toast(`${urls.length} photo(s) added — tap Save`); }
-      catch (e) { pr.textContent = ""; alert(e.message); } finally { $("#psave").disabled = false; }
+      catch (e) { pr.textContent = ""; alert(e.message); } finally { const sv = $("#psave"); if (sv) sv.disabled = false; }
     };
     sh._keep = keep;
   };
