@@ -659,7 +659,7 @@ const inr = n => "₹" + Math.round(n).toLocaleString("en-IN");
 
 const catOf = k => CATS.find(c => c.key === k);
 const subName = (cat, s) => { for (const g of cat.groups) for (const x of g.subs) if (slug(x) === s) return x; for (const g of cat.groups) if (slug(g.name) === s) return g.name; return null; };
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const tints = ["#F3E9DA","#E6ECF3","#EDE6DA","#F1E3DE","#E8EDE3","#F2ECE0"];
 
 function load(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
@@ -1255,8 +1255,36 @@ function fsv(v){
   return null;
 }
 const fsDoc = d => { const o={}, f=(d&&d.fields)||{}; for(const k in f) o[k]=fsv(f[k]); return o; };
+/* Everything below comes from the database, so it is cleaned before it can reach
+   the page: text loses characters that could start HTML/script, links must be plain
+   https URLs or local file names, colours must be #RRGGBB. Even a hijacked admin
+   login can't inject script into the shop this way. */
+const cleanText = v => typeof v === "string" ? v.replace(/[<>"`]/g, "").replace(/'/g, "\u2019").slice(0, 5000) : v;
+const cleanUrl = v => (typeof v === "string" && (/^https:\/\/[^\s"'()<>\\`]+$/i.test(v) || /^[\w.\/-]+$/.test(v)) && !/^javascript:/i.test(v)) ? v : "";
+const cleanUrls = a => Array.isArray(a) ? a.map(cleanUrl).filter(Boolean) : [];
+function cleanLive(d){
+  const out = { products: [], config: {} };
+  for (const p of (Array.isArray(d.products) ? d.products : [])) {
+    if (!p || typeof p !== "object") continue;
+    const q = {};
+    for (const k in p) q[k] = cleanText(p[k]);
+    q.img = cleanUrls(p.img);
+    q.color = /^#[0-9a-f]{6}$/i.test(p.color || "") ? p.color : "";
+    q.type = /^[a-z]{1,20}$/.test(p.type || "") ? p.type : "";
+    out.products.push(q);
+  }
+  const c = d.config || {};
+  if (c.photos && typeof c.photos === "object") { out.config.photos = {}; for (const k in c.photos) if (/^[\w-]{1,40}$/.test(k)) out.config.photos[k] = cleanUrls(c.photos[k]); }
+  if (Array.isArray(c.cats)) out.config.cats = c.cats.filter(x => x && /^[a-z0-9-]{1,40}$/.test(x.key || "")).map(x => ({
+    ...x, key: x.key, name: cleanText(x.name || ""), art: /^[a-z]{1,20}$/.test(x.art || "") ? x.art : "bed",
+    groups: (Array.isArray(x.groups) ? x.groups : []).map(g => ({ ...g, name: cleanText((g && g.name) || ""), subs: (Array.isArray(g && g.subs) ? g.subs : []).map(cleanText) })),
+  }));
+  if (Array.isArray(c.customWork)) out.config.customWork = c.customWork.map(x => x && ({ src: cleanUrl(x.src), cap: cleanText(x.cap || "") })).filter(x => x && x.src);
+  return out;
+}
 function applyLive(d){
   if(!d) return;
+  d = cleanLive(d);
   if(Array.isArray(d.products) && d.products.length){
     const list = d.products.filter(p=>p && p.name && !p.hidden && Number.isFinite(+p.id))
       .map(p=>({...p, id:+p.id, price:+p.price||0, material:p.material||"Sheesham Wood", type:p.type||"table", color:p.color||"#7A4A2C", img:Array.isArray(p.img)?p.img:[]}));
