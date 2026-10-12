@@ -125,6 +125,8 @@ textarea.i{min-height:90px;resize:vertical}
 <!-- built-in catalogue (used for the one-time import) -->
 <script src="data.js"></script>
 <script type="module">
+import { OWNER_EMAIL, normalizeEmail, verifiedIdentity, membershipClaim, hasBoundAccess, accessError } from "./admin-access.mjs";
+
 /* ================= SETTINGS ================= */
 const FB = {            // Firebase web config (public — security comes from the Firestore rules)
   apiKey: "AIzaSyBHq2EIVKvvUTFYs8PHVnvpMOt0F3fvEiw",
@@ -134,7 +136,7 @@ const FB = {            // Firebase web config (public — security comes from t
   messagingSenderId: "903781035951",
   appId: "1:903781035951:web:7169737e8e2de7cceb895a"
 };
-const SUPER = "deependrasinghbaghel30@gmail.com";       // always full access
+const SUPER = OWNER_EMAIL; // owner access is verified and bound to a Firebase UID
 const CLOUD = { name: "zlpxm0vk", preset: "beyond-walls", folder: "sr-handicraft" };   // photo uploads
 
 /* Where each website photo spot appears — shown to the client in "Website photos" */
@@ -160,9 +162,9 @@ const TYPE_BY_WORD = [["bed","bed"],["sofa","sofa"],["mandir","mandir"],["dressi
 const typeFor = sub => { const s=(sub||"").toLowerCase(); const m=TYPE_BY_WORD.find(([w])=>s.includes(w)); return m?m[1]:"table"; };
 
 /* ================= FIREBASE ================= */
-import { initializeApp, deleteApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, connectAuthEmulator, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, createUserWithEmailAndPassword, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, connectFirestoreEmulator, collection, doc, getDoc, getDocs, setDoc, deleteDoc, writeBatch, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, connectAuthEmulator, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, createUserWithEmailAndPassword, sendEmailVerification, reload, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, connectFirestoreEmulator, collection, doc, getDoc, getDocs, setDoc, deleteDoc, writeBatch, serverTimestamp, runTransaction, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -174,12 +176,13 @@ if (!FB.projectId) {
   $("#app").innerHTML = `<div class="center"><div class="card login"><h1>Admin not connected yet</h1><p class="hint">The Firebase project details still need to be added to admin.html.</p></div></div>`;
   throw new Error("Firebase config missing");
 }
-const fbApp = initializeApp(FB);
+// Local tests use a demo project, so an absent emulator cannot hit production.
+const EMU = location.hostname === "127.0.0.1" && new URLSearchParams(location.search).has("emu");
+const fbApp = initializeApp(EMU ? { ...FB, projectId: "demo-sr-handicraft", apiKey: "demo-key" } : FB);
 const auth = getAuth(fbApp);
 const db = getFirestore(fbApp);
 // automated test only: local emulators (never used on the live site)
-const EMU = location.hostname === "127.0.0.1" && new URLSearchParams(location.search).has("emu");
-if (EMU) { connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true }); connectFirestoreEmulator(db, "127.0.0.1", 8080); }
+if (EMU) { connectAuthEmulator(auth, "http://127.0.0.1:9100", { disableWarnings: true }); connectFirestoreEmulator(db, "127.0.0.1", 8100); }
 
 const S = { me: null, isSuper: false, tab: "products", products: [], config: null, q: "", fcat: "" };
 
@@ -231,20 +234,71 @@ function allSubs(){ const out=[]; cats().forEach(c => c.groups.forEach(g => { (g
 const photosOf = k => (S.config?.photos?.[k]) || [];
 
 /* ================= AUTH ================= */
-onAuthStateChanged(auth, async u => {
-  if (!u) { S.me = null; return renderLogin(); }
-  const email = (u.email || "").toLowerCase();
-  S.me = email; S.isSuper = email === SUPER;
+let authGeneration = 0;
+let stopAccessWatch = null;
+function clearAccess(){
+  if (stopAccessWatch) { stopAccessWatch(); stopAccessWatch = null; }
+  S.me = null; S.isSuper = false; S.products = []; S.config = null; S.tab = "products";
+  document.querySelectorAll(".sheet,.foot").forEach(el => el.remove());
+  window.onbeforeunload = null;
+}
+function renderNoAccess(email){
+  clearAccess();
+  $("#app").innerHTML = `<div class="center"><div class="card login"><h1>Access unavailable</h1><p class="hint">${esc(email)} has no active access, or access could not be checked. Ask the owner to confirm your invitation. If you were already invited, try again when online.</p><button class="btn" id="retry-access">Try again</button> <button class="btn ghost" id="so">Sign out</button></div></div>`;
+  $("#retry-access").onclick = () => checkAccess(auth.currentUser);
+  $("#so").onclick = () => signOut(auth);
+}
+function renderVerification(u){
+  $("#app").innerHTML = `<div class="center"><div class="card login"><h1>Verify your email</h1><p class="hint">Before you can edit this website, verify ${esc(u.email)} using the link in your inbox. Existing owners and invited staff keep their access after verification.</p><button class="btn" id="verify-send">Send verification email</button><button class="btn ghost" id="verify-check" style="margin-top:10px">I've verified my email</button><p class="hint" id="verify-message" role="status"></p><button class="btn ghost" id="so">Sign out</button></div></div>`;
+  $("#verify-send").onclick = async () => {
+    const button = $("#verify-send"), message = $("#verify-message"); button.disabled = true;
+    try { await sendEmailVerification(u); message.textContent = "Verification email sent. Check Inbox and Spam, open the link, then return here."; }
+    catch (e) { message.textContent = e.code === "auth/too-many-requests" ? "Please wait before requesting another email." : "Could not send the email. Check your connection and try again."; }
+    finally { button.disabled = false; }
+  };
+  $("#verify-check").onclick = () => checkAccess(auth.currentUser);
+  $("#so").onclick = () => signOut(auth);
+}
+async function checkAccess(u){
+  const generation = ++authGeneration;
+  clearAccess();
+  if (!u) return renderLogin();
+  const current = () => generation === authGeneration && auth.currentUser?.uid === u.uid;
+  const email = normalizeEmail(u.email);
+  $("#app").innerHTML = `<div class="center">Checking access…</div>`;
   try {
-    if (!S.isSuper) { const a = await getDoc(doc(db, "admins", email)); if (!a.exists()) throw { code: "permission-denied" }; }
-    $("#app").innerHTML = `<div class="center">Loading…</div>`;
+    await reload(u);
+    if (!current()) return;
+    if (!u.emailVerified) return renderVerification(u);
+    verifiedIdentity(u);
+    // A refreshed token ensures Firestore sees the completed email verification.
+    await u.getIdToken(true);
+    if (!current()) return;
+    const ref = doc(db, "admins", normalizeEmail(u.email));
+    await runTransaction(db, async tx => {
+      const snapshot = await tx.get(ref);
+      const member = snapshot.exists() ? snapshot.data() : null;
+      const claim = membershipClaim(u, member);
+      if (claim) {
+        const data = { ...claim, claimedAt: serverTimestamp() };
+        if (snapshot.exists()) tx.update(ref, data); else tx.set(ref, data);
+      }
+    });
+    if (!current()) return;
+    S.me = normalizeEmail(u.email); S.isSuper = S.me === SUPER;
+    // Revoking the document ends this UI session, including open edit sheets.
+    stopAccessWatch = onSnapshot(ref, snapshot => {
+      if (current() && (!snapshot.exists() || !hasBoundAccess(u, snapshot.data()))) {
+        ++authGeneration; renderNoAccess(email);
+      }
+    }, () => { if (current()) { ++authGeneration; renderNoAccess(email); } });
     await loadAll();
-    render();
+    if (current()) render();
   } catch (e) {
-    $("#app").innerHTML = `<div class="center"><div class="card login"><h1>No access</h1><p class="hint">${esc(email)} is not an admin of this website. Ask the owner to add you.</p><button class="btn ghost" id="so">Sign out</button></div></div>`;
-    $("#so").onclick = () => signOut(auth);
+    if (current()) renderNoAccess(email);
   }
-});
+}
+onAuthStateChanged(auth, checkAccess);
 
 function renderLogin(){
   $("#app").innerHTML = `<div class="center"><form class="card login" id="lf">
@@ -252,24 +306,49 @@ function renderLogin(){
     <label class="f"><span>Email</span><input class="i" type="email" id="le" required autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false"></label>
     <label class="f"><span>Password</span><input class="i" type="password" id="lp" required autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false"></label>
     <button class="btn" style="width:100%" id="lb">Sign in</button>
-    <div class="err" id="lerr"></div>
+    <button type="button" class="btn ghost" id="signup" style="width:100%;margin-top:10px">Set up invited account</button>
+    <div class="err" id="lerr" role="status"></div>
     <p style="margin:14px 0 0;text-align:center"><a href="#" id="fp" style="font-size:13px">Forgot password?</a></p>
     <button type="button" class="btn ghost inst" style="width:100%;margin-top:14px">Install admin app on this phone</button>
     <div class="ios-tip">To install as an app on iPhone: tap <b>Share</b> (square with arrow) at the bottom of Safari, then <b>Add to Home Screen</b>.</div>
   </form></div>`;
+  let loginBusy = false;
+  const loginButton = $("#lb"), signupButton = $("#signup");
+  const setLoginBusy = busy => { loginBusy = busy; loginButton.disabled = signupButton.disabled = busy; };
   $("#lf").onsubmit = async e => {
-    e.preventDefault(); $("#lerr").textContent = ""; $("#lb").disabled = true;
+    e.preventDefault(); if (loginBusy) return;
+    const error = $("#lerr"); error.textContent = ""; setLoginBusy(true);
     try { await signInWithEmailAndPassword(auth, $("#le").value.trim(), $("#lp").value); }
     catch (err) {
-      $("#lerr").textContent = err.code === "auth/too-many-requests" ? "Too many attempts — wait 10–15 minutes, or use Forgot password."
+      error.textContent = err.code === "auth/too-many-requests" ? "Too many attempts — wait 10–15 minutes, or use Forgot password."
         : err.code === "auth/network-request-failed" ? "No internet connection." : "Email or password is wrong (passwords are case-sensitive).";
-    } finally { const lb = $("#lb"); if (lb) lb.disabled = false; }
+    } finally { setLoginBusy(false); }
+  };
+  $("#signup").onclick = async () => {
+    if (loginBusy) return;
+    const email = normalizeEmail($("#le").value), password = $("#lp").value;
+    const error = $("#lerr");
+    error.textContent = "";
+    if (!/^[^@\s/]+@[^@\s/]+\.[^@\s/]+$/.test(email)) return (error.textContent = "Enter your invited email.");
+    if (password.length < 8) return (error.textContent = "Choose a password with at least 8 characters.");
+    setLoginBusy(true);
+    try {
+      const credential = await createUserWithEmailAndPassword(auth, email, password);
+      try { await sendEmailVerification(credential.user); toast("Verification email sent. Check Inbox and Spam.", 5000); }
+      catch { toast("Use Send verification email to try again.", 5000); }
+    } catch (e) {
+      error.textContent = e.code === "auth/email-already-in-use" ? "This email already has an account. Sign in or use Forgot password. You must still verify your email."
+        : e.code === "auth/weak-password" ? "Choose a stronger password." : "Could not create the account. Check your connection and try again.";
+    } finally { setLoginBusy(false); }
   };
   $("#fp").onclick = async e => {
-    e.preventDefault(); const em = $("#le").value.trim();
-    if (!em) return ($("#lerr").textContent = "Type your email first, then tap Forgot password.");
+    e.preventDefault(); if (loginBusy) return;
+    const em = $("#le").value.trim(), message = $("#lerr");
+    if (!em) return (message.textContent = "Type your email first, then tap Forgot password.");
+    setLoginBusy(true);
     try { await sendPasswordResetEmail(auth, em); } catch {}
-    $("#lerr").style.color = "var(--ok)"; $("#lerr").textContent = "If this email has access, a reset link has been sent. Check Inbox and Spam.";
+    finally { setLoginBusy(false); }
+    message.style.color = "var(--ok)"; message.textContent = "If this email has an account, a reset link has been sent. Check Inbox and Spam. A reset does not grant website access.";
   };
 }
 
@@ -473,33 +552,37 @@ function viewAccount(){
 
 /* ================= TEAM (owner only) ================= */
 async function viewTeam(){
+  if (!S.isSuper) return;
   const m = $("#main"); m.innerHTML = `<div class="card">Loading…</div>`;
   let admins = [];
-  try { admins = (await getDocs(collection(db,"admins"))).docs.map(d=>d.id); } catch (e) { m.innerHTML = `<div class="card err">${esc(e.message)}</div>`; return; }
+  try { admins = (await getDocs(collection(db,"admins"))).docs.map(d=>({ ...d.data(), email: d.id })); } catch (e) { m.innerHTML = `<div class="card err">${esc(e.message)}</div>`; return; }
+  if (!S.isSuper || !document.body.contains(m)) return;
   m.innerHTML = `<div class="card"><h3 style="margin:0 0 8px">People who can edit the website</h3>
-    <div>${[SUPER, ...admins].map(e=>`<span class="chip">${esc(e)}${e===SUPER?" (owner)":`<button data-rm="${esc(e)}" title="Remove access">✕</button>`}</span>`).join("")}</div></div>
-    <div class="card" style="max-width:460px"><h3 style="margin:0 0 6px">Add a person</h3>
-      <p class="hint">Creates their login. Tell them the temporary password on a phone call (not WhatsApp); they can change it under "My account".</p>
+    <div><span class="chip">${esc(SUPER)} (owner)</span>${admins.filter(a=>a.email!==SUPER).map(a=>`<span class="chip">${esc(a.email)} (${a.uid && a.status === "active" ? "active" : "awaiting verification"})<button data-rm="${esc(a.email)}" title="Remove access">✕</button></span>`).join("")}</div></div>
+    <div class="card" style="max-width:460px"><h3 style="margin:0 0 6px">Invite a person</h3>
+      <p class="hint">Save their email below, then give them the admin page address. They choose their own password with "Set up invited account", or sign in to an existing account, and verify their email before any access is activated. To replace an account, remove its access first, then invite again.</p>
       <label class="f"><span>Email</span><input class="i" id="te" type="email" autocapitalize="none"></label>
-      <label class="f"><span>Temporary password (8+ characters)</span><input class="i" id="tp" autocapitalize="none" autocorrect="off"></label>
-      <button class="btn" id="tb">Add</button><div class="err" id="terr"></div></div>`;
+      <button class="btn" id="tb">Save invitation</button><div class="err" id="terr" role="status"></div></div>`;
   m.querySelectorAll("[data-rm]").forEach(b => b.onclick = async () => {
     if (!confirm(`Remove website access for ${b.dataset.rm}?`)) return;
-    await deleteDoc(doc(db,"admins",b.dataset.rm)); toast("Access removed"); viewTeam();
+    b.disabled = true;
+    try { await deleteDoc(doc(db,"admins",b.dataset.rm)); toast("Access removed"); viewTeam(); }
+    catch { toast("Could not remove access. Please try again."); b.disabled = false; }
   });
   $("#tb").onclick = async () => {
-    const em = $("#te").value.trim().toLowerCase(), pw = $("#tp").value; $("#terr").textContent = "";
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) return ($("#terr").textContent = "Enter a valid email.");
-    if (pw.length < 8) return ($("#terr").textContent = "Temporary password must be at least 8 characters.");
-    const app2 = initializeApp(FB, "add-" + Date.now());
+    const em = normalizeEmail($("#te").value), error = $("#terr"), button = $("#tb"); error.textContent = "";
+    if (!/^[^@\s/]+@[^@\s/]+\.[^@\s/]+$/.test(em)) return (error.textContent = "Enter a valid email.");
+    if (em === SUPER) return (error.textContent = "The owner already has access.");
+    button.disabled = true;
     try {
-      const a2 = getAuth(app2); if (EMU) connectAuthEmulator(a2, "http://127.0.0.1:9099", { disableWarnings: true });
-      try { await createUserWithEmailAndPassword(a2, em, pw); }
-      catch (e) { if (e.code !== "auth/email-already-in-use") throw e; toast("This email already had a login — access given; they keep their old password"); }
-      await setDoc(doc(db,"admins",em), { addedBy: S.me, at: serverTimestamp() });
-      toast("Added"); viewTeam();
-    } catch (e) { $("#terr").textContent = e.code === "auth/weak-password" ? "Choose a stronger password." : (e.message || "Could not add."); }
-    finally { deleteApp(app2).catch(()=>{}); }
+      await runTransaction(db, async tx => {
+        const ref = doc(db, "admins", em);
+        if ((await tx.get(ref)).exists()) throw accessError("invitation-exists");
+        tx.set(ref, { addedBy: S.me, at: serverTimestamp(), status: "pending" });
+      });
+      toast("Invitation saved. Email verification is required before access.", 5000); viewTeam();
+    } catch (e) { error.textContent = e.code === "invitation-exists" ? "This person is already listed. Remove access first if you need to replace the invitation." : "Could not save the invitation. Try again."; }
+    finally { button.disabled = false; }
   };
 }
 

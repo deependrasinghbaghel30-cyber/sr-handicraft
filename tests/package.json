@@ -1,0 +1,17 @@
+{
+  "name": "sr-handicraft-security-tests",
+  "private": true,
+  "scripts": {
+    "test": "node --test access.test.mjs",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-sr-handicraft --config ../firebase.json 'node --test rules.test.cjs'",
+    "test:browser": "firebase emulators:exec --only firestore,auth --project demo-sr-handicraft --config ../firebase.json 'node --test browser.test.cjs'",
+    "test:dom": "firebase emulators:exec --only firestore,auth --project demo-sr-handicraft --config ../firebase.json 'node --test dom.test.cjs'"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "3.0.4",
+    "firebase": "10.14.1",
+    "firebase-tools": "14.27.0",
+    "playwright": "1.64.0",
+    "jsdom": "26.1.0"
+  }
+}

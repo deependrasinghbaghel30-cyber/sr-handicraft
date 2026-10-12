@@ -1,14 +1,59 @@
 rules_version = '2';
-// SR Handicraft website — paste into Firebase console → Firestore → Rules → Publish.
+// Deploy together with the verified-invitation admin UI. See SECURITY-ROLLOUT.md.
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() { return request.auth != null && request.auth.token.email != null; }
-    function isSuper()  { return signedIn() && request.auth.token.email == 'deependrasinghbaghel30@gmail.com'; }
-    function isAdmin()  { return isSuper() || (signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.token.email))); }
+    function verified() {
+      return request.auth != null
+        && request.auth.token.email is string
+        && request.auth.token.email_verified == true;
+    }
+    function ownerEmail() { return 'deependrasinghbaghel30@gmail.com'; }
+    function ownEmail(email) {
+      return verified() && request.auth.token.email.lower() == email;
+    }
+    function boundAdmin(email) {
+      let member = get(/databases/$(database)/documents/admins/$(email));
+      return member.data.uid == request.auth.uid && member.data.status == 'active';
+    }
+    function isSuper() {
+      return ownEmail(ownerEmail()) && boundAdmin(ownerEmail());
+    }
+    function isAdmin() {
+      return verified() && boundAdmin(request.auth.token.email.lower());
+    }
+    function validClaim() {
+      return request.resource.data.uid == request.auth.uid
+        && request.resource.data.status == 'active'
+        && request.resource.data.claimedAt == request.time;
+    }
 
-    match /products/{id} { allow read: if true; allow write: if isAdmin(); }   // website reads, admins edit
-    match /site/{id}     { allow read: if true; allow write: if isAdmin(); }
-    match /admins/{email} { allow read: if isAdmin(); allow write: if isSuper(); }
+    match /products/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /site/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /admins/{email} {
+      // Verified invitees may read only their own invitation, not the team list.
+      allow get: if ownEmail(email) || isSuper();
+      allow list: if isSuper();
+      allow create: if (
+          email == ownerEmail() && ownEmail(email) && validClaim()
+          && request.resource.data.keys().hasOnly(['uid', 'status', 'claimedAt'])
+        ) || (
+          email != ownerEmail() && isSuper() && email == email.lower()
+          && request.resource.data.keys().hasOnly(['addedBy', 'at', 'status'])
+          && request.resource.data.status == 'pending'
+          && request.resource.data.addedBy == ownerEmail()
+          && request.resource.data.at == request.time
+        );
+      // Claim a pending/legacy email invitation exactly once. Nobody, including
+      // the owner, can rewrite a bound UID. Revoke then explicitly re-invite.
+      allow update: if ownEmail(email)
+        && !('uid' in resource.data)
+        && (!('status' in resource.data) || resource.data.status == 'pending')
+        && validClaim()
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['uid', 'status', 'claimedAt']);
+      // The owner's immutable binding cannot be accidentally removed by the UI.
+      allow delete: if email != ownerEmail() && isSuper();
+    }
     match /{document=**} { allow read, write: if false; }
   }
 }
