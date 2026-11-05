@@ -492,8 +492,8 @@ body.at-ovr header.top .mega{color:var(--ink)}
   body.at-ovr header.top .search{display:none}
   body.at-home header.top .hrow{position:relative}
   body.at-ovr header.top .logo{position:absolute;left:50%;transform:translateX(-50%)}
-  .af-s img{transform:scale(1.08) translate3d(var(--fx,0),var(--fy,0),0)}
-  .af-s.on img,.af-s.out img{animation-name:afkbm}
+  .af .af-s img{transform:scale(1.08) translate3d(var(--fx,0),var(--fy,0),0)}
+  .af .af-s.on img,.af .af-s.out img{animation-name:afkbm}
   @keyframes afkbm{from{transform:scale(1.08) translate3d(var(--fx,0),var(--fy,0),0)}to{transform:scale(1) translate3d(0,0,0)}}
 }
 
@@ -1000,7 +1000,7 @@ function home(){
   return `
   <div class="at" id="atelier">
     <a class="af" id="afilm" href="${AT_FILM[0].href}" aria-label="${AT_FILM[0].alt}">
-      ${AT_FILM.map((s,i)=>`<div class="af-s${i?"":" on"}" style="--fx:${s.fx};--fy:${s.fy}"><img src="${s.img}" alt="" style="object-position:${s.pos}"${i?' loading="lazy"':' fetchpriority="high"'}></div>`).join("")}
+      ${AT_FILM.map((s,i)=>`<div class="af-s${i?"":" on"}" style="--fx:${s.fx};--fy:${s.fy}"><picture><source media="(min-width:761px)" srcset="${s.img}-d.jpg"><img src="${s.img}-m.jpg" alt=""${i?' loading="lazy"':' fetchpriority="high"'}></picture></div>`).join("")}
       <div class="af-t">${AT_FILM.map((s,i)=>`<div${i?"":' class="on"'}><span class="at-s">Introducing</span><h2 class="at-dd">${s.word}</h2><span class="at-s">${s.sub}</span><span class="at-s">by SR Handicraft</span></div>`).join("")}</div>
       <div class="af-k" aria-hidden="true">${AT_FILM.map(()=>"<i></i>").join("")}</div>
     </a>
@@ -1381,11 +1381,9 @@ const atClamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
 const atEase = x => 1 - Math.pow(1 - x, 3);
 
 const AT_FILM = [
-  { img:"mandir-1-detail.jpg",     word:"Jaali",   sub:"the carved pooja mandir", href:"#/p/16", alt:"Carved Sheesham Pooja Mandir", pos:"50% 50%", fx:"3%",  fy:"-2%" },
-  { img:"bar-cabinet-detail.jpg",  word:"Brass",   sub:"the stud bar cabinet",    href:"#/p/47", alt:"Brass Stud Bar Cabinet",        pos:"50% 50%", fx:"-3%", fy:"2%" },
-  { img:"console-1-detail.jpg",    word:"Grain",   sub:"the sheesham console",    href:"#/p/45", alt:"Sheesham Console Table",        pos:"35% 50%", fx:"2%",  fy:"3%" },
-  { img:"bed-tile-1-detail.jpg",   word:"Tile",    sub:"the hand painted bed",    href:"#/p/30", alt:"Hand Painted Tile Headboard Bed", pos:"50% 45%", fx:"-2%", fy:"-3%" },
-  { img:"sofa-jaali-detail.jpg",   word:"Carving", sub:"the jaali sofa set",      href:"#/p/41", alt:"Jaali Work Sheesham Sofa Set",  pos:"55% 40%", fx:"3%",  fy:"2%" }
+  { img:"hero-jaali",   word:"Jaali",   sub:"the jaali door mandir",   href:"#/p/17", alt:"Jaali Door Sheesham Pooja Mandir",  fx:"2%",  fy:"-2%" },
+  { img:"hero-tile",    word:"Tile",    sub:"the hand painted bed",    href:"#/p/30", alt:"Hand Painted Tile Headboard Bed",   fx:"2%",  fy:"2%" },
+  { img:"hero-carving", word:"Carving", sub:"the carved dining table", href:"#/p/6",  alt:"Carved Sheesham 6 Seater Dining Set", fx:"-2%", fy:"-2%" }
 ];
 const AT_SLIDE = 6500;
 
@@ -1449,7 +1447,8 @@ function atelierInit(){
   if (!atReduce()) {
     ticks[0].classList.add("on");
     // warm the cache so every dissolve lands on a decoded image
-    AT_FILM.slice(1).forEach(s => { const i = new Image(); i.src = s.img; });
+    const sfx = matchMedia("(min-width:761px)").matches ? "-d.jpg" : "-m.jpg";
+    AT_FILM.slice(1).forEach(s => { const i = new Image(); i.src = s.img + sfx; });
     new IntersectionObserver((en, ob) => {
       if (ac.signal.aborted) return ob.disconnect();
       const was = visible; visible = en[0].isIntersecting;
