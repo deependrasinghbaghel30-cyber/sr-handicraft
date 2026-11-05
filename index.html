@@ -6,6 +6,7 @@
 <title>SR Handicraft & Furniture | Solid Wood Furniture & Handicrafts Online</title>
 <meta name="description" content="Solid sheesham wood furniture in Pune — storage beds, sofa sets, dining sets, wardrobes, study tables and hand carved pooja mandirs. Custom sizes. Showroom at Patil Nagar, Bengaluru–Mumbai Highway.">
 <link rel="manifest" href="manifest.json">
+<link rel="modulepreload" href="vendor/motion.js">
 <meta name="theme-color" content="#6B2D1C">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -492,91 +493,88 @@ body.at-ovr header.top .mega{color:var(--ink)}
   body.at-ovr header.top .search{display:none}
   body.at-home header.top .hrow{position:relative}
   body.at-ovr header.top .logo{position:absolute;left:50%;transform:translateX(-50%)}
-  .af .af-s img{transform:scale(1.08) translate3d(var(--fx,0),var(--fy,0),0)}
-  .af .af-s.on img,.af .af-s.out img{animation-name:afkbm}
-  @keyframes afkbm{from{transform:scale(1.08) translate3d(var(--fx,0),var(--fy,0),0)}to{transform:scale(1) translate3d(0,0,0)}}
 }
 
-.at,.at-seox{--ink:#1F1A15;--muted:#6D6255;--card:#F3EFE9;--line:rgba(31,26,21,.12);--rose:#6B2D1C;--rose-ink:#fff;--bg:#F3EFE9;--tint:#EAE4DA;--brass:#9C7A45}
-.at{--iv:#F3EFE9;--g:10px;--ink2:#1F1A15;background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body);padding-bottom:var(--g)}
+.at,.at-seox{--ink:#1F1A15;--muted:#5F554A;--card:#F3EFE9;--line:rgba(31,26,21,.12);--rose:#6B2D1C;--rose-ink:#fff;--bg:#F3EFE9;--tint:#E9E3DA;--brass:#9C7A45}
+/* rhythm: images meet edge to edge with hairline seams; stories are separated by air, not boxes */
+.at{--iv:#F3EFE9;--seam:3px;--sp:56px;--ink2:#1F1A15;--ez:cubic-bezier(.22,1,.36,1);background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body)}
 .at :where(a){color:inherit;text-decoration:none}
 .at-dd{font-family:"Bodoni Moda","Cormorant Garamond",Didot,"Bodoni 72",Georgia,serif;font-weight:400;text-transform:uppercase;letter-spacing:.015em;line-height:1}
-.at-k{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:10px;font-weight:500;letter-spacing:.36em;padding-left:.36em;text-transform:uppercase}
-.at-s{display:block;font-family:"Jost",var(--body);font-weight:300;font-size:9.5px;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase}
-.at-im{position:absolute;inset:0;overflow:hidden;background:#2B221B}
-.at-im img{position:absolute;left:0;top:-7%;width:100%;height:114%;object-fit:cover;display:block;filter:saturate(.72) sepia(.17) contrast(1.06) brightness(.9);will-change:transform}
-.at-im::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 95% at 50% 45%,rgba(20,13,8,0) 55%,rgba(20,13,8,.28) 100%)}
+.at-s{display:block;font-family:"Jost",var(--body);font-weight:400;font-size:11px;line-height:1.3;letter-spacing:.22em;padding-left:.22em;text-transform:uppercase}
+/* photos stay natural: no tint filters or vignettes; the box reserves its own space so nothing jumps */
+.at-im{position:relative;display:block;overflow:hidden;aspect-ratio:var(--ar,4/5);background:#E2DBD0}
+.at-im img{position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;display:block;transition:scale 1.4s var(--ez),opacity .9s ease}
+.at-im img[loading="lazy"]:not(.ld){opacity:0}
+@media (hover:hover){ .at a:hover .at-im img{scale:1.03} }
 
-/* 1. film hero: slow dissolves between carving close-ups, title fades in after each cut */
-.af{position:relative;display:block;height:84vh;height:84svh;min-height:500px;max-height:1000px;margin-top:calc(-1 * var(--at-hdr,0px));overflow:hidden;background:#140F0B;color:#F7F1E7}
-.af-s{position:absolute;inset:0;opacity:0;transition:opacity 1.8s cubic-bezier(.45,0,.25,1)}
+/* 1. film hero: full screen, long holds, slow dissolves; title fades in after each cut */
+.af{position:relative;display:block;height:100vh;height:100svh;min-height:560px;margin-top:calc(-1 * var(--at-hdr,0px));overflow:hidden;background:#140F0B;color:#F7F1E7}
+.af-p{position:absolute;inset:0}
+.af-s{position:absolute;inset:0;opacity:0;transition:opacity 2.2s cubic-bezier(.45,0,.25,1)}
 .af-s.on{opacity:1}
-.af-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.76) sepia(.16) contrast(1.07);transform:scale(1.16) translate3d(var(--fx,0),var(--fy,0),0)}
-.af-s.on img,.af-s.out img{animation:afkb 9s cubic-bezier(.3,.15,.25,1) forwards}
-@keyframes afkb{from{transform:scale(1.16) translate3d(var(--fx,0),var(--fy,0),0)}to{transform:scale(1.02) translate3d(0,0,0)}}
-.af::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(10,7,5,.62) 0%,rgba(10,7,5,0) 30%),linear-gradient(to top,rgba(10,7,5,.55) 0%,rgba(10,7,5,0) 50%)}
-.af-t{position:absolute;z-index:3;left:0;right:0;bottom:13%;height:0;text-align:center;pointer-events:none}
-.af-t > div{position:absolute;left:0;right:0;bottom:0;padding:0 16px;opacity:0;transform:translate3d(0,14px,0);transition:opacity 1s ease,transform 1.8s cubic-bezier(.2,.7,.2,1)}
-.af-t > div.on{opacity:1;transform:none;transition-delay:.9s,.9s}
-.af-t h2{font-size:clamp(46px,15vw,148px);margin:12px 0 10px;text-shadow:0 2px 30px rgba(0,0,0,.25)}
-.af-t .at-s{font-size:10px}
-.af-t .at-s + .at-s{margin-top:7px}
-.af-k{position:absolute;z-index:3;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:8px}
-.af-k i{display:block;width:22px;height:1px;background:rgba(255,255,255,.3);overflow:hidden}
-.af-k i::after{content:"";display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left}
-.af-k i.on::after{transform:scaleX(1);transition:transform var(--dur,6.5s) linear}
-.af-k i.done::after{transform:scaleX(1)}
+.af-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.9);transform:scale(1.07) translate3d(var(--fx,0),var(--fy,0),0)}
+.af-s.on img,.af-s.out img{animation:afkb 10s cubic-bezier(.25,.1,.25,1) forwards}
+@keyframes afkb{from{transform:scale(1.07) translate3d(var(--fx,0),var(--fy,0),0)}to{transform:scale(1) translate3d(0,0,0)}}
+.af::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(10,7,5,.5) 0%,rgba(10,7,5,0) 22%),linear-gradient(to top,rgba(10,7,5,.5) 0%,rgba(10,7,5,0) 45%)}
+.af-t{position:absolute;z-index:3;left:0;right:0;bottom:max(14%,110px);height:0;text-align:center;pointer-events:none}
+.af-t > div{position:absolute;left:0;right:0;bottom:0;padding:0 16px;opacity:0;transform:translate3d(0,8px,0);transition:opacity .9s ease,transform 1.6s var(--ez)}
+.af-t > div.on{opacity:1;transform:none;transition:opacity 1.6s ease .8s,transform 2s var(--ez) .8s}
+.af-t h2{font-size:clamp(52px,16vw,156px);margin:14px 0 12px}
 
-/* 2. catalogue spreads on ivory, thin gutters, no radius */
-.at-cat{padding-top:var(--g)}
-.at-full{position:relative;display:block;overflow:hidden;aspect-ratio:4/3;margin-bottom:var(--g)}
-.at-full::after{content:"";position:absolute;inset:0;background:linear-gradient(205deg,rgba(12,9,6,.5) 0%,rgba(12,9,6,0) 42%);pointer-events:none}
-.at-lbl{position:absolute;z-index:2;top:14px;right:16px;text-align:right;color:#fff;text-shadow:0 1px 16px rgba(0,0,0,.3)}
-.at-lbl b{display:block;font-size:clamp(21px,6vw,54px);margin:6px 0 5px}
-.at-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--g);padding:0 var(--g);margin-bottom:var(--g)}
-.at-pair > *{aspect-ratio:4/5;position:relative;display:block;overflow:hidden}
-.at-card{display:flex!important;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:14px 12px;color:#F4ECDF;background:radial-gradient(140% 95% at 28% 0%,#80684A 0%,#56432E 42%,#2D2219 100%)}
-.at-card h3{font-size:clamp(16px,4.6vw,44px);margin:9px 0 7px;line-height:1.05}
-.at-card p{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(12.5px,3.3vw,19px);line-height:1.4;margin:10px 0 0;color:#E6DACA;max-width:30ch}
-.at-go{display:inline-block;margin-top:14px;border-bottom:1px solid currentColor;padding-bottom:3px;font-family:"Jost",var(--body);font-weight:400;font-size:9.5px;letter-spacing:.24em;padding-left:.24em;text-transform:uppercase}
-.at-nm{position:absolute;z-index:2;left:0;right:0;bottom:10px;text-align:center;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.45)}
-.at-tri{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:0 var(--g);margin-bottom:var(--g)}
-.at-tri > a{position:relative;display:block;overflow:hidden;aspect-ratio:1/1}
-.at-tri .at-nm{bottom:8px}
-.at-tri .at-s{font-size:8.5px;letter-spacing:.2em}
+/* 2. catalogue: full-bleed photographs, quiet centred captions below on ivory */
+.at-cat{padding-top:var(--seam)}
+.at-full{display:block;margin-bottom:var(--sp)}
+.at-lbl{display:block;text-align:center;padding:20px 20px 0}
+.at-lbl b{display:block;font-size:clamp(26px,7.4vw,56px);margin:10px 0 9px}
+.at-lbl .at-s:last-child{color:var(--muted)}
+.at-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--seam);margin-bottom:var(--sp);align-items:start}
+.at-pair > a{display:block}
+.at-card{display:flex!important;flex-direction:column;justify-content:center;align-items:center;text-align:center;aspect-ratio:4/5;padding:16px 14px;background:var(--tint);color:var(--ink2)}
+.at-card h3{font-size:clamp(20px,5.6vw,44px);margin:10px 0 8px;line-height:1.05}
+.at-card .at-s{color:var(--muted)}
+.at-card p{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(14px,3.8vw,19px);line-height:1.4;margin:10px 0 0;color:#3E362E;max-width:30ch}
+.at-go{display:inline-block;margin-top:16px;border-bottom:1px solid currentColor;padding:12px 0 4px;font-family:"Jost",var(--body);font-weight:400;font-size:11px;letter-spacing:.22em;padding-left:.22em;text-transform:uppercase;cursor:pointer}
+.at-nm{display:block;text-align:center;padding:12px 6px 0;color:var(--ink2)}
+.at-tri{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--seam);margin-bottom:var(--sp)}
+.at-tri > a{display:block}
+.at-tri .at-im{--ar:1/1}
+.at-tri .at-s{font-size:10px;letter-spacing:.18em;padding-left:.18em}
 
-/* 3. services band */
-.at-svc{margin:0 var(--g) var(--g);padding:34px 22px 30px;color:#F7F0E5;background:linear-gradient(165deg,#8E7759 0%,#75614A 60%,#65533F 100%)}
-.at-svc + .at-svc{margin-top:calc(-1 * var(--g) + 3px)}
-.at-svc h3{font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(28px,8.4vw,64px);letter-spacing:.01em;line-height:1;margin:8px 0 10px}
-.at-svc p{font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;line-height:1.45;margin:0;max-width:44ch;color:#EFE5D6}
-.at-svc .at-go{margin-top:18px}
-.at-svc.with{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center;padding:16px}
-.at-svc.with .ph{position:relative;aspect-ratio:4/5;overflow:hidden}
-.at-svc.with h3{font-size:clamp(22px,6.2vw,52px)}
+/* 3. services: flat panels, type does the work */
+.at-svc{padding:44px 24px 40px;background:var(--tint);color:var(--ink2);text-align:center}
+.at-svc + .at-svc{margin-top:var(--seam)}
+.at-svc h3{font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(30px,8.8vw,64px);letter-spacing:.01em;line-height:1;margin:12px 0 14px}
+.at-svc p{font-family:"Cormorant Garamond",Georgia,serif;font-size:17px;line-height:1.5;margin:0 auto;max-width:40ch;color:#3E362E}
+.at-svc .at-s{color:var(--muted)}
+.at-svc.with{display:grid;grid-template-columns:1fr;gap:0;padding:0;background:var(--iv)}
+.at-svc.with .ph .at-im{--ar:4/3}
+.at-svc.with > div{padding:30px 24px 40px;background:var(--tint)}
+.at-svc:last-of-type{margin-bottom:var(--sp)}
 
-/* 4. discover panels with parallax */
-.at-dis{position:relative;display:block;overflow:hidden;aspect-ratio:4/5;margin-bottom:var(--g)}
-.at-dis .at-im img{top:-12%;height:124%}
-.at-dis::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,7,5,.6) 0%,rgba(10,7,5,0) 55%);pointer-events:none}
-.at-dis .tx{position:absolute;z-index:2;left:0;right:0;bottom:8%;text-align:center;color:#fff;will-change:transform}
-.at-dis .tx b{display:block;font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(40px,12.5vw,128px);letter-spacing:.005em;line-height:.95;margin:6px 0 14px}
+/* 4. discover: the big words sit on the photograph, the one place text overlays */
+.at-dis{position:relative;display:block;margin-bottom:var(--seam)}
+.at-dis .at-im img{top:-10%;height:120%}
+.at-dis .at-im::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,7,5,.55) 0%,rgba(10,7,5,0) 50%);pointer-events:none}
+.at-dis .tx{position:absolute;z-index:2;left:0;right:0;bottom:9%;text-align:center;color:#fff}
+.at-dis .tx b{display:block;font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(44px,13.5vw,128px);letter-spacing:.005em;line-height:.95;margin:8px 0 16px}
 
 /* 5. close */
-.at-end{text-align:center;padding:64px 20px 58px}
-.at-end .at-dd{display:block;font-size:clamp(26px,7vw,58px);margin:12px 0 10px}
-.at-end p{font-family:"Cormorant Garamond",Georgia,serif;font-size:17px;margin:0 0 26px;color:#5D5247}
-.at-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.at-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border:1px solid #1F1A15;font-size:10.5px;font-weight:400;letter-spacing:.26em;text-transform:uppercase;transition:background .5s ease,color .5s ease}
+.at-end{text-align:center;padding:80px 20px 72px}
+.at-end .at-dd{display:block;font-size:clamp(28px,7.6vw,58px);margin:14px 0 12px}
+.at-end p{font-family:"Cormorant Garamond",Georgia,serif;font-size:18px;margin:0 0 30px;color:#4E453C}
+.at-btns{display:flex;flex-direction:column;gap:10px;align-items:center}
+.at-btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;width:min(100%,300px);padding:0 26px;border:1px solid #1F1A15;font-size:11px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;transition:background-color .4s ease,color .4s ease}
 .at-btn:hover,.at-btn.dk{background:#1F1A15;color:#F3EFE9}
 .at-btn.dk:hover{background:transparent;color:#1F1A15}
 
 /* rest of home, same language */
-.at-h{text-align:center;padding:52px 20px 22px}
-.at-h h2{font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(30px,8.6vw,64px);line-height:1;letter-spacing:.01em;margin:10px 0 14px;color:var(--ink2)}
-.at-quad{grid-template-columns:repeat(2,1fr);gap:var(--g)}
-.at-quad > a{aspect-ratio:4/5}
-.at-coll .rail{padding:0 var(--g);gap:var(--g);grid-auto-columns:64%}
+.at-h{text-align:center;padding:64px 20px 26px}
+.at-h h2{font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(30px,8.6vw,64px);line-height:1;letter-spacing:.01em;margin:12px 0 16px;color:var(--ink2)}
+.at-h .at-s{color:var(--muted)}
+.at-quad{grid-template-columns:repeat(2,1fr);row-gap:28px;margin-bottom:0}
+.at-quad .at-im{--ar:4/5}
+.at-quad .at-s{font-size:11px}
+.at-coll .rail{padding:0 16px;gap:var(--seam);grid-auto-columns:72%}
 .at-rest .pc{border:0;border-radius:0;background:transparent;color:var(--ink2)}
 .at-rest .pc .im{border-bottom:0;border-radius:0;background:#E7E0D6!important}
 .at-rest .pc img{border-radius:0}
@@ -584,50 +582,49 @@ body.at-ovr header.top .mega{color:var(--ink)}
 .at-rest .pc .nm{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:18px;line-height:1.2}
 .at-rest .pc .add{border-radius:0;border-color:var(--ink2);color:var(--ink2);font-family:"Jost",var(--body);font-weight:400;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
 .at-rest .pc .add:hover{background:var(--ink2);color:#F3EFE9}
-.at-rv .revs{padding:0 var(--g);gap:var(--g)}
-.at-rest .rev{border:0;border-radius:0;background:#E9E2D8;padding:30px 24px;text-align:center}
-.at-rest .rev .st{color:#9C7A45;letter-spacing:5px;font-size:12px}
+.at-rv .revs{padding:0 16px;gap:var(--seam)}
+.at-rest .rev{border:0;border-radius:0;background:var(--tint);padding:34px 24px;text-align:center}
+.at-rest .rev .st{color:#8A6A3A;letter-spacing:5px;font-size:12px}
 .at-rest .rev blockquote{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;line-height:1.45;color:var(--ink2);margin:14px 0 16px}
-.at-rest .rev figcaption{font-family:"Jost",var(--body);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#6D6255}
-.at-seox{background:#F3EFE9;color:#4E453C;padding:6px 0 48px}
+.at-rest .rev figcaption{font-family:"Jost",var(--body);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.at-seox{background:#F3EFE9;color:#4E453C;padding:16px 0 56px}
 .at-seox .seo{font-family:"Cormorant Garamond",Georgia,serif;font-size:17px;color:#4E453C;max-width:720px;margin:0 auto;padding-top:20px}
 .at-seox .seo h2{font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(26px,7vw,46px);letter-spacing:.01em;line-height:1.05;text-align:center;margin:24px 0 22px;color:#1F1A15}
 .at-seox .seo h3{font-family:"Jost",var(--body);font-weight:400;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#1F1A15;margin:22px 0 6px}
 .at-seox .seo .more:not(.open)::after{background:linear-gradient(rgba(243,239,233,0),#F3EFE9)}
 .at-seox .btn{border-radius:0;border:1px solid #1F1A15;color:#1F1A15;background:transparent;font-family:"Jost",var(--body);font-weight:400;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;display:block;margin:16px auto 0}
-.af-k{display:none}
-body.at-home footer{--ink:#1F1A15;--muted:#6D6255;--line:rgba(31,26,21,.12);--tint:#EAE4DA;--bg:#F3EFE9;--card:#F3EFE9;--rose:#6B2D1C;--brass:#9C7A45;background:#EAE4DA;color:#1F1A15;margin-top:0;border-top:0}
-
-/* entrance: hidden only once JS runs, so nothing disappears without it */
-.at.js .rv{opacity:0;transform:translate3d(0,28px,0)}
+body.at-home footer{--ink:#1F1A15;--muted:#5F554A;--line:rgba(31,26,21,.12);--tint:#E9E3DA;--bg:#F3EFE9;--card:#F3EFE9;--rose:#6B2D1C;--brass:#9C7A45;background:#E9E3DA;color:#1F1A15;margin-top:0;border-top:0}
 
 @media (min-width:761px){
-  .at{--g:12px}
+  .at{--seam:6px;--sp:104px}
   .at-cat,.at-end{max-width:1680px;margin-left:auto;margin-right:auto}
-  .af{height:calc(100vh - 40px);max-height:none}
-  .af-t{bottom:15%}
-  .af-t .at-s{font-size:11px}
-  .at-full{aspect-ratio:16/7}
-  .at-lbl{top:30px;right:36px}
-  .at-pair > *{aspect-ratio:6/5}
-  .at-card{padding:40px}
-  .at-tri{gap:6px}
-  .at-tri > a{aspect-ratio:4/3}
-  .at-tri .at-s{font-size:10px}
-  .at-svc{padding:60px 64px 54px}
-  .at-svc.with{padding:24px;gap:48px;grid-template-columns:1fr 1.1fr}
-  .at-svc.with .ph{aspect-ratio:5/4}
-  .at-dis{aspect-ratio:16/8}
+  .af-t{bottom:14%}
+  .at-s{font-size:11.5px}
+  .at-full .at-im{--ar:16/8}
+  .at-lbl{padding-top:28px}
+  .at-pair .at-im,.at-card{aspect-ratio:6/5}
+  .at-card{padding:48px}
+  .at-tri .at-im{--ar:4/3}
+  .at-tri .at-s{font-size:11px}
+  .at-svc{padding:80px 64px 72px}
+  .at-svc.with{grid-template-columns:1.1fr 1fr;align-items:stretch}
+  .at-svc.with .ph .at-im{--ar:5/4;height:100%}
+  .at-svc.with > div{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:56px}
+  .at-dis .at-im{--ar:16/8}
+  .at-btns{flex-direction:row;justify-content:center}
+  .at-btn{width:auto}
   .at-quad{grid-template-columns:repeat(4,1fr)}
-  .at-quad > a{aspect-ratio:3/4}
-  .at-coll .rail{grid-auto-columns:calc((100% - 3 * var(--g)) / 4)}
-  .at-end{padding:110px 20px 100px}
+  .at-quad .at-im{--ar:3/4}
+  .at-coll .rail,.at-rv .revs,.at-quad{padding-left:var(--seam);padding-right:var(--seam)}
+  .at-coll .rail{grid-auto-columns:calc((100% - 3 * var(--seam)) / 4)}
+  .at-end{padding:140px 20px 128px}
 }
 @media (max-width:360px){ .at-card p{display:none} }
 @media (prefers-reduced-motion:reduce){
-  .af-s,.af-t > div{transition:none}
+  .af-s,.af-t > div,.af-t > div.on,.at-im img{transition:none}
   .af-s.on img,.af-s.out img{animation:none;transform:none}
-  .at.js .rv{opacity:1;transform:none}
+  .at-im img[loading="lazy"]:not(.ld){opacity:1}
+  .at a:hover .at-im img{scale:1}
 }
 </style>
 </head>
@@ -750,6 +747,7 @@ body.at-home footer{--ink:#1F1A15;--muted:#6D6255;--line:rgba(31,26,21,.12);--ti
 </div>
 <div class="toast" id="toast" role="status"></div>
 
+<script type="module">import * as M from "./vendor/motion.js"; window.Motion = M; dispatchEvent(new Event("motion:ready"));</script>
 <script src="data.js"></script>
 <script>
 /* ============ CONFIG: yahan apni details badlo ============ */
@@ -1000,9 +998,8 @@ function home(){
   return `
   <div class="at" id="atelier">
     <a class="af" id="afilm" href="${AT_FILM[0].href}" aria-label="${AT_FILM[0].alt}">
-      ${AT_FILM.map((s,i)=>`<div class="af-s${i?"":" on"}" style="--fx:${s.fx};--fy:${s.fy}"><picture><source media="(min-width:761px)" srcset="${s.img}-d.jpg"><img src="${s.img}-m.jpg" alt=""${i?' loading="lazy"':' fetchpriority="high"'}></picture></div>`).join("")}
-      <div class="af-t">${AT_FILM.map((s,i)=>`<div${i?"":' class="on"'}><span class="at-s">Introducing</span><h2 class="at-dd">${s.word}</h2><span class="at-s">${s.sub}</span><span class="at-s">by SR Handicraft</span></div>`).join("")}</div>
-      <div class="af-k" aria-hidden="true">${AT_FILM.map(()=>"<i></i>").join("")}</div>
+      <div class="af-p">${AT_FILM.map((s,i)=>`<div class="af-s${i?"":" on"}" style="--fx:${s.fx};--fy:${s.fy}"><picture><source media="(min-width:761px)" srcset="${s.img}-d.jpg"><img src="${s.img}-m.jpg" alt=""${i?' loading="lazy"':' fetchpriority="high"'}></picture></div>`).join("")}</div>
+      <div class="af-t">${AT_FILM.map((s,i)=>`<div${i?"":' class="on"'}><span class="at-s">Introducing</span><h2 class="at-dd">${s.word}</h2><span class="at-s">${s.sub}</span></div>`).join("")}</div>
     </a>
 
     <div class="at-cat">
@@ -1355,64 +1352,55 @@ function route(){
 }
 function rerender(keepScroll){ const y=scrollY; route(); if(keepScroll) scrollTo(0,y); }
 
-/* ============ Atelier motion: tiny spring engine (stiffness 70, damping 22), no libraries ============ */
-const ATL = { ac:null, io:null, springs:new Set(), raf:0, last:0 };
+/* ============ Atelier motion ============
+   Motion (vendor/motion.js, loaded as a module) drives the scroll-linked parallax and the
+   reveals; scroll-linked effects run on the browser's ScrollTimeline where it exists, so
+   scrolling stays on the compositor. Everything is visible without it. */
+const ATL = { ac:null, stops:[] };
 const atReduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
-function atSpring(v, on){ return { v, t:v, vel:0, on }; }
-function atSet(s, t){
-  s.t = t;
-  if (atReduce()){ s.v = t; s.vel = 0; s.on(t); return; }
-  ATL.springs.add(s);
-  if (!ATL.raf){ ATL.last = performance.now(); ATL.raf = requestAnimationFrame(atTick); }
+const AT_EZ = [0.22, 1, 0.36, 1];   // long, soft ease-out: quick to start, slow to settle
+function atMotion(fn, signal){
+  if (window.Motion) return fn(window.Motion);
+  addEventListener("motion:ready", () => { if (!signal.aborted) fn(window.Motion); }, { once:true, signal });
 }
-function atTick(now){
-  // fixed sub-steps keep the heavy, non-bouncy feel the same at any frame rate
-  let dt = Math.min(0.05, (now - ATL.last) / 1000); ATL.last = now;
-  const K = 70, C = 22, step = 1/240;
-  for (const s of ATL.springs){
-    let left = dt;
-    while (left > 0){ const h = Math.min(step, left); const a = -K*(s.v - s.t) - C*s.vel; s.vel += a*h; s.v += s.vel*h; left -= h; }
-    if (Math.abs(s.v - s.t) < 1e-4 && Math.abs(s.vel) < 1e-4){ s.v = s.t; s.vel = 0; ATL.springs.delete(s); }
-    s.on(s.v);
-  }
-  ATL.raf = ATL.springs.size ? requestAnimationFrame(atTick) : 0;
-}
-const atClamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
-const atEase = x => 1 - Math.pow(1 - x, 3);
 
 const AT_FILM = [
-  { img:"hero-jaali",   word:"Jaali",   sub:"the jaali door mandir",   href:"#/p/17", alt:"Jaali Door Sheesham Pooja Mandir",  fx:"2%",  fy:"-2%" },
-  { img:"hero-tile",    word:"Tile",    sub:"the hand painted bed",    href:"#/p/30", alt:"Hand Painted Tile Headboard Bed",   fx:"2%",  fy:"2%" },
-  { img:"hero-carving", word:"Carving", sub:"the carved dining table", href:"#/p/6",  alt:"Carved Sheesham 6 Seater Dining Set", fx:"-2%", fy:"-2%" }
+  { img:"hero-jaali",   word:"Jaali",   sub:"the jaali door mandir",   href:"#/p/17", alt:"Jaali Door Sheesham Pooja Mandir",  fx:"1.5%",  fy:"-1.5%" },
+  { img:"hero-tile",    word:"Tile",    sub:"the hand painted bed",    href:"#/p/30", alt:"Hand Painted Tile Headboard Bed",   fx:"1.5%",  fy:"1.5%" },
+  { img:"hero-carving", word:"Carving", sub:"the carved dining table", href:"#/p/6",  alt:"Carved Sheesham 6 Seater Dining Set", fx:"-1.5%", fy:"-1.5%" }
 ];
-const AT_SLIDE = 6500;
+const AT_SLIDE = 7500;
 
 function atelierInit(){
   if (ATL.ac) ATL.ac.abort();
-  if (ATL.io) ATL.io.disconnect();
-  if (ATL.px) ATL.px.disconnect();
+  ATL.stops.forEach(f => { try { f(); } catch(e){} }); ATL.stops = [];
   clearTimeout(ATL.t1); clearTimeout(ATL.t2);
-  ATL.springs.clear();
   document.body.classList.remove("at-ovr","at-home","at-hide","at-hidebar");
+  document.body.style.removeProperty("--at-hdr");
   const root = document.getElementById("atelier"); if (!root) return;
   document.body.classList.add("at-home");
   const ac = new AbortController(); ATL.ac = ac; const sig = { signal: ac.signal, passive: true };
-  root.classList.add("js");
   const hdr = document.querySelector("header.top");
   const film = root.querySelector(".af");
 
+  /* lazy photos fade in once decoded instead of popping in */
+  document.querySelectorAll('.at .at-im img[loading="lazy"]').forEach(im => {
+    const done = () => im.classList.add("ld");
+    if (im.complete && im.naturalWidth) done(); else { im.addEventListener("load", done, { once:true }); im.addEventListener("error", done, { once:true }); }
+  });
+
   /* header sits transparent over the film, turns solid once you scroll past it */
-  const setHdr = () => root.style.setProperty("--at-hdr", (hdr ? hdr.offsetHeight : 0) + "px");
+  const setHdr = () => document.body.style.setProperty("--at-hdr", (hdr ? hdr.offsetHeight : 0) + "px");
   const ovr = () => {
     const past = film.getBoundingClientRect().bottom < (hdr ? hdr.offsetHeight : 0) + 40;
     document.body.classList.toggle("at-ovr", !past);
   };
-  /* like a magazine: chrome slips away while you read down, returns the moment you scroll up */
+  /* chrome slips away while you read down, returns the moment you scroll up */
   let lastY = scrollY;
   const chrome = () => {
     const y = scrollY, d = y - lastY;
-    if (Math.abs(d) < 6) return;
-    const down = d > 0 && y > 80;
+    if (Math.abs(d) < 8) return;
+    const down = d > 0 && y > 120;
     document.body.classList.toggle("at-hide", down && !document.querySelector(".drawer.open"));
     const pastAtelier = root.getBoundingClientRect().bottom < innerHeight;
     document.body.classList.toggle("at-hidebar", down && !pastAtelier);
@@ -1423,89 +1411,64 @@ function atelierInit(){
   addEventListener("resize", () => { if (innerWidth !== lastW) { lastW = innerWidth; document.body.classList.remove("at-ovr"); setHdr(); } ovr(); }, sig);
   addEventListener("scroll", () => { ovr(); chrome(); }, sig);
 
-  /* 1. Film: slow dissolve to the next close-up; its title fades in after the cut and out before the next */
-  const slides = [...film.querySelectorAll(".af-s")], titles = [...film.querySelectorAll(".af-t > div")], ticks = [...film.querySelectorAll(".af-k i")];
+  /* 1. Film: long hold, slow dissolve to the next piece; its title fades in after the cut and out before the next */
+  const slides = [...film.querySelectorAll(".af-s")], titles = [...film.querySelectorAll(".af-t > div")];
   let cur = 0, visible = true;
-  film.style.setProperty("--dur", AT_SLIDE + "ms");
   const show = n => {
     const prev = cur; cur = n;
     slides[prev].classList.remove("on"); slides[prev].classList.add("out");
-    setTimeout(() => slides[prev].classList.remove("out"), 2000);
+    setTimeout(() => slides[prev].classList.remove("out"), 2400);
     slides[n].classList.remove("out"); void slides[n].offsetWidth; slides[n].classList.add("on");
     titles[n].classList.add("on");
-    ticks.forEach((t, i) => { t.classList.remove("on"); t.classList.toggle("done", i < n); });
-    void film.offsetWidth; ticks[n].classList.add("on");
     film.href = AT_FILM[n].href; film.setAttribute("aria-label", AT_FILM[n].alt);
     plan();
   };
   const plan = () => {
     clearTimeout(ATL.t1); clearTimeout(ATL.t2);
     if (atReduce() || !visible || document.hidden) return;
-    ATL.t1 = setTimeout(() => titles[cur].classList.remove("on"), AT_SLIDE - 1300);
+    ATL.t1 = setTimeout(() => titles[cur].classList.remove("on"), AT_SLIDE - 1200);
     ATL.t2 = setTimeout(() => show((cur + 1) % slides.length), AT_SLIDE);
   };
-  if (!atReduce()) {
-    ticks[0].classList.add("on");
-    // warm the cache so every dissolve lands on a decoded image
-    const sfx = matchMedia("(min-width:761px)").matches ? "-d.jpg" : "-m.jpg";
-    AT_FILM.slice(1).forEach(s => { const i = new Image(); i.src = s.img + sfx; });
-    new IntersectionObserver((en, ob) => {
-      if (ac.signal.aborted) return ob.disconnect();
-      const was = visible; visible = en[0].isIntersecting;
-      if (visible && !was) { titles[cur].classList.add("on"); plan(); }
-      if (!visible) { clearTimeout(ATL.t1); clearTimeout(ATL.t2); }
-    }, { threshold: 0.2 }).observe(film);
-    document.addEventListener("visibilitychange", () => { if (!document.hidden) { titles[cur].classList.add("on"); plan(); } else { clearTimeout(ATL.t1); clearTimeout(ATL.t2); } }, { signal: ac.signal });
-    plan();
-  }
+  if (atReduce()) return;   // static page: first film frame, no parallax or reveals
 
-  /* 2. Images drift a little slower than the page (parallax), stronger on the Discover panels */
-  const imgs = [...root.querySelectorAll(".at-cat .at-im")].map(w => ({ w, im: w.querySelector("img"), a: w.dataset.px ? 9 : 4, y: 0, s: 1, tx: w.parentElement.querySelector(".tx") }));
-  const draw = o => { o.im.style.transform = `translate3d(0,${o.y.toFixed(2)}%,0) scale(${o.s.toFixed(4)})`; };
-  const live = new Set();
-  ATL.px = new IntersectionObserver(en => en.forEach(e => { const o = e.target._at; e.isIntersecting ? live.add(o) : live.delete(o); }), { rootMargin: "120px 0px" });
-  imgs.forEach(o => { o.w._at = o; ATL.px.observe(o.w); });
-  let ticking = false;
-  const par = () => {
-    ticking = false;
+  // warm the cache so every dissolve lands on a decoded image
+  const sfx = matchMedia("(min-width:761px)").matches ? "-d.jpg" : "-m.jpg";
+  AT_FILM.slice(1).forEach(s => { const i = new Image(); i.src = s.img + sfx; });
+  const fio = new IntersectionObserver(en => {
+    const was = visible; visible = en[0].isIntersecting;
+    if (visible && !was) { titles[cur].classList.add("on"); plan(); }
+    if (!visible) { clearTimeout(ATL.t1); clearTimeout(ATL.t2); }
+  }, { threshold: 0.2 });
+  fio.observe(film); ATL.stops.push(() => fio.disconnect());
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { titles[cur].classList.add("on"); plan(); } else { clearTimeout(ATL.t1); clearTimeout(ATL.t2); } }, { signal: ac.signal });
+  plan();
+
+  atMotion(({ animate, scroll, inView }) => {
+    const keep = f => ATL.stops.push(f);
+    /* 2. As the film scrolls away it sinks slower than the page and its title lifts and fades */
+    keep(scroll(animate(film.querySelector(".af-p"), { translate: ["0 0", "0 28%"] }, { ease: "linear" }), { target: film, offset: ["start start", "end start"] }));
+    keep(scroll(animate(film.querySelector(".af-t"), { opacity: [1, 0], translate: ["0 0", "0 -48px"] }, { ease: "linear" }), { target: film, offset: ["start start", "0.45 start"] }));
+
+    /* 3. Photos drift a little slower than the page, more on the big Discover panels */
+    root.querySelectorAll(".at-cat .at-im").forEach(w => {
+      const a = w.dataset.px ? 8 : 4.5;
+      keep(scroll(animate(w.querySelector("img"), { translate: [`0 -${a}%`, `0 ${a}%`] }, { ease: "linear" }), { target: w, offset: ["start end", "end start"] }));
+    });
+
+    /* 4. Reveal: blocks below the fold fade up once; their photos settle from a slight zoom */
     const vh = innerHeight;
-    live.forEach(o => {
-      const r = o.w.getBoundingClientRect();
-      const k = Math.max(-1, Math.min(1, ((r.top + r.height / 2) - vh / 2) / (vh / 2 + r.height / 2)));
-      o.y = k * o.a; draw(o);
-      if (o.tx) o.tx.style.transform = `translate3d(0,${(-k * 22).toFixed(1)}px,0)`;
+    root.querySelectorAll(".rv").forEach(el => {
+      if (el.getBoundingClientRect().top < vh) return;          // already on screen: never hide it
+      el.style.opacity = "0";
+      const ims = [...el.querySelectorAll(".at-im img")];
+      keep(inView(el, () => {
+        const delay = (+(el.dataset.d || 0)) / 1000;
+        animate(el, { opacity: [0, 1], translate: ["0 20px", "0 0"] }, { duration: 1.2, delay, ease: AT_EZ })
+          .then(() => { el.style.opacity = ""; el.style.translate = ""; });
+        ims.forEach(im => animate(im, { scale: [1.07, 1] }, { duration: 1.8, delay, ease: AT_EZ }).then(() => { im.style.scale = ""; }));
+      }, { amount: 0.12 }));
     });
-  };
-  if (!atReduce()) {
-    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(par); } }, sig);
-    addEventListener("resize", par, sig);
-    requestAnimationFrame(par);
-  }
-
-  /* 3. Entrance: blocks rise in once on the heavy spring, images settle from 1.06 */
-  ATL.io = new IntersectionObserver(entries => entries.forEach(en => {
-    if (!en.isIntersecting) return;
-    ATL.io.unobserve(en.target);
-    const el = en.target, mine = imgs.filter(o => el.contains(o.w));
-    const sp = atSpring(0, v => {
-      el.style.opacity = String(Math.min(1, v * 1.15));
-      el.style.transform = `translate3d(0,${(1 - v) * 28}px,0)`;
-      mine.forEach(o => { o.s = 1.06 - 0.06 * v; draw(o); });
-    });
-    sp.on(0);
-    setTimeout(() => { if (!ac.signal.aborted) atSet(sp, 1); }, +(el.dataset.d || 0));
-  }), { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
-  root.querySelectorAll(".rv").forEach(el => ATL.io.observe(el));
-
-  /* 4. Desktop hover: the photo leans in slowly */
-  if (matchMedia("(hover: hover)").matches) {
-    imgs.forEach(o => {
-      const host = o.w.closest("a"); if (!host) return;
-      const ss = atSpring(1, v => { o.s = v; draw(o); });
-      host.addEventListener("pointerenter", () => { ss.v = o.s; atSet(ss, 1.035); }, sig);
-      host.addEventListener("pointerleave", () => { ss.v = o.s; atSet(ss, 1); }, sig);
-    });
-  }
+  }, ac.signal);
 }
 
 function bindView(){
