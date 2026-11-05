@@ -474,6 +474,12 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 
 /* ===== Atelier: editorial home (RH-inspired layout language, SR's own content) ===== */
 header.top{transition:background-color .5s ease,border-color .5s ease,color .5s ease}
+body.at-home header.top{position:fixed;left:0;right:0;top:0;transition:background-color .5s ease,border-color .5s ease,color .5s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+body.at-home.at-hide header.top{transform:translate3d(0,-100%,0)}
+body.at-home .mbar{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+body.at-home.at-hidebar .mbar{transform:translate3d(0,110%,0)}
+body.at-home #app{padding-top:var(--at-hdr,0px)}
+body.at-home .af{margin-top:calc(-1 * var(--at-hdr,0px))}
 body.at-ovr header.top{background:transparent;border-bottom-color:transparent;color:#fff}
 body.at-ovr header.top .ib,body.at-ovr header.top .ib svg,body.at-ovr header.top .catnav li>a{color:#fff}
 body.at-ovr header.top .logo .name small{color:rgba(255,255,255,.8)}
@@ -482,6 +488,7 @@ body.at-ovr header.top .search input{background:rgba(255,255,255,.12);border-col
 body.at-ovr header.top .search input::placeholder{color:rgba(255,255,255,.82)}
 body.at-ovr header.top .catnav{border-top-color:rgba(255,255,255,.2)}
 body.at-ovr header.top .mega{color:var(--ink)}
+@media (max-width:760px){ body.at-ovr header.top .search{display:none} }
 
 .at{--iv:#F3EFE9;--g:10px;--ink2:#1F1A15;background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body);padding-bottom:var(--g)}
 .at :where(a){color:inherit;text-decoration:none}
@@ -489,7 +496,8 @@ body.at-ovr header.top .mega{color:var(--ink)}
 .at-k{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:10px;font-weight:500;letter-spacing:.36em;padding-left:.36em;text-transform:uppercase}
 .at-s{display:block;font-family:"Jost",var(--body);font-weight:300;font-size:9.5px;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase}
 .at-im{position:absolute;inset:0;overflow:hidden;background:#2B221B}
-.at-im img{position:absolute;left:0;top:-7%;width:100%;height:114%;object-fit:cover;display:block;filter:saturate(.8) sepia(.1) contrast(1.05) brightness(.95);will-change:transform}
+.at-im img{position:absolute;left:0;top:-7%;width:100%;height:114%;object-fit:cover;display:block;filter:saturate(.72) sepia(.17) contrast(1.06) brightness(.9);will-change:transform}
+.at-im::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 95% at 50% 45%,rgba(20,13,8,0) 55%,rgba(20,13,8,.28) 100%)}
 
 /* 1. film hero: slow dissolves between carving close-ups, title fades in after each cut */
 .af{position:relative;display:block;height:84vh;height:84svh;min-height:500px;max-height:1000px;margin-top:calc(-1 * var(--at-hdr,0px));overflow:hidden;background:#140F0B;color:#F7F1E7}
@@ -1379,8 +1387,9 @@ function atelierInit(){
   if (ATL.px) ATL.px.disconnect();
   clearTimeout(ATL.t1); clearTimeout(ATL.t2);
   ATL.springs.clear();
-  document.body.classList.remove("at-ovr");
+  document.body.classList.remove("at-ovr","at-home","at-hide","at-hidebar");
   const root = document.getElementById("atelier"); if (!root) return;
+  document.body.classList.add("at-home");
   const ac = new AbortController(); ATL.ac = ac; const sig = { signal: ac.signal, passive: true };
   root.classList.add("js");
   const hdr = document.querySelector("header.top");
@@ -1392,9 +1401,21 @@ function atelierInit(){
     const past = film.getBoundingClientRect().bottom < (hdr ? hdr.offsetHeight : 0) + 40;
     document.body.classList.toggle("at-ovr", !past);
   };
+  /* like a magazine: chrome slips away while you read down, returns the moment you scroll up */
+  let lastY = scrollY;
+  const chrome = () => {
+    const y = scrollY, d = y - lastY;
+    if (Math.abs(d) < 6) return;
+    const down = d > 0 && y > 80;
+    document.body.classList.toggle("at-hide", down && !document.querySelector(".drawer.open"));
+    const pastAtelier = root.getBoundingClientRect().bottom < innerHeight;
+    document.body.classList.toggle("at-hidebar", down && !pastAtelier);
+    lastY = y;
+  };
   setHdr(); ovr();
-  addEventListener("resize", () => { setHdr(); ovr(); }, sig);
-  addEventListener("scroll", ovr, sig);
+  let lastW = innerWidth;
+  addEventListener("resize", () => { if (innerWidth !== lastW) { lastW = innerWidth; document.body.classList.remove("at-ovr"); setHdr(); } ovr(); }, sig);
+  addEventListener("scroll", () => { ovr(); chrome(); }, sig);
 
   /* 1. Film: slow dissolve to the next close-up; its title fades in after the cut and out before the next */
   const slides = [...film.querySelectorAll(".af-s")], titles = [...film.querySelectorAll(".af-t > div")], ticks = [...film.querySelectorAll(".af-k i")];
