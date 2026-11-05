@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:wght@600;700&family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@200;300;400&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:wght@600;700&family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#ffffff; --tint:#F7F7F7; --card:#ffffff; --ink:#222222; --muted:#666666; --line:#EAEAEA; --hero:#F6F1EA;
@@ -473,75 +473,116 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 .lb img{max-width:100%;max-height:88vh;border-radius:10px}
 
 /* ===== Atelier: editorial home (RH-inspired layout language, SR's own content) ===== */
-.at{--at-bg:#0E0C0A;--at-ink:#F3ECE1;--at-mute:#B9AC99;--at-line:rgba(63,63,70,.4);--at-gap:clamp(10px,1.6vw,24px);background:var(--at-bg);color:var(--at-ink)}
-.at a{color:inherit;text-decoration:none}
-.at-sf{font-family:"Cormorant Garamond","Playfair Display",Georgia,serif;font-weight:400}
-.at-k{display:block;font-size:10.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--at-mute);font-weight:500;padding-left:.42em}
-/* hero: full-bleed carving, scroll pulls it into a floating frame */
-.at-hero{position:relative;height:240vh}
-.at-stick{position:sticky;top:var(--at-hdr,0px);height:calc(100vh - var(--at-hdr,0px));height:calc(100svh - var(--at-hdr,0px));overflow:hidden;display:grid;place-items:center}
-.at-media{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
-.at-media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.14);will-change:transform;filter:brightness(.58) saturate(.9)}
-.at-copy{position:relative;z-index:2;text-align:center;padding:0 20px;will-change:transform,opacity}
-.at-word{font-size:clamp(42px,9.6vw,150px);line-height:.92;letter-spacing:.2em;margin:22px 0 0;padding-left:.2em;font-weight:300}
-.at-word small{display:block;font-size:.26em;letter-spacing:.62em;padding-left:.62em;margin-top:.9em;color:var(--at-mute);font-weight:400}
-.at-line{width:1px;height:56px;margin:34px auto 0;background:linear-gradient(var(--at-mute),transparent)}
-.at-cap{position:absolute;z-index:2;left:0;right:0;bottom:clamp(18px,4vh,40px);text-align:center;opacity:0}
-.at-cap .at-sf{display:block;font-size:clamp(20px,2.4vw,30px);letter-spacing:.06em;margin-top:8px}
-/* statement */
-.at-wrap{max-width:1480px;margin:0 auto;padding:0 var(--at-gap)}
-.at-st{text-align:center;padding:clamp(70px,12vh,140px) 20px clamp(50px,9vh,110px)}
-.at-st h2{font-size:clamp(30px,4.6vw,64px);line-height:1.08;letter-spacing:.04em;margin:18px auto 18px;max-width:18ch;font-weight:300}
-.at-st p{color:var(--at-mute);max-width:52ch;margin:0 auto;font-size:15px;line-height:1.7}
-/* introducing pair */
-.at-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--at-gap);padding-bottom:var(--at-gap)}
-.at-pnl{position:relative;aspect-ratio:4/5;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#5B412D 0%,#3A291C 55%,#1E1610 100%);display:flex;flex-direction:column;border:1px solid var(--at-line)}
-.at-pnl .tx{position:relative;z-index:2;text-align:center;padding:clamp(22px,5%,48px) clamp(20px,9%,70px) 0}
-.at-pnl h3{font-size:clamp(24px,2.6vw,40px);letter-spacing:.14em;line-height:1.05;margin:12px 0 6px;padding-left:.14em;font-weight:400;text-transform:uppercase}
-.at-pnl .by{display:block;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--at-mute)}
-.at-pnl p{font-size:13px;line-height:1.75;color:#D9CDBB;margin:16px 0 0;text-align:justify;hyphens:auto}
-.at-pnl .im{position:absolute;inset:0;overflow:hidden}
-.at-pnl .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%}
-.at-pnl .im::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,12,10,.92) 0%,rgba(14,12,10,.78) 34%,rgba(14,12,10,0) 62%),linear-gradient(to top,rgba(14,12,10,.55),rgba(14,12,10,0) 22%)}
-.at-pnl .go{position:absolute;z-index:3;left:0;right:0;bottom:18px;text-align:center;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase}
-.at-pnl .go span{border-bottom:1px solid rgba(243,236,225,.5);padding-bottom:4px}
-/* tiles share the cinematic hover */
-.bx{position:relative;display:block;overflow:hidden;border:1px solid var(--at-line);border-radius:0;background:#1a1410}
-.bx > img{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;display:block;will-change:transform}
-.bx .cap{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:clamp(16px,2.4vw,28px);overflow:hidden;background:linear-gradient(to top,rgba(10,8,6,.78),rgba(10,8,6,0))}
-.bx .cap > span{display:block;will-change:transform,opacity}
-.bx .cap b{display:block;font-family:"Cormorant Garamond","Playfair Display",Georgia,serif;font-weight:400;font-size:clamp(18px,1.7vw,24px);letter-spacing:.14em;text-transform:uppercase}
-.bx .cap i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--at-mute);margin-top:6px}
-.at-dt{aspect-ratio:4/5}
-/* full-bleed room with corner label */
-.at-full{aspect-ratio:16/8;margin-bottom:var(--at-gap)}
-.at-full .lbl{position:absolute;z-index:2;top:clamp(16px,3vw,40px);right:clamp(16px,3vw,44px);text-align:right;text-shadow:0 1px 18px rgba(0,0,0,.45)}
-.at-full .lbl b{display:block;font-family:"Cormorant Garamond","Playfair Display",Georgia,serif;font-weight:400;font-size:clamp(24px,3.4vw,52px);letter-spacing:.12em;line-height:1;text-transform:uppercase;margin:8px 0 6px}
-.at-full .lbl i{display:block;font-style:normal;font-size:10px;letter-spacing:.34em;text-transform:uppercase}
-.at-full::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(10,8,6,.55) 0%,rgba(10,8,6,0) 45%);pointer-events:none}
-/* asymmetric bento */
-.at-bento{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:var(--at-gap);height:min(92vh,960px);margin-bottom:var(--at-gap)}
-.at-bento .bx:first-child{grid-row:1 / 3}
-.at-end{text-align:center;padding:clamp(56px,10vh,110px) 20px clamp(64px,11vh,120px)}
-.at-end .at-sf{display:block;font-size:clamp(26px,3.4vw,46px);letter-spacing:.06em;margin:14px 0 26px;font-weight:300}
-.at-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.at-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border:1px solid rgba(243,236,225,.55);font-size:11px;letter-spacing:.3em;text-transform:uppercase;transition:background .5s ease,color .5s ease}
-.at-btn:hover{background:#F3ECE1;color:#0E0C0A}
-/* entrance: only hidden once JS is running, so content never disappears without it */
-.at.js .rv{opacity:0;transform:translate3d(0,36px,0)}
-@media (max-width:760px){
-  .at-hero{height:200vh}
-  .at-word{letter-spacing:.12em;padding-left:.12em;font-size:clamp(34px,10vw,60px)}
-  .at-cap{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
-  .at-pair,.at-bento{grid-template-columns:1fr}
-  .at-bento{height:auto;grid-template-rows:none}
-  .at-bento .bx{aspect-ratio:4/5}
-  .at-bento .bx:first-child{grid-row:auto}
-  .at-full{aspect-ratio:4/5}
-  .at-pnl{aspect-ratio:auto;min-height:560px}
+header.top{transition:background-color .5s ease,border-color .5s ease,color .5s ease}
+body.at-ovr header.top{background:transparent;border-bottom-color:transparent;color:#fff}
+body.at-ovr header.top .ib,body.at-ovr header.top .ib svg,body.at-ovr header.top .catnav li>a{color:#fff}
+body.at-ovr header.top .logo .name small{color:rgba(255,255,255,.8)}
+body.at-ovr header.top .logo .mark{box-shadow:0 0 0 1.5px rgba(255,255,255,.85)}
+body.at-ovr header.top .search input{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+body.at-ovr header.top .search input::placeholder{color:rgba(255,255,255,.82)}
+body.at-ovr header.top .catnav{border-top-color:rgba(255,255,255,.2)}
+body.at-ovr header.top .mega{color:var(--ink)}
+
+.at{--iv:#F3EFE9;--g:10px;--ink2:#1F1A15;background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body);padding-bottom:var(--g)}
+.at :where(a){color:inherit;text-decoration:none}
+.at-dd{font-family:"Bodoni Moda","Cormorant Garamond",Didot,"Bodoni 72",Georgia,serif;font-weight:400;text-transform:uppercase;letter-spacing:.015em;line-height:1}
+.at-k{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:10px;font-weight:500;letter-spacing:.36em;padding-left:.36em;text-transform:uppercase}
+.at-s{display:block;font-family:"Jost",var(--body);font-weight:300;font-size:9.5px;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase}
+.at-im{position:absolute;inset:0;overflow:hidden;background:#2B221B}
+.at-im img{position:absolute;left:0;top:-7%;width:100%;height:114%;object-fit:cover;display:block;filter:saturate(.8) sepia(.1) contrast(1.05) brightness(.95);will-change:transform}
+
+/* 1. film hero: slow dissolves between carving close-ups, title fades in after each cut */
+.af{position:relative;display:block;height:84vh;height:84svh;min-height:500px;max-height:1000px;margin-top:calc(-1 * var(--at-hdr,0px));overflow:hidden;background:#140F0B;color:#F7F1E7}
+.af-s{position:absolute;inset:0;opacity:0;transition:opacity 1.8s cubic-bezier(.45,0,.25,1)}
+.af-s.on{opacity:1}
+.af-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.76) sepia(.16) contrast(1.07);transform:scale(1.16) translate3d(var(--fx,0),var(--fy,0),0)}
+.af-s.on img,.af-s.out img{animation:afkb 9s cubic-bezier(.3,.15,.25,1) forwards}
+@keyframes afkb{from{transform:scale(1.16) translate3d(var(--fx,0),var(--fy,0),0)}to{transform:scale(1.02) translate3d(0,0,0)}}
+.af::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(10,7,5,.62) 0%,rgba(10,7,5,0) 30%),linear-gradient(to top,rgba(10,7,5,.55) 0%,rgba(10,7,5,0) 50%)}
+.af-t{position:absolute;z-index:3;left:0;right:0;bottom:13%;height:0;text-align:center;pointer-events:none}
+.af-t > div{position:absolute;left:0;right:0;bottom:0;padding:0 16px;opacity:0;transform:translate3d(0,14px,0);transition:opacity 1s ease,transform 1.8s cubic-bezier(.2,.7,.2,1)}
+.af-t > div.on{opacity:1;transform:none;transition-delay:.9s,.9s}
+.af-t h2{font-size:clamp(46px,15vw,148px);margin:12px 0 10px;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.af-t .at-s{font-size:10px}
+.af-t .at-s + .at-s{margin-top:7px}
+.af-k{position:absolute;z-index:3;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:8px}
+.af-k i{display:block;width:22px;height:1px;background:rgba(255,255,255,.3);overflow:hidden}
+.af-k i::after{content:"";display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left}
+.af-k i.on::after{transform:scaleX(1);transition:transform var(--dur,6.5s) linear}
+.af-k i.done::after{transform:scaleX(1)}
+
+/* 2. catalogue spreads on ivory, thin gutters, no radius */
+.at-cat{padding-top:var(--g)}
+.at-full{position:relative;display:block;overflow:hidden;aspect-ratio:4/3;margin-bottom:var(--g)}
+.at-full::after{content:"";position:absolute;inset:0;background:linear-gradient(205deg,rgba(12,9,6,.5) 0%,rgba(12,9,6,0) 42%);pointer-events:none}
+.at-lbl{position:absolute;z-index:2;top:14px;right:16px;text-align:right;color:#fff;text-shadow:0 1px 16px rgba(0,0,0,.3)}
+.at-lbl b{display:block;font-size:clamp(21px,6vw,54px);margin:6px 0 5px}
+.at-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--g);padding:0 var(--g);margin-bottom:var(--g)}
+.at-pair > *{aspect-ratio:4/5;position:relative;display:block;overflow:hidden}
+.at-card{display:flex!important;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:14px 12px;color:#F4ECDF;background:radial-gradient(140% 95% at 28% 0%,#80684A 0%,#56432E 42%,#2D2219 100%)}
+.at-card h3{font-size:clamp(16px,4.6vw,44px);margin:9px 0 7px;line-height:1.05}
+.at-card p{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(12.5px,3.3vw,19px);line-height:1.4;margin:10px 0 0;color:#E6DACA;max-width:30ch}
+.at-go{display:inline-block;margin-top:14px;border-bottom:1px solid currentColor;padding-bottom:3px;font-family:"Jost",var(--body);font-weight:400;font-size:9.5px;letter-spacing:.24em;padding-left:.24em;text-transform:uppercase}
+.at-nm{position:absolute;z-index:2;left:0;right:0;bottom:10px;text-align:center;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.at-tri{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:0 var(--g);margin-bottom:var(--g)}
+.at-tri > a{position:relative;display:block;overflow:hidden;aspect-ratio:1/1}
+.at-tri .at-nm{bottom:8px}
+.at-tri .at-s{font-size:8.5px;letter-spacing:.2em}
+
+/* 3. services band */
+.at-svc{margin:0 var(--g) var(--g);padding:34px 22px 30px;color:#F7F0E5;background:linear-gradient(165deg,#8E7759 0%,#75614A 60%,#65533F 100%)}
+.at-svc + .at-svc{margin-top:calc(-1 * var(--g) + 3px)}
+.at-svc h3{font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(28px,8.4vw,64px);letter-spacing:.01em;line-height:1;margin:8px 0 10px}
+.at-svc p{font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;line-height:1.45;margin:0;max-width:44ch;color:#EFE5D6}
+.at-svc .at-go{margin-top:18px}
+.at-svc.with{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center;padding:16px}
+.at-svc.with .ph{position:relative;aspect-ratio:4/5;overflow:hidden}
+.at-svc.with h3{font-size:clamp(22px,6.2vw,52px)}
+
+/* 4. discover panels with parallax */
+.at-dis{position:relative;display:block;overflow:hidden;aspect-ratio:4/5;margin-bottom:var(--g)}
+.at-dis .at-im img{top:-12%;height:124%}
+.at-dis::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,7,5,.6) 0%,rgba(10,7,5,0) 55%);pointer-events:none}
+.at-dis .tx{position:absolute;z-index:2;left:0;right:0;bottom:8%;text-align:center;color:#fff;will-change:transform}
+.at-dis .tx b{display:block;font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(40px,12.5vw,128px);letter-spacing:.005em;line-height:.95;margin:6px 0 14px}
+
+/* 5. close */
+.at-end{text-align:center;padding:64px 20px 58px}
+.at-end .at-dd{display:block;font-size:clamp(26px,7vw,58px);margin:12px 0 10px}
+.at-end p{font-family:"Cormorant Garamond",Georgia,serif;font-size:17px;margin:0 0 26px;color:#5D5247}
+.at-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.at-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border:1px solid #1F1A15;font-size:10.5px;font-weight:400;letter-spacing:.26em;text-transform:uppercase;transition:background .5s ease,color .5s ease}
+.at-btn:hover,.at-btn.dk{background:#1F1A15;color:#F3EFE9}
+.at-btn.dk:hover{background:transparent;color:#1F1A15}
+
+/* entrance: hidden only once JS runs, so nothing disappears without it */
+.at.js .rv{opacity:0;transform:translate3d(0,28px,0)}
+
+@media (min-width:761px){
+  .at{--g:12px}
+  .at-cat,.at-end{max-width:1680px;margin-left:auto;margin-right:auto}
+  .af{height:calc(100vh - 40px);max-height:none}
+  .af-t{bottom:15%}
+  .af-t .at-s{font-size:11px}
+  .at-full{aspect-ratio:16/7}
+  .at-lbl{top:30px;right:36px}
+  .at-pair > *{aspect-ratio:6/5}
+  .at-card{padding:40px}
+  .at-tri{gap:6px}
+  .at-tri > a{aspect-ratio:4/3}
+  .at-tri .at-s{font-size:10px}
+  .at-svc{padding:60px 64px 54px}
+  .at-svc.with{padding:24px;gap:48px;grid-template-columns:1fr 1.1fr}
+  .at-svc.with .ph{aspect-ratio:5/4}
+  .at-dis{aspect-ratio:16/8}
+  .at-end{padding:110px 20px 100px}
 }
-@media (hover:none){ .bx .cap > span{transform:none!important;opacity:1!important} }
-@media (prefers-reduced-motion:reduce){ .at-hero{height:auto} .at-stick{position:relative;top:0} .at.js .rv{opacity:1;transform:none} }
+@media (max-width:360px){ .at-card p{display:none} }
+@media (prefers-reduced-motion:reduce){
+  .af-s,.af-t > div{transition:none}
+  .af-s.on img,.af-s.out img{animation:none;transform:none}
+  .at.js .rv{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -912,67 +953,108 @@ function home(){
   const G=SHOP.googleLink;
   return `
   <div class="at" id="atelier">
-    <section class="at-hero" aria-label="SR Handicraft">
-      <div class="at-stick">
-        <div class="at-media"><img src="mandir-1-detail.jpg" alt="Hand carved jaali on a sheesham pooja mandir" fetchpriority="high"></div>
-        <div class="at-copy">
-          <span class="at-k">Solid sheesham · Hand carved in Pune</span>
-          <h1 class="at-word at-sf">SR HANDICRAFT<small>&amp; Furniture</small></h1>
-          <div class="at-line" aria-hidden="true"></div>
+    <a class="af" id="afilm" href="${AT_FILM[0].href}" aria-label="${AT_FILM[0].alt}">
+      ${AT_FILM.map((s,i)=>`<div class="af-s${i?"":" on"}" style="--fx:${s.fx};--fy:${s.fy}"><img src="${s.img}" alt="" style="object-position:${s.pos}"${i?' loading="lazy"':' fetchpriority="high"'}></div>`).join("")}
+      <div class="af-t">${AT_FILM.map((s,i)=>`<div${i?"":' class="on"'}><span class="at-s">Introducing</span><h2 class="at-dd">${s.word}</h2><span class="at-s">${s.sub}</span><span class="at-s">by SR Handicraft</span></div>`).join("")}</div>
+      <div class="af-k" aria-hidden="true">${AT_FILM.map(()=>"<i></i>").join("")}</div>
+    </a>
+
+    <div class="at-cat">
+      <a class="at-full rv" href="#/p/16">
+        <span class="at-im"><img src="mandir-1-room.jpg" alt="Carved sheesham pooja mandir" loading="lazy" style="object-position:50% 40%"></span>
+        <span class="at-lbl"><span class="at-s">Introducing</span><b class="at-dd">The Carved Mandir</b><span class="at-s">in solid sheesham</span></span>
+      </a>
+      <section class="at-pair">
+        <a class="at-card rv" href="#/c/pooja">
+          <span class="at-s">The collection</span>
+          <h3 class="at-dd">Pooja<br>Mandirs</h3>
+          <span class="at-s">by SR Handicraft</span>
+          <p>Jaali doors cut by hand, in solid sheesham. Made to the size of your wall.</p>
+          <span class="at-go">Discover</span>
+        </a>
+        <a class="rv" data-d="120" href="#/p/17"><span class="at-im"><img src="mandir-2-detail.jpg" alt="Jaali door on a sheesham pooja mandir" loading="lazy"></span><span class="at-nm"><span class="at-s">Jaali door mandir</span></span></a>
+      </section>
+
+      <section class="at-pair">
+        <a class="rv" href="#/p/47"><span class="at-im"><img src="bar-cabinet-detail.jpg" alt="Hand-set brass studs on sheesham" loading="lazy"></span><span class="at-nm"><span class="at-s">Hand-set brass</span></span></a>
+        <a class="at-card rv" data-d="120" href="#/p/47">
+          <span class="at-s">Introducing</span>
+          <h3 class="at-dd">Brass Stud<br>Bar Cabinet</h3>
+          <span class="at-s">by SR Handicraft</span>
+          <p>Rows of brass studs set into solid sheesham, with shelves inside for glasses and bottles.</p>
+          <span class="at-go">Discover</span>
+        </a>
+      </section>
+      <a class="at-full rv" href="#/p/43">
+        <span class="at-im"><img src="coffee-table-detail.jpg" alt="Brass studs on a sheesham coffee table" loading="lazy"></span>
+        <span class="at-lbl"><span class="at-s">Introducing</span><b class="at-dd">The Stud Table</b><span class="at-s">coffee table with stools</span></span>
+      </a>
+
+      <a class="at-full rv" href="#/p/4">
+        <span class="at-im"><img src="bed-room-1-w.jpg" alt="Sheesham king size bed with storage" loading="lazy"></span>
+        <span class="at-lbl"><span class="at-s">Introducing</span><b class="at-dd">The Storage Bed</b><span class="at-s">king size, solid sheesham</span></span>
+      </a>
+      <section class="at-tri">
+        <a class="rv" href="#/p/30"><span class="at-im"><img src="bed-tile-1-detail.jpg" alt="Hand painted tiles on a headboard" loading="lazy"></span><span class="at-nm"><span class="at-s">Tile headboard</span></span></a>
+        <a class="rv" data-d="90" href="#/p/48"><span class="at-im"><img src="bed-slat-detail.jpg" alt="Slatted sheesham headboard" loading="lazy" style="object-position:30% 50%"></span><span class="at-nm"><span class="at-s">Slatted</span></span></a>
+        <a class="rv" data-d="180" href="#/p/26"><span class="at-im"><img src="poster-bed-1.jpg" alt="Tile work poster bed" loading="lazy"></span><span class="at-nm"><span class="at-s">Poster bed</span></span></a>
+      </section>
+
+      <section class="at-pair">
+        <a class="at-card rv" href="#/p/41">
+          <span class="at-s">Introducing</span>
+          <h3 class="at-dd">The Jaali<br>Sofa Set</h3>
+          <span class="at-s">by SR Handicraft</span>
+          <p>Carved jaali arms and back in solid sheesham, with cushions in the colour you choose.</p>
+          <span class="at-go">Discover</span>
+        </a>
+        <a class="rv" data-d="120" href="#/p/41"><span class="at-im"><img src="sofa-jaali-detail2.jpg" alt="Jaali work sheesham sofa chair" loading="lazy"></span><span class="at-nm"><span class="at-s">Carved arms</span></span></a>
+      </section>
+
+      <a class="at-full rv" href="#/p/49">
+        <span class="at-im"><img src="dining-set-3-detail.jpg" alt="Jaali back sheesham dining chairs" loading="lazy"></span>
+        <span class="at-lbl"><span class="at-s">Introducing</span><b class="at-dd">Jaali Dining</b><span class="at-s">carved chair backs</span></span>
+      </a>
+      <section class="at-tri">
+        <a class="rv" href="#/p/6"><span class="at-im"><img src="dining-top-1.jpg" alt="Carved sheesham dining table top" loading="lazy"></span><span class="at-nm"><span class="at-s">Carved top</span></span></a>
+        <a class="rv" data-d="90" href="#/p/46"><span class="at-im"><img src="sideboard-detail.jpg" alt="Sheesham grain on a sideboard" loading="lazy"></span><span class="at-nm"><span class="at-s">Sideboard</span></span></a>
+        <a class="rv" data-d="180" href="#/p/44"><span class="at-im"><img src="nesting-detail.jpg" alt="Sheesham nesting tables" loading="lazy"></span><span class="at-nm"><span class="at-s">Nesting tables</span></span></a>
+      </section>
+
+      <section class="at-svc rv">
+        <span class="at-s">SR Atelier</span>
+        <h3>Made to order</h3>
+        <p>Send us a photo and the measurements of your space on WhatsApp. We make it in our Pune workshop, in the size and finish you choose.</p>
+        <a class="at-go" href="#/page/custom">Custom furniture</a>
+      </section>
+      <section class="at-svc with rv">
+        <span class="ph"><span class="at-im"><img src="showroom-1-w.jpg" alt="SR Handicraft showroom in Pune" loading="lazy"></span></span>
+        <div>
+          <span class="at-s">Visit</span>
+          <h3>The SR Showroom</h3>
+          <p>${STORE.address}</p>
+          <a class="at-go" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, I would like to book a showroom visit.")}" target="_blank" rel="noopener">Book a visit</a>
         </div>
-        <div class="at-cap"><span class="at-k">The workshop</span><span class="at-sf">Every carving, cut by hand.</span></div>
-      </div>
-    </section>
-
-    <section class="at-st rv">
-      <span class="at-k">The SR Handicraft Atelier</span>
-      <h2 class="at-sf">Solid sheesham, shaped by our own craftsmen.</h2>
-      <p>Beds, dining sets, sofas and pooja mandirs — made in our Pune workshop, to your size and finish.</p>
-    </section>
-
-    <div class="at-wrap">
-      <section class="at-pair">
-        <a class="at-pnl rv" href="#/p/47">
-          <div class="tx">
-            <span class="at-k">Introducing</span>
-            <h3 class="at-sf">The Brass Stud<br>Bar Cabinet</h3>
-            <span class="by">by SR Handicraft</span>
-            <p>Solid sheesham, set by hand with rows of brass studs that catch the light as you walk past. Shelving inside for glasses and bottles. Made to order, in the size and finish you choose.</p>
-          </div>
-          <div class="im"><img src="bar-cabinet-room.jpg" alt="Brass Stud Bar Cabinet in sheesham wood" loading="lazy"></div>
-          <span class="go"><span>Discover</span></span>
-        </a>
-        <a class="bx at-dt rv" data-d="120" href="#/p/47"><img src="bar-cabinet-detail.jpg" alt="Close-up of hand-set brass studs" loading="lazy"><span class="cap"><span><b>Hand-set brass</b><i>Solid sheesham</i></span></span></a>
+      </section>
+      <section class="at-svc rv">
+        <span class="at-s">For business</span>
+        <h3>Hotel &amp; bulk orders</h3>
+        <p>The same design and finish across a whole hotel, restaurant or office.</p>
+        <a class="at-go" href="#/page/bulk">Enquire</a>
       </section>
 
-      <a class="bx at-full rv" href="#/p/4"><img src="bed-room-1-w.jpg" alt="Sheesham king size bed with storage in a bedroom" loading="lazy"><span class="lbl"><span class="at-k" style="color:#E9DFCF">Introducing</span><b>The Storage Bed</b><i>in natural sheesham</i></span></a>
-
-      <section class="at-bento">
-        <a class="bx rv" href="#/p/41"><img src="sofa-jaali-detail.jpg" alt="Jaali work on a sheesham sofa" loading="lazy"><span class="cap"><span><b>The Jaali Sofa</b><i>Carved sheesham</i></span></span></a>
-        <a class="bx rv" data-d="120" href="#/p/45"><img src="console-1-detail.jpg" alt="Polished sheesham grain on a console table" loading="lazy"><span class="cap"><span><b>The Console</b><i>Hand-polished grain</i></span></span></a>
-        <a class="bx rv" data-d="240" href="#/p/49"><img src="dining-set-3-detail.jpg" alt="Carved backs on a sheesham dining chair" loading="lazy"><span class="cap"><span><b>The Jaali Dining Set</b><i>Carved backs</i></span></span></a>
-      </section>
-
-      <section class="at-pair">
-        <a class="bx at-dt rv" href="#/p/46"><img src="sideboard-detail.jpg" alt="Sheesham grain on a sideboard drawer" loading="lazy"><span class="cap"><span><b>Natural grain</b><i>Every piece is one of a kind</i></span></span></a>
-        <a class="at-pnl rv" data-d="120" href="#/p/46">
-          <div class="tx">
-            <span class="at-k">Introducing</span>
-            <h3 class="at-sf">The Sheesham<br>Sideboard</h3>
-            <span class="by">by SR Handicraft</span>
-            <p>Four drawers and deep cupboards in solid sheesham, with the wood's own grain left to show. Sized for your dining room, finished by hand in our workshop.</p>
-          </div>
-          <div class="im"><img src="sideboard-room.jpg" alt="Sheesham Sideboard with Drawers" loading="lazy"></div>
-          <span class="go"><span>Discover</span></span>
-        </a>
-      </section>
+      <a class="at-dis rv" href="#/c/furniture/beds"><span class="at-im" data-px="1"><img src="bed-room-3-w.jpg" alt="Carved sheesham bed in a bedroom" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Beds</b><span class="at-s">Explore the collection</span></span></a>
+      <a class="at-dis rv" href="#/c/furniture/dining-sets"><span class="at-im" data-px="1"><img src="dining-set-3.jpg" alt="Jaali back sheesham dining set" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Dining</b><span class="at-s">Explore the collection</span></span></a>
+      <a class="at-dis rv" href="#/c/furniture/sofa-sets"><span class="at-im" data-px="1"><img src="sofa-set-2.jpg" alt="Carved sheesham sofa set" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Sofas</b><span class="at-s">Explore the collection</span></span></a>
+      <a class="at-dis rv" href="#/c/pooja"><span class="at-im" data-px="1"><img src="mandir-2-room.jpg" alt="Jaali door sheesham pooja mandir" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Mandirs</b><span class="at-s">Explore the collection</span></span></a>
     </div>
 
     <section class="at-end rv">
-      <span class="at-k">See it in person</span>
-      <span class="at-sf">Patil Nagar, Pune — open every day</span>
+      <span class="at-s">See it in person</span>
+      <span class="at-dd">Patil Nagar, Pune</span>
+      <p>Open every day</p>
       <div class="at-btns">
-        <a class="at-btn" href="#/c/furniture">Explore the collection</a>
+        <a class="at-btn dk" href="#/c/furniture">Explore the collection</a>
         <a class="at-btn" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, I would like to book a showroom visit.")}" target="_blank" rel="noopener">Book a visit</a>
       </div>
     </section>
@@ -1282,69 +1364,118 @@ function atTick(now){
 const atClamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
 const atEase = x => 1 - Math.pow(1 - x, 3);
 
+const AT_FILM = [
+  { img:"mandir-1-detail.jpg",     word:"Jaali",   sub:"the carved pooja mandir", href:"#/p/16", alt:"Carved Sheesham Pooja Mandir", pos:"50% 50%", fx:"3%",  fy:"-2%" },
+  { img:"bar-cabinet-detail.jpg",  word:"Brass",   sub:"the stud bar cabinet",    href:"#/p/47", alt:"Brass Stud Bar Cabinet",        pos:"50% 50%", fx:"-3%", fy:"2%" },
+  { img:"console-1-detail.jpg",    word:"Grain",   sub:"the sheesham console",    href:"#/p/45", alt:"Sheesham Console Table",        pos:"35% 50%", fx:"2%",  fy:"3%" },
+  { img:"bed-tile-1-detail.jpg",   word:"Tile",    sub:"the hand painted bed",    href:"#/p/30", alt:"Hand Painted Tile Headboard Bed", pos:"50% 45%", fx:"-2%", fy:"-3%" },
+  { img:"sofa-jaali-detail.jpg",   word:"Carving", sub:"the jaali sofa set",      href:"#/p/41", alt:"Jaali Work Sheesham Sofa Set",  pos:"55% 40%", fx:"3%",  fy:"2%" }
+];
+const AT_SLIDE = 6500;
+
 function atelierInit(){
   if (ATL.ac) ATL.ac.abort();
   if (ATL.io) ATL.io.disconnect();
+  if (ATL.px) ATL.px.disconnect();
+  clearTimeout(ATL.t1); clearTimeout(ATL.t2);
   ATL.springs.clear();
+  document.body.classList.remove("at-ovr");
   const root = document.getElementById("atelier"); if (!root) return;
   const ac = new AbortController(); ATL.ac = ac; const sig = { signal: ac.signal, passive: true };
   root.classList.add("js");
   const hdr = document.querySelector("header.top");
+  const film = root.querySelector(".af");
+
+  /* header sits transparent over the film, turns solid once you scroll past it */
   const setHdr = () => root.style.setProperty("--at-hdr", (hdr ? hdr.offsetHeight : 0) + "px");
-  setHdr(); addEventListener("resize", setHdr, sig);
-
-  /* 1. Hero: the full-bleed carving is pulled into a floating frame; the heavy type lifts away */
-  const hero = root.querySelector(".at-hero"), stick = root.querySelector(".at-stick");
-  const media = root.querySelector(".at-media"), img = media.querySelector("img");
-  const copy = root.querySelector(".at-copy"), cap = root.querySelector(".at-cap");
-  const narrow = () => innerWidth < 760;
-  const hs = atSpring(0, v => {
-    const e = atEase(atClamp(v / 0.85));
-    const ix = (narrow() ? 6 : 15) * e, iy = (narrow() ? 13 : 9) * e;
-    media.style.clipPath = `inset(${iy}% ${ix}% ${iy}% ${ix}%)`;
-    img.style.transform = `scale(${1.14 - 0.14 * e})`;
-    img.style.filter = `brightness(${0.58 + 0.34 * e}) saturate(${0.9 + 0.1 * e})`;
-    const c = atClamp(v / 0.42);
-    copy.style.opacity = String(1 - c);
-    copy.style.transform = `translate3d(0,${-70 * atEase(c)}px,0)`;
-    const k = atClamp((v - 0.62) / 0.3);
-    cap.style.opacity = String(k);
-    cap.style.transform = `translate3d(0,${(1 - k) * 18}px,0)`;
-  });
-  const onScroll = () => {
-    const total = hero.offsetHeight - stick.offsetHeight;
-    atSet(hs, total > 0 ? atClamp(-hero.getBoundingClientRect().top / total) : 0);
+  const ovr = () => {
+    const past = film.getBoundingClientRect().bottom < (hdr ? hdr.offsetHeight : 0) + 40;
+    document.body.classList.toggle("at-ovr", !past);
   };
-  addEventListener("scroll", onScroll, sig); addEventListener("resize", onScroll, sig);
-  hs.on(0); onScroll();
+  setHdr(); ovr();
+  addEventListener("resize", () => { setHdr(); ovr(); }, sig);
+  addEventListener("scroll", ovr, sig);
 
-  /* 2. Entrance: blocks rise in once, with optional stagger (data-d, ms) */
+  /* 1. Film: slow dissolve to the next close-up; its title fades in after the cut and out before the next */
+  const slides = [...film.querySelectorAll(".af-s")], titles = [...film.querySelectorAll(".af-t > div")], ticks = [...film.querySelectorAll(".af-k i")];
+  let cur = 0, visible = true;
+  film.style.setProperty("--dur", AT_SLIDE + "ms");
+  const show = n => {
+    const prev = cur; cur = n;
+    slides[prev].classList.remove("on"); slides[prev].classList.add("out");
+    setTimeout(() => slides[prev].classList.remove("out"), 2000);
+    slides[n].classList.remove("out"); void slides[n].offsetWidth; slides[n].classList.add("on");
+    titles[n].classList.add("on");
+    ticks.forEach((t, i) => { t.classList.remove("on"); t.classList.toggle("done", i < n); });
+    void film.offsetWidth; ticks[n].classList.add("on");
+    film.href = AT_FILM[n].href; film.setAttribute("aria-label", AT_FILM[n].alt);
+    plan();
+  };
+  const plan = () => {
+    clearTimeout(ATL.t1); clearTimeout(ATL.t2);
+    if (atReduce() || !visible || document.hidden) return;
+    ATL.t1 = setTimeout(() => titles[cur].classList.remove("on"), AT_SLIDE - 1300);
+    ATL.t2 = setTimeout(() => show((cur + 1) % slides.length), AT_SLIDE);
+  };
+  if (!atReduce()) {
+    ticks[0].classList.add("on");
+    // warm the cache so every dissolve lands on a decoded image
+    AT_FILM.slice(1).forEach(s => { const i = new Image(); i.src = s.img; });
+    new IntersectionObserver((en, ob) => {
+      if (ac.signal.aborted) return ob.disconnect();
+      const was = visible; visible = en[0].isIntersecting;
+      if (visible && !was) { titles[cur].classList.add("on"); plan(); }
+      if (!visible) { clearTimeout(ATL.t1); clearTimeout(ATL.t2); }
+    }, { threshold: 0.2 }).observe(film);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) { titles[cur].classList.add("on"); plan(); } else { clearTimeout(ATL.t1); clearTimeout(ATL.t2); } }, { signal: ac.signal });
+    plan();
+  }
+
+  /* 2. Images drift a little slower than the page (parallax), stronger on the Discover panels */
+  const imgs = [...root.querySelectorAll(".at-cat .at-im")].map(w => ({ w, im: w.querySelector("img"), a: w.dataset.px ? 9 : 4, y: 0, s: 1, tx: w.parentElement.querySelector(".tx") }));
+  const draw = o => { o.im.style.transform = `translate3d(0,${o.y.toFixed(2)}%,0) scale(${o.s.toFixed(4)})`; };
+  const live = new Set();
+  ATL.px = new IntersectionObserver(en => en.forEach(e => { const o = e.target._at; e.isIntersecting ? live.add(o) : live.delete(o); }), { rootMargin: "120px 0px" });
+  imgs.forEach(o => { o.w._at = o; ATL.px.observe(o.w); });
+  let ticking = false;
+  const par = () => {
+    ticking = false;
+    const vh = innerHeight;
+    live.forEach(o => {
+      const r = o.w.getBoundingClientRect();
+      const k = Math.max(-1, Math.min(1, ((r.top + r.height / 2) - vh / 2) / (vh / 2 + r.height / 2)));
+      o.y = k * o.a; draw(o);
+      if (o.tx) o.tx.style.transform = `translate3d(0,${(-k * 22).toFixed(1)}px,0)`;
+    });
+  };
+  if (!atReduce()) {
+    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(par); } }, sig);
+    addEventListener("resize", par, sig);
+    requestAnimationFrame(par);
+  }
+
+  /* 3. Entrance: blocks rise in once on the heavy spring, images settle from 1.06 */
   ATL.io = new IntersectionObserver(entries => entries.forEach(en => {
     if (!en.isIntersecting) return;
     ATL.io.unobserve(en.target);
-    const el = en.target;
-    const sp = atSpring(0, v => { el.style.opacity = String(v); el.style.transform = `translate3d(0,${(1 - v) * 36}px,0)`; });
+    const el = en.target, mine = imgs.filter(o => el.contains(o.w));
+    const sp = atSpring(0, v => {
+      el.style.opacity = String(Math.min(1, v * 1.15));
+      el.style.transform = `translate3d(0,${(1 - v) * 28}px,0)`;
+      mine.forEach(o => { o.s = 1.06 - 0.06 * v; draw(o); });
+    });
+    sp.on(0);
     setTimeout(() => { if (!ac.signal.aborted) atSet(sp, 1); }, +(el.dataset.d || 0));
-  }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  }), { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
   root.querySelectorAll(".rv").forEach(el => ATL.io.observe(el));
 
-  /* 3. Tiles: cursor-tracked drift + slow 1.03 zoom, caption rises from below */
-  if (matchMedia("(hover: hover)").matches){
-    root.querySelectorAll(".bx").forEach(bx => {
-      const im = bx.querySelector(":scope > img"), cp = bx.querySelector(".cap > span");
-      const st = { x:0, y:0, s:1 };
-      const draw = () => { im.style.transform = `translate3d(${st.x}px,${st.y}px,0) scale(${st.s})`; };
-      const sx = atSpring(0, v => { st.x = v; draw(); }), sy = atSpring(0, v => { st.y = v; draw(); });
-      const ss = atSpring(1, v => { st.s = v; draw(); });
-      const sc = cp ? atSpring(0, v => { cp.style.transform = `translate3d(0,${(1 - v) * 110}%,0)`; cp.style.opacity = String(v); }) : null;
-      if (sc) sc.on(0);
-      bx.addEventListener("pointermove", e => {
-        const r = bx.getBoundingClientRect();
-        atSet(sx, -((e.clientX - r.left) / r.width - 0.5) * 18);
-        atSet(sy, -((e.clientY - r.top) / r.height - 0.5) * 18);
-      }, sig);
-      bx.addEventListener("pointerenter", () => { atSet(ss, 1.03); if (sc) atSet(sc, 1); }, sig);
-      bx.addEventListener("pointerleave", () => { atSet(sx, 0); atSet(sy, 0); atSet(ss, 1); if (sc) atSet(sc, 0); }, sig);
+  /* 4. Desktop hover: the photo leans in slowly */
+  if (matchMedia("(hover: hover)").matches) {
+    imgs.forEach(o => {
+      const host = o.w.closest("a"); if (!host) return;
+      const ss = atSpring(1, v => { o.s = v; draw(o); });
+      host.addEventListener("pointerenter", () => { ss.v = o.s; atSet(ss, 1.035); }, sig);
+      host.addEventListener("pointerleave", () => { ss.v = o.s; atSet(ss, 1); }, sig);
     });
   }
 }
