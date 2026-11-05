@@ -330,7 +330,7 @@ function renderLogin(){
     const error = $("#lerr");
     error.textContent = "";
     if (!/^[^@\s/]+@[^@\s/]+\.[^@\s/]+$/.test(email)) return (error.textContent = "Enter your invited email.");
-    if (password.length < 8) return (error.textContent = "Choose a password with at least 8 characters.");
+    if (password.length < 12) return (error.textContent = "Choose a password with at least 12 characters.");
     setLoginBusy(true);
     try {
       const credential = await createUserWithEmailAndPassword(auth, email, password);
@@ -338,7 +338,7 @@ function renderLogin(){
       catch { toast("Use Send verification email to try again.", 5000); }
     } catch (e) {
       error.textContent = e.code === "auth/email-already-in-use" ? "This email already has an account. Sign in or use Forgot password. You must still verify your email."
-        : e.code === "auth/weak-password" ? "Choose a stronger password." : "Could not create the account. Check your connection and try again.";
+        : (e.code === "auth/weak-password" || e.code === "auth/password-does-not-meet-requirements") ? "Choose a password with at least 12 characters." : "Could not create the account. Check your connection and try again.";
     } finally { setLoginBusy(false); }
   };
   $("#fp").onclick = async e => {
@@ -540,11 +540,11 @@ function viewCats(){
 function viewAccount(){
   $("#main").innerHTML = `<div class="card" style="max-width:420px"><h3 style="margin:0 0 4px">Change password</h3><p class="hint">Signed in as ${esc(S.me)}</p>
     <label class="f"><span>Current password</span><input class="i" type="password" id="a1" autocomplete="current-password" autocapitalize="none"></label>
-    <label class="f"><span>New password (8+ characters)</span><input class="i" type="password" id="a2" autocomplete="new-password" autocapitalize="none"></label>
+    <label class="f"><span>New password (12+ characters)</span><input class="i" type="password" id="a2" autocomplete="new-password" autocapitalize="none"></label>
     <button class="btn" id="ab">Change password</button><div class="err" id="ae"></div></div>`;
   $("#ab").onclick = async () => {
     const a1=$("#a1").value, a2=$("#a2").value; $("#ae").textContent="";
-    if (a2.length < 8) return ($("#ae").textContent = "New password must be at least 8 characters.");
+    if (a2.length < 12) return ($("#ae").textContent = "New password must be at least 12 characters.");
     try { await reauthenticateWithCredential(auth.currentUser, EmailAuthProvider.credential(S.me, a1)); await updatePassword(auth.currentUser, a2); toast("Password changed"); $("#a1").value=$("#a2").value=""; }
     catch (e) { $("#ae").textContent = /wrong-password|invalid-credential/.test(e.code||"") ? "Current password is wrong." : "Could not change the password. Try again."; }
   };
