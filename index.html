@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:wght@600;700&family=Rozha+One&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#ffffff; --tint:#F7F7F7; --card:#ffffff; --ink:#222222; --muted:#666666; --line:#EAEAEA; --hero:#F6F1EA;
@@ -471,6 +471,77 @@ button.ib{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 .cwg figcaption{font-size:12.5px;color:var(--muted,#6b5e52);margin-top:6px;line-height:1.35}
 .lb{position:fixed;inset:0;z-index:200;background:rgba(20,14,10,.92);display:flex;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
 .lb img{max-width:100%;max-height:88vh;border-radius:10px}
+
+/* ===== Atelier: editorial home (RH-inspired layout language, SR's own content) ===== */
+.at{--at-bg:#0E0C0A;--at-ink:#F3ECE1;--at-mute:#B9AC99;--at-line:rgba(63,63,70,.4);--at-gap:clamp(10px,1.6vw,24px);background:var(--at-bg);color:var(--at-ink)}
+.at a{color:inherit;text-decoration:none}
+.at-sf{font-family:"Cormorant Garamond","Playfair Display",Georgia,serif;font-weight:400}
+.at-k{display:block;font-size:10.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--at-mute);font-weight:500;padding-left:.42em}
+/* hero: full-bleed carving, scroll pulls it into a floating frame */
+.at-hero{position:relative;height:240vh}
+.at-stick{position:sticky;top:var(--at-hdr,0px);height:calc(100vh - var(--at-hdr,0px));height:calc(100svh - var(--at-hdr,0px));overflow:hidden;display:grid;place-items:center}
+.at-media{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
+.at-media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.14);will-change:transform;filter:brightness(.58) saturate(.9)}
+.at-copy{position:relative;z-index:2;text-align:center;padding:0 20px;will-change:transform,opacity}
+.at-word{font-size:clamp(42px,9.6vw,150px);line-height:.92;letter-spacing:.2em;margin:22px 0 0;padding-left:.2em;font-weight:300}
+.at-word small{display:block;font-size:.26em;letter-spacing:.62em;padding-left:.62em;margin-top:.9em;color:var(--at-mute);font-weight:400}
+.at-line{width:1px;height:56px;margin:34px auto 0;background:linear-gradient(var(--at-mute),transparent)}
+.at-cap{position:absolute;z-index:2;left:0;right:0;bottom:clamp(18px,4vh,40px);text-align:center;opacity:0}
+.at-cap .at-sf{display:block;font-size:clamp(20px,2.4vw,30px);letter-spacing:.06em;margin-top:8px}
+/* statement */
+.at-wrap{max-width:1480px;margin:0 auto;padding:0 var(--at-gap)}
+.at-st{text-align:center;padding:clamp(70px,12vh,140px) 20px clamp(50px,9vh,110px)}
+.at-st h2{font-size:clamp(30px,4.6vw,64px);line-height:1.08;letter-spacing:.04em;margin:18px auto 18px;max-width:18ch;font-weight:300}
+.at-st p{color:var(--at-mute);max-width:52ch;margin:0 auto;font-size:15px;line-height:1.7}
+/* introducing pair */
+.at-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--at-gap);padding-bottom:var(--at-gap)}
+.at-pnl{position:relative;aspect-ratio:4/5;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#5B412D 0%,#3A291C 55%,#1E1610 100%);display:flex;flex-direction:column;border:1px solid var(--at-line)}
+.at-pnl .tx{position:relative;z-index:2;text-align:center;padding:clamp(22px,5%,48px) clamp(20px,9%,70px) 0}
+.at-pnl h3{font-size:clamp(24px,2.6vw,40px);letter-spacing:.14em;line-height:1.05;margin:12px 0 6px;padding-left:.14em;font-weight:400;text-transform:uppercase}
+.at-pnl .by{display:block;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--at-mute)}
+.at-pnl p{font-size:13px;line-height:1.75;color:#D9CDBB;margin:16px 0 0;text-align:justify;hyphens:auto}
+.at-pnl .im{position:absolute;inset:0;overflow:hidden}
+.at-pnl .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%}
+.at-pnl .im::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,12,10,.92) 0%,rgba(14,12,10,.78) 34%,rgba(14,12,10,0) 62%),linear-gradient(to top,rgba(14,12,10,.55),rgba(14,12,10,0) 22%)}
+.at-pnl .go{position:absolute;z-index:3;left:0;right:0;bottom:18px;text-align:center;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase}
+.at-pnl .go span{border-bottom:1px solid rgba(243,236,225,.5);padding-bottom:4px}
+/* tiles share the cinematic hover */
+.bx{position:relative;display:block;overflow:hidden;border:1px solid var(--at-line);border-radius:0;background:#1a1410}
+.bx > img{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;display:block;will-change:transform}
+.bx .cap{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:clamp(16px,2.4vw,28px);overflow:hidden;background:linear-gradient(to top,rgba(10,8,6,.78),rgba(10,8,6,0))}
+.bx .cap > span{display:block;will-change:transform,opacity}
+.bx .cap b{display:block;font-family:"Cormorant Garamond","Playfair Display",Georgia,serif;font-weight:400;font-size:clamp(18px,1.7vw,24px);letter-spacing:.14em;text-transform:uppercase}
+.bx .cap i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--at-mute);margin-top:6px}
+.at-dt{aspect-ratio:4/5}
+/* full-bleed room with corner label */
+.at-full{aspect-ratio:16/8;margin-bottom:var(--at-gap)}
+.at-full .lbl{position:absolute;z-index:2;top:clamp(16px,3vw,40px);right:clamp(16px,3vw,44px);text-align:right;text-shadow:0 1px 18px rgba(0,0,0,.45)}
+.at-full .lbl b{display:block;font-family:"Cormorant Garamond","Playfair Display",Georgia,serif;font-weight:400;font-size:clamp(24px,3.4vw,52px);letter-spacing:.12em;line-height:1;text-transform:uppercase;margin:8px 0 6px}
+.at-full .lbl i{display:block;font-style:normal;font-size:10px;letter-spacing:.34em;text-transform:uppercase}
+.at-full::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(10,8,6,.55) 0%,rgba(10,8,6,0) 45%);pointer-events:none}
+/* asymmetric bento */
+.at-bento{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:var(--at-gap);height:min(92vh,960px);margin-bottom:var(--at-gap)}
+.at-bento .bx:first-child{grid-row:1 / 3}
+.at-end{text-align:center;padding:clamp(56px,10vh,110px) 20px clamp(64px,11vh,120px)}
+.at-end .at-sf{display:block;font-size:clamp(26px,3.4vw,46px);letter-spacing:.06em;margin:14px 0 26px;font-weight:300}
+.at-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.at-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border:1px solid rgba(243,236,225,.55);font-size:11px;letter-spacing:.3em;text-transform:uppercase;transition:background .5s ease,color .5s ease}
+.at-btn:hover{background:#F3ECE1;color:#0E0C0A}
+/* entrance: only hidden once JS is running, so content never disappears without it */
+.at.js .rv{opacity:0;transform:translate3d(0,36px,0)}
+@media (max-width:760px){
+  .at-hero{height:200vh}
+  .at-word{letter-spacing:.12em;padding-left:.12em;font-size:clamp(34px,10vw,60px)}
+  .at-cap{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .at-pair,.at-bento{grid-template-columns:1fr}
+  .at-bento{height:auto;grid-template-rows:none}
+  .at-bento .bx{aspect-ratio:4/5}
+  .at-bento .bx:first-child{grid-row:auto}
+  .at-full{aspect-ratio:4/5}
+  .at-pnl{aspect-ratio:auto;min-height:560px}
+}
+@media (hover:none){ .bx .cap > span{transform:none!important;opacity:1!important} }
+@media (prefers-reduced-motion:reduce){ .at-hero{height:auto} .at-stick{position:relative;top:0} .at.js .rv{opacity:1;transform:none} }
 </style>
 </head>
 <body>
@@ -840,20 +911,72 @@ function home(){
   const stars=n=>"★★★★★".slice(0,n)+"☆☆☆☆☆".slice(0,5-n);
   const G=SHOP.googleLink;
   return `
-  <section class="hero3">
-    <div class="wrap h3">
-      <div class="h3t">
-        <span class="eyebrow">Solid sheesham · Made in Pune</span>
-        <h1>Handcrafted furniture, made to last</h1>
-        <p>Beds, dining sets and hand carved pooja mandirs in solid sheesham wood — made to your size by our own craftsmen.</p>
-        <div class="ctas">
-          <a class="btn" href="#/c/furniture">Shop furniture</a>
-          <a class="btn ghost" href="#/c/pooja">Pooja mandirs</a>
+  <div class="at" id="atelier">
+    <section class="at-hero" aria-label="SR Handicraft">
+      <div class="at-stick">
+        <div class="at-media"><img src="mandir-1-detail.jpg" alt="Hand carved jaali on a sheesham pooja mandir" fetchpriority="high"></div>
+        <div class="at-copy">
+          <span class="at-k">Solid sheesham · Hand carved in Pune</span>
+          <h1 class="at-word at-sf">SR HANDICRAFT<small>&amp; Furniture</small></h1>
+          <div class="at-line" aria-hidden="true"></div>
         </div>
+        <div class="at-cap"><span class="at-k">The workshop</span><span class="at-sf">Every carving, cut by hand.</span></div>
       </div>
-      <div class="h3m fl" data-every="4">${lys(PHOTOS.hero||[])}</div>
+    </section>
+
+    <section class="at-st rv">
+      <span class="at-k">The SR Handicraft Atelier</span>
+      <h2 class="at-sf">Solid sheesham, shaped by our own craftsmen.</h2>
+      <p>Beds, dining sets, sofas and pooja mandirs — made in our Pune workshop, to your size and finish.</p>
+    </section>
+
+    <div class="at-wrap">
+      <section class="at-pair">
+        <a class="at-pnl rv" href="#/p/47">
+          <div class="tx">
+            <span class="at-k">Introducing</span>
+            <h3 class="at-sf">The Brass Stud<br>Bar Cabinet</h3>
+            <span class="by">by SR Handicraft</span>
+            <p>Solid sheesham, set by hand with rows of brass studs that catch the light as you walk past. Shelving inside for glasses and bottles. Made to order, in the size and finish you choose.</p>
+          </div>
+          <div class="im"><img src="bar-cabinet-room.jpg" alt="Brass Stud Bar Cabinet in sheesham wood" loading="lazy"></div>
+          <span class="go"><span>Discover</span></span>
+        </a>
+        <a class="bx at-dt rv" data-d="120" href="#/p/47"><img src="bar-cabinet-detail.jpg" alt="Close-up of hand-set brass studs" loading="lazy"><span class="cap"><span><b>Hand-set brass</b><i>Solid sheesham</i></span></span></a>
+      </section>
+
+      <a class="bx at-full rv" href="#/p/4"><img src="bed-room-1-w.jpg" alt="Sheesham king size bed with storage in a bedroom" loading="lazy"><span class="lbl"><span class="at-k" style="color:#E9DFCF">Introducing</span><b>The Storage Bed</b><i>in natural sheesham</i></span></a>
+
+      <section class="at-bento">
+        <a class="bx rv" href="#/p/41"><img src="sofa-jaali-detail.jpg" alt="Jaali work on a sheesham sofa" loading="lazy"><span class="cap"><span><b>The Jaali Sofa</b><i>Carved sheesham</i></span></span></a>
+        <a class="bx rv" data-d="120" href="#/p/45"><img src="console-1-detail.jpg" alt="Polished sheesham grain on a console table" loading="lazy"><span class="cap"><span><b>The Console</b><i>Hand-polished grain</i></span></span></a>
+        <a class="bx rv" data-d="240" href="#/p/49"><img src="dining-set-3-detail.jpg" alt="Carved backs on a sheesham dining chair" loading="lazy"><span class="cap"><span><b>The Jaali Dining Set</b><i>Carved backs</i></span></span></a>
+      </section>
+
+      <section class="at-pair">
+        <a class="bx at-dt rv" href="#/p/46"><img src="sideboard-detail.jpg" alt="Sheesham grain on a sideboard drawer" loading="lazy"><span class="cap"><span><b>Natural grain</b><i>Every piece is one of a kind</i></span></span></a>
+        <a class="at-pnl rv" data-d="120" href="#/p/46">
+          <div class="tx">
+            <span class="at-k">Introducing</span>
+            <h3 class="at-sf">The Sheesham<br>Sideboard</h3>
+            <span class="by">by SR Handicraft</span>
+            <p>Four drawers and deep cupboards in solid sheesham, with the wood's own grain left to show. Sized for your dining room, finished by hand in our workshop.</p>
+          </div>
+          <div class="im"><img src="sideboard-room.jpg" alt="Sheesham Sideboard with Drawers" loading="lazy"></div>
+          <span class="go"><span>Discover</span></span>
+        </a>
+      </section>
     </div>
-  </section>
+
+    <section class="at-end rv">
+      <span class="at-k">See it in person</span>
+      <span class="at-sf">Patil Nagar, Pune — open every day</span>
+      <div class="at-btns">
+        <a class="at-btn" href="#/c/furniture">Explore the collection</a>
+        <a class="at-btn" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, I would like to book a showroom visit.")}" target="_blank" rel="noopener">Book a visit</a>
+      </div>
+    </section>
+  </div>
 
   <div class="wrap">
     <section class="trust">
@@ -1134,7 +1257,100 @@ function route(){
 }
 function rerender(keepScroll){ const y=scrollY; route(); if(keepScroll) scrollTo(0,y); }
 
+/* ============ Atelier motion: tiny spring engine (stiffness 70, damping 22), no libraries ============ */
+const ATL = { ac:null, io:null, springs:new Set(), raf:0, last:0 };
+const atReduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+function atSpring(v, on){ return { v, t:v, vel:0, on }; }
+function atSet(s, t){
+  s.t = t;
+  if (atReduce()){ s.v = t; s.vel = 0; s.on(t); return; }
+  ATL.springs.add(s);
+  if (!ATL.raf){ ATL.last = performance.now(); ATL.raf = requestAnimationFrame(atTick); }
+}
+function atTick(now){
+  // fixed sub-steps keep the heavy, non-bouncy feel the same at any frame rate
+  let dt = Math.min(0.05, (now - ATL.last) / 1000); ATL.last = now;
+  const K = 70, C = 22, step = 1/240;
+  for (const s of ATL.springs){
+    let left = dt;
+    while (left > 0){ const h = Math.min(step, left); const a = -K*(s.v - s.t) - C*s.vel; s.vel += a*h; s.v += s.vel*h; left -= h; }
+    if (Math.abs(s.v - s.t) < 1e-4 && Math.abs(s.vel) < 1e-4){ s.v = s.t; s.vel = 0; ATL.springs.delete(s); }
+    s.on(s.v);
+  }
+  ATL.raf = ATL.springs.size ? requestAnimationFrame(atTick) : 0;
+}
+const atClamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
+const atEase = x => 1 - Math.pow(1 - x, 3);
+
+function atelierInit(){
+  if (ATL.ac) ATL.ac.abort();
+  if (ATL.io) ATL.io.disconnect();
+  ATL.springs.clear();
+  const root = document.getElementById("atelier"); if (!root) return;
+  const ac = new AbortController(); ATL.ac = ac; const sig = { signal: ac.signal, passive: true };
+  root.classList.add("js");
+  const hdr = document.querySelector("header.top");
+  const setHdr = () => root.style.setProperty("--at-hdr", (hdr ? hdr.offsetHeight : 0) + "px");
+  setHdr(); addEventListener("resize", setHdr, sig);
+
+  /* 1. Hero: the full-bleed carving is pulled into a floating frame; the heavy type lifts away */
+  const hero = root.querySelector(".at-hero"), stick = root.querySelector(".at-stick");
+  const media = root.querySelector(".at-media"), img = media.querySelector("img");
+  const copy = root.querySelector(".at-copy"), cap = root.querySelector(".at-cap");
+  const narrow = () => innerWidth < 760;
+  const hs = atSpring(0, v => {
+    const e = atEase(atClamp(v / 0.85));
+    const ix = (narrow() ? 6 : 15) * e, iy = (narrow() ? 13 : 9) * e;
+    media.style.clipPath = `inset(${iy}% ${ix}% ${iy}% ${ix}%)`;
+    img.style.transform = `scale(${1.14 - 0.14 * e})`;
+    img.style.filter = `brightness(${0.58 + 0.34 * e}) saturate(${0.9 + 0.1 * e})`;
+    const c = atClamp(v / 0.42);
+    copy.style.opacity = String(1 - c);
+    copy.style.transform = `translate3d(0,${-70 * atEase(c)}px,0)`;
+    const k = atClamp((v - 0.62) / 0.3);
+    cap.style.opacity = String(k);
+    cap.style.transform = `translate3d(0,${(1 - k) * 18}px,0)`;
+  });
+  const onScroll = () => {
+    const total = hero.offsetHeight - stick.offsetHeight;
+    atSet(hs, total > 0 ? atClamp(-hero.getBoundingClientRect().top / total) : 0);
+  };
+  addEventListener("scroll", onScroll, sig); addEventListener("resize", onScroll, sig);
+  hs.on(0); onScroll();
+
+  /* 2. Entrance: blocks rise in once, with optional stagger (data-d, ms) */
+  ATL.io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    ATL.io.unobserve(en.target);
+    const el = en.target;
+    const sp = atSpring(0, v => { el.style.opacity = String(v); el.style.transform = `translate3d(0,${(1 - v) * 36}px,0)`; });
+    setTimeout(() => { if (!ac.signal.aborted) atSet(sp, 1); }, +(el.dataset.d || 0));
+  }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  root.querySelectorAll(".rv").forEach(el => ATL.io.observe(el));
+
+  /* 3. Tiles: cursor-tracked drift + slow 1.03 zoom, caption rises from below */
+  if (matchMedia("(hover: hover)").matches){
+    root.querySelectorAll(".bx").forEach(bx => {
+      const im = bx.querySelector(":scope > img"), cp = bx.querySelector(".cap > span");
+      const st = { x:0, y:0, s:1 };
+      const draw = () => { im.style.transform = `translate3d(${st.x}px,${st.y}px,0) scale(${st.s})`; };
+      const sx = atSpring(0, v => { st.x = v; draw(); }), sy = atSpring(0, v => { st.y = v; draw(); });
+      const ss = atSpring(1, v => { st.s = v; draw(); });
+      const sc = cp ? atSpring(0, v => { cp.style.transform = `translate3d(0,${(1 - v) * 110}%,0)`; cp.style.opacity = String(v); }) : null;
+      if (sc) sc.on(0);
+      bx.addEventListener("pointermove", e => {
+        const r = bx.getBoundingClientRect();
+        atSet(sx, -((e.clientX - r.left) / r.width - 0.5) * 18);
+        atSet(sy, -((e.clientY - r.top) / r.height - 0.5) * 18);
+      }, sig);
+      bx.addEventListener("pointerenter", () => { atSet(ss, 1.03); if (sc) atSet(sc, 1); }, sig);
+      bx.addEventListener("pointerleave", () => { atSet(sx, 0); atSet(sy, 0); atSet(ss, 1); if (sc) atSet(sc, 0); }, sig);
+    });
+  }
+}
+
 function bindView(){
+  atelierInit();
   const sb=$("#seobtn"); if(sb) sb.onclick=()=>{const m=$("#seomore");m.classList.toggle("open");sb.textContent=m.classList.contains("open")?"Read less":"Read more";};
   const so=$("#sort"); if(so){ so.value=LST.sort; so.onchange=()=>{LST.sort=so.value;rerender(true);}; }
   document.querySelectorAll("[data-f]").forEach(i=>i.onchange=()=>{const a=LST[i.dataset.f];i.checked?a.push(i.value):a.splice(a.indexOf(i.value),1);rerender(true);});
