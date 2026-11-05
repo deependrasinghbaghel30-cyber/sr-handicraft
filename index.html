@@ -488,8 +488,16 @@ body.at-ovr header.top .search input{background:rgba(255,255,255,.12);border-col
 body.at-ovr header.top .search input::placeholder{color:rgba(255,255,255,.82)}
 body.at-ovr header.top .catnav{border-top-color:rgba(255,255,255,.2)}
 body.at-ovr header.top .mega{color:var(--ink)}
-@media (max-width:760px){ body.at-ovr header.top .search{display:none} }
+@media (max-width:760px){
+  body.at-ovr header.top .search{display:none}
+  body.at-home header.top .hrow{position:relative}
+  body.at-ovr header.top .logo{position:absolute;left:50%;transform:translateX(-50%)}
+  .af-s img{transform:scale(1.08) translate3d(var(--fx,0),var(--fy,0),0)}
+  .af-s.on img,.af-s.out img{animation-name:afkbm}
+  @keyframes afkbm{from{transform:scale(1.08) translate3d(var(--fx,0),var(--fy,0),0)}to{transform:scale(1) translate3d(0,0,0)}}
+}
 
+.at,.at-seox{--ink:#1F1A15;--muted:#6D6255;--card:#F3EFE9;--line:rgba(31,26,21,.12);--rose:#6B2D1C;--rose-ink:#fff;--bg:#F3EFE9;--tint:#EAE4DA;--brass:#9C7A45}
 .at{--iv:#F3EFE9;--g:10px;--ink2:#1F1A15;background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body);padding-bottom:var(--g)}
 .at :where(a){color:inherit;text-decoration:none}
 .at-dd{font-family:"Bodoni Moda","Cormorant Garamond",Didot,"Bodoni 72",Georgia,serif;font-weight:400;text-transform:uppercase;letter-spacing:.015em;line-height:1}
@@ -563,6 +571,33 @@ body.at-ovr header.top .mega{color:var(--ink)}
 .at-btn:hover,.at-btn.dk{background:#1F1A15;color:#F3EFE9}
 .at-btn.dk:hover{background:transparent;color:#1F1A15}
 
+/* rest of home, same language */
+.at-h{text-align:center;padding:52px 20px 22px}
+.at-h h2{font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(30px,8.6vw,64px);line-height:1;letter-spacing:.01em;margin:10px 0 14px;color:var(--ink2)}
+.at-quad{grid-template-columns:repeat(2,1fr);gap:var(--g)}
+.at-quad > a{aspect-ratio:4/5}
+.at-coll .rail{padding:0 var(--g);gap:var(--g);grid-auto-columns:64%}
+.at-rest .pc{border:0;border-radius:0;background:transparent;color:var(--ink2)}
+.at-rest .pc .im{border-bottom:0;border-radius:0;background:#E7E0D6!important}
+.at-rest .pc img{border-radius:0}
+.at-rest .pc .bd{padding:12px 2px 4px}
+.at-rest .pc .nm{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:18px;line-height:1.2}
+.at-rest .pc .add{border-radius:0;border-color:var(--ink2);color:var(--ink2);font-family:"Jost",var(--body);font-weight:400;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+.at-rest .pc .add:hover{background:var(--ink2);color:#F3EFE9}
+.at-rv .revs{padding:0 var(--g);gap:var(--g)}
+.at-rest .rev{border:0;border-radius:0;background:#E9E2D8;padding:30px 24px;text-align:center}
+.at-rest .rev .st{color:#9C7A45;letter-spacing:5px;font-size:12px}
+.at-rest .rev blockquote{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;line-height:1.45;color:var(--ink2);margin:14px 0 16px}
+.at-rest .rev figcaption{font-family:"Jost",var(--body);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#6D6255}
+.at-seox{background:#F3EFE9;color:#4E453C;padding:6px 0 48px}
+.at-seox .seo{font-family:"Cormorant Garamond",Georgia,serif;font-size:17px;color:#4E453C;max-width:720px;margin:0 auto;padding-top:20px}
+.at-seox .seo h2{font-family:"Jost",var(--body);font-weight:200;text-transform:uppercase;font-size:clamp(26px,7vw,46px);letter-spacing:.01em;line-height:1.05;text-align:center;margin:24px 0 22px;color:#1F1A15}
+.at-seox .seo h3{font-family:"Jost",var(--body);font-weight:400;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#1F1A15;margin:22px 0 6px}
+.at-seox .seo .more:not(.open)::after{background:linear-gradient(rgba(243,239,233,0),#F3EFE9)}
+.at-seox .btn{border-radius:0;border:1px solid #1F1A15;color:#1F1A15;background:transparent;font-family:"Jost",var(--body);font-weight:400;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;display:block;margin:16px auto 0}
+.af-k{display:none}
+body.at-home footer{--ink:#1F1A15;--muted:#6D6255;--line:rgba(31,26,21,.12);--tint:#EAE4DA;--bg:#F3EFE9;--card:#F3EFE9;--rose:#6B2D1C;--brass:#9C7A45;background:#EAE4DA;color:#1F1A15;margin-top:0;border-top:0}
+
 /* entrance: hidden only once JS runs, so nothing disappears without it */
 .at.js .rv{opacity:0;transform:translate3d(0,28px,0)}
 
@@ -583,6 +618,9 @@ body.at-ovr header.top .mega{color:var(--ink)}
   .at-svc.with{padding:24px;gap:48px;grid-template-columns:1fr 1.1fr}
   .at-svc.with .ph{aspect-ratio:5/4}
   .at-dis{aspect-ratio:16/8}
+  .at-quad{grid-template-columns:repeat(4,1fr)}
+  .at-quad > a{aspect-ratio:3/4}
+  .at-coll .rail{grid-auto-columns:calc((100% - 3 * var(--g)) / 4)}
   .at-end{padding:110px 20px 100px}
 }
 @media (max-width:360px){ .at-card p{display:none} }
@@ -1068,57 +1106,27 @@ function home(){
     </section>
   </div>
 
-  <div class="wrap">
-    <section class="trust">
-      <div><b>${SHOP.googleRating?SHOP.googleRating+" ★":"★★★★★"}</b><span>${SHOP.googleCount?SHOP.googleCount+" Google reviews":"Google reviews"}</span></div>
-      <div><b>Solid sheesham</b><span>Hand finished by craftsmen</span></div>
-      <div><b>Made to order</b><span>Your size, your finish</span></div>
-      <div><b>Showroom in Pune</b><span>See it before you buy</span></div>
+  <div class="at at-rest">
+    <section>
+      <div class="at-h"><span class="at-s">More from the workshop</span></div>
+      <div class="at-tri at-quad">
+        <a href="#/c/furniture/coffee-tables"><span class="at-im"><img src="coffee-table-room.jpg" alt="Sheesham coffee table" loading="lazy"></span><span class="at-nm"><span class="at-s">Coffee tables</span></span></a>
+        <a href="#/c/furniture/dressing-tables"><span class="at-im"><img src="dressing-1-detail.jpg" alt="Sheesham dressing table" loading="lazy"></span><span class="at-nm"><span class="at-s">Dressing tables</span></span></a>
+        <a href="#/c/furniture/study-tables"><span class="at-im"><img src="study-2.jpg" alt="Sheesham study table" loading="lazy"></span><span class="at-nm"><span class="at-s">Study tables</span></span></a>
+        <a href="#/c/furniture/storage"><span class="at-im"><img src="sideboard-room.jpg" alt="Sheesham sideboard" loading="lazy"></span><span class="at-nm"><span class="at-s">Sideboards &amp; bars</span></span></a>
+      </div>
     </section>
-
-    <section class="blk">
-      <div class="sh"><h2>Shop by category</h2></div>
-      <div class="tiles2">${tiles.map(([n,href,k])=>`<a class="tile2" href="${href}">${ph(k,"")}<span class="tl">${n}</span></a>`).join("")}</div>
-    </section>
-
-    <section class="blk band">
-      <div class="sh"><h2>Our collection</h2><a href="#/s/all">View all</a></div>
+    <section class="at-coll">
+      <div class="at-h"><span class="at-s">The collection</span><h2>Shop the pieces</h2><a class="at-go" href="#/s/all">View all</a></div>
       <div class="rail">${P.map(card).join("")}</div>
     </section>
-
-    <section class="blk">
-      <div class="promos">
-        <a class="promo a" href="#/c/furniture/dining-sets"><div><h3>Dining sets</h3><p>Solid sheesham, 6 &amp; 8 seater</p><span>Shop dining</span></div>${ph("promo_dining","")}</a>
-        <a class="promo b" href="#/c/pooja"><div><h3>Pooja mandir</h3><p>Hand carved for your home</p><span>Shop mandirs</span></div>${ph("promo_pooja","")}</a>
-        <a class="promo c" href="#/page/custom"><div><h3>Made to your size</h3><p>Send your measurements, we build it</p><span>Get a quote</span></div>${ph("promo_custom","")}</a>
-      </div>
-    </section>
-
-    ${(PHOTOS.strip||[]).length?`<section class="blk">
-      <div class="sh"><h2>From our workshop</h2><a href="#/s/all">View all</a></div>
-      <div class="mq"><div class="mqin">${[...PHOTOS.strip,...PHOTOS.strip].map(u=>`<img src="${u}" alt="SR Handicraft sheesham furniture" loading="lazy">`).join("")}</div></div>
+    ${REVIEWS.length?`<section class="at-rv">
+      <div class="at-h"><span class="at-s">${SHOP.googleRating?SHOP.googleRating+" ★ · "+(SHOP.googleCount||"")+" Google reviews":"Google reviews"}</span><h2>In their words</h2>${G?`<a class="at-go" href="${G}" target="_blank" rel="noopener">All reviews on Google</a>`:""}</div>
+      <div class="revs">${REVIEWS.map(r=>`<figure class="rev"><div class="st">${stars(r.stars||5)}</div><blockquote>${esc(r.text)}</blockquote><figcaption>${esc(r.name)}</figcaption></figure>`).join("")}</div>
     </section>`:""}
+  </div>
 
-    ${REVIEWS.length?`<section class="blk">
-      <div class="sh"><h2>What our customers say</h2>${G?`<a href="${G}" target="_blank" rel="noopener">All reviews on Google</a>`:""}</div>
-      <div class="revs">${REVIEWS.map(r=>`<figure class="rev"><div class="st">${stars(r.stars||5)}</div><blockquote>${esc(r.text)}</blockquote><figcaption>${esc(r.name)} · Google review</figcaption></figure>`).join("")}</div>
-    </section>`:""}
-
-    <section class="blk">
-      <div class="store print">
-        <div class="t">
-          <h2>Visit our showroom</h2>
-          <p class="lead">See and feel the wood before you buy.</p>
-          <p>${STORE.address}</p><p>${STORE.hours}</p><p>${STORE.phone}</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
-            <a class="btn brass" href="${STORE.maps&&STORE.maps.length>28?STORE.maps:"#/page/store"}" ${STORE.maps&&STORE.maps.length>28?'target="_blank" rel="noopener"':""}>Get directions</a>
-            <a class="btn ghost" href="https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent("Hi, I would like to book a showroom visit.")}" target="_blank" rel="noopener">Book a visit</a>
-          </div>
-        </div>
-        <div class="map">${ph("showroom","")}</div>
-      </div>
-    </section>
-
+  <div class="at-seox"><div class="wrap">
     <section class="blk seo">
       <h2>Solid sheesham wood furniture in Pune</h2>
       <div class="more" id="seomore">
@@ -1140,7 +1148,7 @@ function home(){
       </div>
       <button class="btn ghost" style="margin-top:12px" id="seobtn">Read more</button>
     </section>
-  </div>`;
+  </div></div>`;
 }
 
 function filterSort(list, st){
