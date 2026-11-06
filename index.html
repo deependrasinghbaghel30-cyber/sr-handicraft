@@ -1019,7 +1019,7 @@ function home(){
   return `
   <div class="at" id="atelier">
     <a class="af" id="afilm" href="${AT_FILM[0].href}" aria-label="${AT_FILM[0].alt}">
-      <div class="af-p">${AT_FILM.map((s,i)=>`<div class="af-s${i?"":" on"}" style="--fx:${s.fx};--fy:${s.fy}"><picture><source media="(min-width:761px)" srcset="${s.img}-d.jpg"><img src="${s.img}-m.jpg" alt=""${i?' loading="lazy"':' fetchpriority="high"'}></picture></div>`).join("")}</div>
+      <div class="af-p">${AT_FILM.map((s,i)=>`<div class="af-s${i?"":" on"}" style="--fx:${s.fx};--fy:${s.fy}"><picture><source media="(min-width:761px)" srcset="${s.d}"><img src="${s.m}" alt=""${i?' loading="lazy"':' fetchpriority="high"'}></picture></div>`).join("")}</div>
       <div class="af-t">${AT_FILM.map((s,i)=>`<div${i?"":' class="on"'}><span class="at-s">Introducing</span><h2 class="at-dd">${s.word}</h2><span class="at-s by">by</span><span class="mk">SR Handicraft</span><span class="cta">Discover</span></div>`).join("")}</div>
     </a>
 
@@ -1045,7 +1045,7 @@ function home(){
         ${[["#/p/30","bed-tile-1-detail.jpg","Hand painted tiles on a headboard","Tile"],["#/p/41","sofa-jaali-detail.jpg","Jaali work on a sheesham sofa","Jaali"],["#/p/16","mandir-1-detail.jpg","Carving on a sheesham mandir","Carving"],["#/p/43","coffee-table-detail.jpg","Brass studs on sheesham","Brass"],["#/p/48","bed-slat-detail.jpg","Slatted sheesham headboard","Slats"],["#/p/46","sideboard-detail.jpg","Sheesham grain on a sideboard","Grain"]].map(([h,im,alt,t])=>`<a href="${h}"><span class="at-im"><img src="${im}" alt="${alt}" loading="lazy"></span><span class="at-s">${t}</span></a>`).join("")}
       </section>
 
-      ${fig("#/p/4","bed-room-1-w.jpg","Sheesham king size bed with storage","The Storage Bed","king size, solid sheesham")}
+      ${fig("#/p/4","bed-storage-2.jpg","Sheesham king size bed with the storage open","The Storage Bed","king size, solid sheesham")}
       <section class="at-pair">
         ${crd("#/p/30","Introducing","The Tile<br>Bed","A hand painted tile headboard set into solid sheesham, with storage below.")}
         ${fig("#/p/30","bed-tile-1.jpg","Hand painted tile headboard bed","Tile Work","")}
@@ -1089,9 +1089,9 @@ function home(){
         <span class="at-go">Enquire</span>
       </a>
 
-      <a class="at-dis" href="#/c/furniture/beds"><span class="at-im"><img src="bed-room-3-w.jpg" alt="Carved sheesham bed in a bedroom" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Beds</b><span class="at-s">Explore the collection</span></span></a>
-      <a class="at-dis" href="#/c/furniture/dining-sets"><span class="at-im"><img src="dining-set-3.jpg" alt="Jaali back sheesham dining set" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Dining</b><span class="at-s">Explore the collection</span></span></a>
-      <a class="at-dis" href="#/c/furniture/sofa-sets"><span class="at-im"><img src="sofa-set-2.jpg" alt="Carved sheesham sofa set" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Sofas</b><span class="at-s">Explore the collection</span></span></a>
+      <a class="at-dis" href="#/c/furniture/beds"><span class="at-im"><img src="poster-bed-2-w.jpg" alt="Tile work poster bed in a bedroom" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Beds</b><span class="at-s">Explore the collection</span></span></a>
+      <a class="at-dis" href="#/c/furniture/dining-sets"><span class="at-im"><img src="dining-set-1.jpg" alt="Sheesham dining set" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Dining</b><span class="at-s">Explore the collection</span></span></a>
+      <a class="at-dis" href="#/c/furniture/sofa-sets"><span class="at-im"><img src="sofa-set-1.jpg" alt="Carved sheesham sofa set with coffee table" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Sofas</b><span class="at-s">Explore the collection</span></span></a>
       <a class="at-dis" href="#/c/pooja"><span class="at-im"><img src="mandir-2-room.jpg" alt="Jaali door sheesham pooja mandir" loading="lazy"></span><span class="tx"><span class="at-s">Discover</span><b>Mandirs</b><span class="at-s">Explore the collection</span></span></a>
     </div>
 
@@ -1368,10 +1368,11 @@ function atMotion(fn, signal){
   addEventListener("motion:ready", () => { if (!signal.aborted) fn(window.Motion); }, { once:true, signal });
 }
 
-const AT_FILM = [
-  { img:"hero-jaali",   word:"Jaali",   sub:"the jaali door mandir",   href:"#/p/17", alt:"Jaali Door Sheesham Pooja Mandir",  fx:"0%",    fy:"3%" },
-  { img:"hero-tile",    word:"Tile",    sub:"the hand painted bed",    href:"#/p/30", alt:"Hand Painted Tile Headboard Bed",   fx:"3%",    fy:"0%" },
-  { img:"hero-carving", word:"Carving", sub:"the carved dining table", href:"#/p/6",  alt:"Carved Sheesham 6 Seater Dining Set", fx:"-3%",   fy:"1.5%" }
+const AT_FILM = [   // m = phone (portrait crop of the same photo), d = desktop
+  { m:"sofa-set-2.jpg",    d:"sofa-set-2.jpg",    word:"Sofa",    href:"#/p/40", alt:"Carved Sheesham Sofa Set with Coffee Table", fx:"3%",  fy:"0%" },
+  { m:"dining-set-3.jpg",  d:"dining-set-3.jpg",  word:"Dining",  href:"#/p/49", alt:"Jaali Back Sheesham Dining Set",            fx:"-3%", fy:"1%" },
+  { m:"bed-room-1-w.jpg",  d:"bed-room-1-w.jpg",  word:"Storage", href:"#/p/4",  alt:"Sheesham King Size Bed with Storage",       fx:"3%",  fy:"-1%" },
+  { m:"bed-room-3-w.jpg",  d:"bed-room-3-w.jpg",  word:"Queen",   href:"#/p/5",  alt:"Sheesham Queen Size Bed",                   fx:"-3%", fy:"0%" }
 ];
 const AT_SLIDE = 7000, AT_DIP = 750;   // hold per piece, time spent in black between pieces
 
@@ -1447,8 +1448,8 @@ function atelierInit(){
   if (atReduce()) return;   // static page: first film frame stays, nothing moves
 
   // warm the cache so every dissolve lands on a decoded image
-  const sfx = matchMedia("(min-width:761px)").matches ? "-d.jpg" : "-m.jpg";
-  AT_FILM.slice(1).forEach(s => { const i = new Image(); i.src = s.img + sfx; });
+  const wide = matchMedia("(min-width:761px)").matches;
+  AT_FILM.slice(1).forEach(s => { const i = new Image(); i.src = wide ? s.d : s.m; });
   const fio = new IntersectionObserver(en => {
     const was = visible; visible = en[0].isIntersecting;
     if (visible && !was) { titles[cur].classList.add("on"); plan(); }
