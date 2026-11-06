@@ -497,12 +497,12 @@ body.at-ovr header.top .mega{color:var(--ink)}
 
 .at,.at-seox{--ink:#1F1A15;--muted:#5F554A;--card:#F4F2EE;--line:rgba(31,26,21,.12);--rose:#6B2D1C;--rose-ink:#fff;--bg:#F4F2EE;--tint:#E9E5DE;--brass:#9C7A45}
 /* a magazine collage: ivory paper, thin white-ish seams, photographs doing the talking */
-.at{--iv:#F4F2EE;--g:6px;--ink2:#1F1A15;--bronze:radial-gradient(120% 85% at 25% 10%,#7E6545 0%,#5C4730 48%,#3A2C1E 100%);--taupe:radial-gradient(130% 100% at 15% 0%,#94795A 0%,#7A6349 55%,#64503B 100%);background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body)}
+.at{--grade:sepia(.14) saturate(.86) contrast(.93) brightness(1.03);--iv:#F4F2EE;--g:6px;--ink2:#1F1A15;--bronze:radial-gradient(120% 85% at 25% 10%,#7E6545 0%,#5C4730 48%,#3A2C1E 100%);--taupe:radial-gradient(130% 100% at 15% 0%,#94795A 0%,#7A6349 55%,#64503B 100%);background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body)}
 .at :where(a){color:inherit;text-decoration:none}
 .at-dd{font-family:"Bodoni Moda","Cormorant Garamond",Didot,"Bodoni 72",Georgia,serif;font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:1}
 .at-s{display:block;font-family:"Jost",var(--body);font-weight:400;font-size:10px;line-height:1.3;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase}
 .at-im{position:relative;display:block;overflow:hidden;aspect-ratio:var(--ar,4/3);background:#E3DDD3}
-.at-im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:scale 1.4s cubic-bezier(.22,1,.36,1),opacity .8s ease}
+.at-im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:var(--grade);transition:scale 1.4s cubic-bezier(.22,1,.36,1),opacity .8s ease}
 .at-im img[loading="lazy"]:not(.ld){opacity:0}
 @media (hover:hover){ .at a:hover .at-im img{scale:1.03} }
 
@@ -511,7 +511,7 @@ body.at-ovr header.top .mega{color:var(--ink)}
 .af-p{position:absolute;inset:0}
 .af-s{position:absolute;inset:0;opacity:0;transition:opacity .9s ease-in-out}
 .af-s.on{opacity:1;transition:opacity 1.3s ease-in-out}
-.af-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12) translate3d(var(--fx,0),var(--fy,0),0)}
+.af-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(.14) saturate(.86) contrast(.95) brightness(.96);transform:scale(1.12) translate3d(var(--fx,0),var(--fy,0),0)}
 .af-s.on img,.af-s.out img{animation:afdr 10s linear forwards}
 @keyframes afdr{from{transform:scale(1.12) translate3d(var(--fx,0),var(--fy,0),0)}to{transform:scale(1.03) translate3d(calc(-1 * var(--fx,0)),calc(-1 * var(--fy,0)),0)}}
 .af::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(8,6,4,.45) 0%,rgba(8,6,4,0) 20%),linear-gradient(to top,rgba(8,6,4,.45) 0%,rgba(8,6,4,0) 50%)}
@@ -525,7 +525,8 @@ body.at-ovr header.top .mega{color:var(--ink)}
 /* 2. collage blocks */
 .at-cat{display:flex;flex-direction:column;gap:var(--g);padding:var(--g)}
 .at-f{position:relative;display:block}
-.at-f .at-im::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(205deg,rgba(10,7,5,.42) 0%,rgba(10,7,5,0) 38%)}
+.at-im::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(196,160,112,.08);mix-blend-mode:multiply}
+.at-f .at-im::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(205deg,rgba(10,7,5,.42) 0%,rgba(10,7,5,0) 38%)}
 .at-lbl{position:absolute;z-index:2;top:12px;right:12px;left:30%;text-align:right;color:#fff}
 .at-lbl b{display:block;font-size:clamp(17px,5vw,46px)}
 .at-lbl .at-s{font-size:8.5px;margin-top:5px;letter-spacing:.22em;opacity:.92}
@@ -545,7 +546,7 @@ body.at-ovr header.top .mega{color:var(--ink)}
 .at-sw{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--iv)}
 .at-sw a{position:relative;display:block}
 .at-sw .at-im{--ar:1/1}
-.at-sw .at-s{position:absolute;left:0;right:0;bottom:7px;text-align:center;color:#fff;font-size:8px;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.at-sw .at-s{position:absolute;z-index:2;left:0;right:0;bottom:7px;text-align:center;color:#fff;font-size:8px;text-shadow:0 1px 6px rgba(0,0,0,.5)}
 
 /* 3. bands on warm taupe, like the endpapers of a catalogue */
 .at-band{display:block;padding:34px 22px 30px;background:var(--taupe);color:#F6EFE4;text-align:center}
@@ -585,7 +586,7 @@ body.at-ovr header.top .mega{color:var(--ink)}
 .at-quad{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--g);padding:0 var(--g)}
 .at-quad > a{position:relative;display:block}
 .at-quad .at-im{--ar:4/5}
-.at-quad .at-nm{position:absolute;left:0;right:0;bottom:10px;text-align:center;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.at-quad .at-nm{position:absolute;z-index:2;left:0;right:0;bottom:10px;text-align:center;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .at-coll .rail{padding:0 var(--g);gap:var(--g);grid-auto-columns:72%}
 .at-rest .pc{border:0;border-radius:0;background:transparent;color:var(--ink2)}
 .at-rest .pc .im{border-bottom:0;border-radius:0;background:#E7E0D6!important}
