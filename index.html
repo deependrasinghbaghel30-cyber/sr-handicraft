@@ -511,16 +511,18 @@ body.at-ovr header.top .mega{color:var(--ink)}
 .af-p{position:absolute;inset:0}
 .af-s{position:absolute;inset:0;opacity:0;transition:opacity .9s ease-in-out}
 .af-s.on{opacity:1;transition:opacity 1.3s ease-in-out}
-.af-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(.14) saturate(.86) contrast(.95) brightness(.96);transform:scale(1.12) translate3d(var(--fx,0),var(--fy,0),0)}
+.af-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.07) saturate(1.06) brightness(1.02);transform:scale(1.12) translate3d(var(--fx,0),var(--fy,0),0)}
 .af-s.on img,.af-s.out img{animation:afdr 10s linear forwards}
 @keyframes afdr{from{transform:scale(1.12) translate3d(var(--fx,0),var(--fy,0),0)}to{transform:scale(1.03) translate3d(calc(-1 * var(--fx,0)),calc(-1 * var(--fy,0)),0)}}
-.af::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(8,6,4,.45) 0%,rgba(8,6,4,0) 20%),linear-gradient(to top,rgba(8,6,4,.45) 0%,rgba(8,6,4,0) 50%)}
-.af-t{position:absolute;z-index:3;left:0;right:0;bottom:24%;height:0;text-align:center;pointer-events:none}
+.af::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 75% at 50% 42%,rgba(8,6,4,0) 45%,rgba(8,6,4,.38) 100%),linear-gradient(to bottom,rgba(8,6,4,.72) 0%,rgba(8,6,4,.38) 9%,rgba(8,6,4,0) 22%),linear-gradient(to top,rgba(8,6,4,.62) 0%,rgba(8,6,4,.18) 32%,rgba(8,6,4,0) 52%)}
+.af-t{position:absolute;z-index:3;left:0;right:0;bottom:20%;height:0;text-align:center;pointer-events:none}
 .af-t > div{position:absolute;left:0;right:0;bottom:0;padding:0 16px;opacity:0;transition:opacity .9s ease}
 .af-t > div.on{opacity:1;transition:opacity 1.4s ease 1.3s}
-.af-t h2{font-size:clamp(44px,13.5vw,150px);margin:10px 0 8px;letter-spacing:.01em}
+.af-t h2{font-size:clamp(50px,15vw,168px);margin:12px 0 10px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 28px rgba(0,0,0,.35)}
+.af-t .at-s{text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.af-t .cta{display:inline-block;margin-top:18px;padding:0 0 4px;border-bottom:1px solid rgba(255,255,255,.75);font-family:"Jost",var(--body);font-size:10px;letter-spacing:.28em;padding-left:.28em;text-transform:uppercase}
 .af-t .by{font-size:8.5px;margin-bottom:6px}
-.af-t .mk{display:block;font-family:"Bodoni Moda",Georgia,serif;font-size:13px;letter-spacing:.24em;padding-left:.24em;text-transform:uppercase}
+.af-t .mk{display:block;font-family:"Bodoni Moda",Georgia,serif;font-size:13px;text-shadow:0 1px 12px rgba(0,0,0,.45);letter-spacing:.24em;padding-left:.24em;text-transform:uppercase}
 
 /* 2. collage blocks */
 .at-cat{display:flex;flex-direction:column;gap:var(--g);padding:var(--g)}
@@ -1019,7 +1021,7 @@ function home(){
   <div class="at" id="atelier">
     <a class="af" id="afilm" href="${AT_FILM[0].href}" aria-label="${AT_FILM[0].alt}">
       <div class="af-p">${AT_FILM.map((s,i)=>`<div class="af-s${i?"":" on"}" style="--fx:${s.fx};--fy:${s.fy}"><picture><source media="(min-width:761px)" srcset="${s.img}-d.jpg"><img src="${s.img}-m.jpg" alt=""${i?' loading="lazy"':' fetchpriority="high"'}></picture></div>`).join("")}</div>
-      <div class="af-t">${AT_FILM.map((s,i)=>`<div${i?"":' class="on"'}><span class="at-s">Introducing</span><h2 class="at-dd">${s.word}</h2><span class="at-s by">by</span><span class="mk">SR Handicraft</span></div>`).join("")}</div>
+      <div class="af-t">${AT_FILM.map((s,i)=>`<div${i?"":' class="on"'}><span class="at-s">Introducing</span><h2 class="at-dd">${s.word}</h2><span class="at-s by">by</span><span class="mk">SR Handicraft</span><span class="cta">Discover</span></div>`).join("")}</div>
     </a>
 
     <div class="at-cat">
@@ -1426,10 +1428,16 @@ function atelierInit(){
     setTimeout(() => slides[prev].classList.remove("out"), AT_DIP + 1400);
     ATL.t3 = setTimeout(() => {
       slides[n].classList.remove("out"); void slides[n].offsetWidth; slides[n].classList.add("on");
-      titles[n].classList.add("on");
+      titles[n].classList.add("on"); titleIn(n);
       film.href = AT_FILM[n].href; film.setAttribute("aria-label", AT_FILM[n].alt);
       plan();
     }, AT_DIP);
+  };
+  const titleIn = n => {
+    const M = window.Motion; if (!M || atReduce()) return;
+    const h = titles[n].querySelector("h2"), small = titles[n].querySelectorAll(".at-s,.mk,.cta");
+    M.animate(h, { letterSpacing: ["0.34em", "0.02em"], filter: ["blur(10px)", "blur(0px)"] }, { duration: 2.6, delay: 1.1, ease: AT_EZ });
+    small.forEach((e, i) => M.animate(e, { opacity: [0, 1], translate: ["0 8px", "0 0"] }, { duration: 1.4, delay: 1.5 + i * 0.12, ease: AT_EZ }));
   };
   const plan = () => {
     clearTimeout(ATL.t1); clearTimeout(ATL.t2);
@@ -1453,6 +1461,7 @@ function atelierInit(){
 
   atMotion(({ animate, scroll }) => {
     const keep = f => ATL.stops.push(f);
+    if (performance.now() < 1500 && film.getBoundingClientRect().top > -10) titleIn(cur);   // only if the first title has not shown yet
     /* 2. As the film scrolls away it sinks a little slower than the page and its title fades */
     keep(scroll(animate(film.querySelector(".af-p"), { translate: ["0 0", "0 18%"] }, { ease: "linear" }), { target: film, offset: ["start start", "end start"] }));
     keep(scroll(animate(film.querySelector(".af-t"), { opacity: [1, 0] }, { ease: "linear" }), { target: film, offset: ["start start", "0.45 start"] }));
