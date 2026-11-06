@@ -497,7 +497,7 @@ body.at-ovr header.top .mega{color:var(--ink)}
 
 .at,.at-seox{--ink:#1F1A15;--muted:#5F554A;--card:#F4F2EE;--line:rgba(31,26,21,.12);--rose:#6B2D1C;--rose-ink:#fff;--bg:#F4F2EE;--tint:#E9E5DE;--brass:#9C7A45}
 /* a magazine collage: ivory paper, thin white-ish seams, photographs doing the talking */
-.at{--grade:sepia(.14) saturate(.86) contrast(.93) brightness(1.03);--iv:#F4F2EE;--g:6px;--ink2:#1F1A15;--bronze:radial-gradient(120% 85% at 25% 10%,#7E6545 0%,#5C4730 48%,#3A2C1E 100%);--taupe:radial-gradient(130% 100% at 15% 0%,#94795A 0%,#7A6349 55%,#64503B 100%);background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body)}
+.at{--grade:contrast(1.05) saturate(1.05);--iv:#F4F2EE;--g:6px;--ink2:#1F1A15;--bronze:radial-gradient(120% 85% at 25% 10%,#7E6545 0%,#5C4730 48%,#3A2C1E 100%);--taupe:radial-gradient(130% 100% at 15% 0%,#94795A 0%,#7A6349 55%,#64503B 100%);background:var(--iv);color:var(--ink2);font-family:"Jost",var(--body)}
 .at :where(a){color:inherit;text-decoration:none}
 .at-dd{font-family:"Bodoni Moda","Cormorant Garamond",Didot,"Bodoni 72",Georgia,serif;font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:1}
 .at-s{display:block;font-family:"Jost",var(--body);font-weight:400;font-size:10px;line-height:1.3;letter-spacing:.26em;padding-left:.26em;text-transform:uppercase}
@@ -527,7 +527,6 @@ body.at-ovr header.top .mega{color:var(--ink)}
 /* 2. collage blocks */
 .at-cat{display:flex;flex-direction:column;gap:var(--g);padding:var(--g)}
 .at-f{position:relative;display:block}
-.at-im::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(196,160,112,.08);mix-blend-mode:multiply}
 .at-f .at-im::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(205deg,rgba(10,7,5,.42) 0%,rgba(10,7,5,0) 38%)}
 .at-lbl{position:absolute;z-index:2;top:12px;right:12px;left:30%;text-align:right;color:#fff}
 .at-lbl b{display:block;font-size:clamp(17px,5vw,46px)}
