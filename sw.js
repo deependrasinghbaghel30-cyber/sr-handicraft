@@ -2,8 +2,8 @@
    - Pages: network first, so price/photo updates show immediately; cached copy
      is used only when the phone is offline.
    - Photos & icons: served from cache instantly, refreshed in the background. */
-const VERSION = 'sr-v7';
-const SHELL = ['/', '/index.html', '/data.js', '/manifest.json', '/icon-192.png', '/icon-512.png'];
+const VERSION = 'sr-v8';
+const SHELL = ['/', '/index.html', '/data.js', '/vendor/motion.js', '/manifest.json', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

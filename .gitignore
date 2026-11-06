@@ -2,3 +2,8 @@ node_modules/
 *-debug.log
 *-debug.*.log
 tests/artifacts/
+
+# local tooling (UI UX Pro Max skill, npm install of motion; site has no build step)
+.claude/
+/package.json
+/package-lock.json
